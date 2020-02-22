@@ -5,11 +5,11 @@
 #         "@maven//:junit_junit",
 # 	],
 # )
-# 
+#
 java_test(
-	name = "ServerTest",
-	srcs = ["ServerTest.java"],
-	deps = [
+    name = "ServerTest",
+    srcs = ["ServerTest.java"],
+    deps = [
         "@maven//:junit_junit",
-	],
+    ],
 )
