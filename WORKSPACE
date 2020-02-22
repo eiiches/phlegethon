@@ -81,6 +81,9 @@ maven_install(
         # "org.springframework.boot:spring-boot-test:2.1.3.RELEASE",
         # "org.springframework.boot:spring-boot:2.1.3.RELEASE",
         "org.springframework.boot:spring-boot-starter-web:2.2.4.RELEASE",
+        "com.amazonaws:aws-java-sdk-s3:1.11.727",
+        "org.hibernate.validator:hibernate-validator:6.1.2.Final",
+        "javax.validation:validation-api:2.0.0.Final",
     ],
     maven_install_json = "//:maven_install.json",
     repositories = [
@@ -89,4 +92,5 @@ maven_install(
 )
 
 load("@maven//:defs.bzl", "pinned_maven_install")
+
 pinned_maven_install()

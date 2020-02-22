@@ -1,10 +1,41 @@
 load("@io_bazel_rules_docker//java:image.bzl", "java_image")
 
-java_image(
-    name = "server",
-    srcs = glob(["*.java"]),
-    main_class = "net.thisptr.phlegethon.server.Server",
+java_library(
+    name = "libs",
+    srcs = glob(["Application.java"]),
     deps = [
+        "//server/src/main/java/net/thisptr/phlegethon/storage",
         "@maven//:org_slf4j_slf4j_api",
+        "@maven//:org_springframework_boot_spring_boot",
+        "@maven//:org_springframework_boot_spring_boot_autoconfigure",
+        "@maven//:org_springframework_boot_spring_boot_starter_web",
+        "@maven//:org_springframework_spring_beans",
+        "@maven//:org_springframework_spring_context",
+    ],
+)
+
+java_image(
+    name = "docker-image",
+    srcs = glob(["Main.java"]),
+    main_class = "net.thisptr.phlegethon.server.Main",
+    runtime_deps = [
+        "//server/src/main/java/net/thisptr/phlegethon/storage/s3",
+    ],
+    deps = [
+        ":libs",
+        "@maven//:org_springframework_boot_spring_boot",
+    ],
+)
+
+java_binary(
+    name = "server",
+    srcs = glob(["Main.java"]),
+    main_class = "net.thisptr.phlegethon.server.Main",
+    runtime_deps = [
+        "//server/src/main/java/net/thisptr/phlegethon/storage/s3",
+    ],
+    deps = [
+        ":libs",
+        "@maven//:org_springframework_boot_spring_boot",
     ],
 )

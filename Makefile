@@ -10,6 +10,10 @@ test:
 gazelle:
 	bazel run //:gazelle
 
+.PHONY: pin-maven
+pin-maven:
+	bazel run @unpinned_maven//:pin
+
 .PHONY: run-server
 run-server:
 	bazel run //server/src/main/java/net/thisptr/phlegethon/server:server
