@@ -50,3 +50,24 @@ load(
     _java_image_repos = "repositories",
 )
 _java_image_repos()
+
+# rules_jvm_external
+http_archive(
+    name = "rules_jvm_external",
+    strip_prefix = "rules_jvm_external-3.0",
+    sha256 = "62133c125bf4109dfd9d2af64830208356ce4ef8b165a6ef15bbff7460b35c3a",
+    url = "https://github.com/bazelbuild/rules_jvm_external/archive/3.0.zip",
+)
+load("@rules_jvm_external//:defs.bzl", "maven_install")
+load("@rules_jvm_external//:specs.bzl", "maven")
+maven_install(
+    artifacts = [
+        "junit:junit:4.13",
+        "org.assertj:assertj-core:3.13.2",
+        "org.slf4j:slf4j-api:1.7.28",
+        "ch.qos.logback:logback-classic:1.2.3",
+    ],
+    repositories = [
+        "https://repo1.maven.org/maven2",
+    ],
+)

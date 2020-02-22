@@ -2,6 +2,10 @@
 build:
 	bazel build //...
 
+.PHONY: test
+test:
+	bazel test //...
+
 .PHONY: gazelle
 gazelle:
 	bazel run //:gazelle
