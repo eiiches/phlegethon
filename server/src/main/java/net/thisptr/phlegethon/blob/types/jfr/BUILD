@@ -1,6 +1,9 @@
 java_library(
     name = "jfr",
     srcs = glob(["*.java"]),
+    visibility = [
+        "//server/src/main/java/net/thisptr/phlegethon/server:__subpackages__",
+    ],
     deps = [
         "//server/src/main/java/net/thisptr/phlegethon/blob",
         "//server/src/main/java/net/thisptr/phlegethon/misc",

@@ -35,7 +35,7 @@ public class RecordingController {
     public Recording upload(@PathVariable(value = "namespace", required = true) String namespace,
                             @RequestParam(value = "type", required = true) String type,
                             @RequestParam Map<String, String> allParams,
-                            InputStream is) {
+                            InputStream is) throws Exception {
         Map<String, String> labels = extractLabels(allParams);
         return recordingService.upload(namespace, type, labels, is);
     }

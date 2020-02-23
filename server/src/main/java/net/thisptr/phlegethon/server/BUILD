@@ -1,10 +1,12 @@
 load("@io_bazel_rules_docker//java:image.bzl", "java_image")
 
 java_library(
-    name = "libs",
+    name = "server",
     srcs = glob(["Application.java"]),
     deps = [
+        "//server/src/main/java/net/thisptr/phlegethon/blob",
         "//server/src/main/java/net/thisptr/phlegethon/blob/storage",
+        "//server/src/main/java/net/thisptr/phlegethon/blob/types/jfr",
         "//server/src/main/java/net/thisptr/phlegethon/server/controller",
         "//server/src/main/java/net/thisptr/phlegethon/service",
         "@maven//:com_zaxxer_HikariCP",
@@ -27,13 +29,13 @@ java_image(
         "@maven//:mysql_mysql_connector_java",
     ],
     deps = [
-        ":libs",
+        ":server",
         "@maven//:org_springframework_boot_spring_boot",
     ],
 )
 
 java_binary(
-    name = "server",
+    name = "server-main",
     srcs = glob(["Main.java"]),
     main_class = "net.thisptr.phlegethon.server.Main",
     runtime_deps = [
@@ -41,7 +43,7 @@ java_binary(
         "@maven//:mysql_mysql_connector_java",
     ],
     deps = [
-        ":libs",
+        ":server",
         "@maven//:org_springframework_boot_spring_boot",
     ],
 )
