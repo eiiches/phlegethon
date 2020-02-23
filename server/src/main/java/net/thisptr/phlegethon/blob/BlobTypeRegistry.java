@@ -1,7 +1,5 @@
 package net.thisptr.phlegethon.blob;
 
-import net.thisptr.phlegethon.blob.types.jfr.JfrBlobHandler;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,11 +17,6 @@ public class BlobTypeRegistry {
 
     public void register(int id, String name, BlobHandler handler) {
         types.put(name, new BlobTypeRegistration(id, name, handler));
-    }
-
-    // For now, just manually & statically register here.
-    static {
-        INSTANCE.register(1, "jfr", new JfrBlobHandler());
     }
 
     public BlobTypeRegistration getRegistration(String type) throws UnsupportedBlobTypeException {

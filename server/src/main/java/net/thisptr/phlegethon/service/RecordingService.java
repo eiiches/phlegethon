@@ -3,18 +3,27 @@ package net.thisptr.phlegethon.service;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import com.google.common.hash.HashCode;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
 import com.google.common.io.ByteStreams;
+import com.google.errorprone.annotations.Var;
+import jdk.jfr.consumer.RecordedEvent;
+import jdk.jfr.consumer.RecordingFile;
 import net.thisptr.phlegethon.blob.BlobTypeRegistration;
 import net.thisptr.phlegethon.blob.BlobTypeRegistry;
 import net.thisptr.phlegethon.blob.storage.BlobStorage;
+import net.thisptr.phlegethon.misc.Pair;
 import net.thisptr.phlegethon.model.Namespace;
 import net.thisptr.phlegethon.model.Recording;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -57,16 +66,16 @@ public class RecordingService {
         }
     }
 
-    private static byte[] hashToGenerateStreamId(Map<String, String> labels, String type) {
+    private static HashCode hashToGenerateStreamId(Map<String, String> labels, String type) {
         @SuppressWarnings("deprecation") // I'm not using SHA-1 for cryptographic purpose.
-        Hasher hasher = Hashing.sha1().newHasher();
+                Hasher hasher = Hashing.sha1().newHasher();
         hasher.putString(type, StandardCharsets.UTF_8);
         // This sorts label names in UTF-16 lexicographical order. As the names only contain ASCII chars, this is same as UTF-8 lexicographical order.
         new TreeMap<>(labels).forEach((name, value) -> {
             hasher.putString(name, StandardCharsets.UTF_8);
             hasher.putString(value, StandardCharsets.UTF_8);
         });
-        return hasher.hash().asBytes();
+        return hasher.hash();
     }
 
     public Recording upload(String namespaceName, String type, Map<String, String> labels, InputStream is) throws SQLException, ExecutionException, IOException {
@@ -74,12 +83,25 @@ public class RecordingService {
         BlobTypeRegistration registration = typeRegistry.getRegistration(type); // If the type is not registered, UnsupportedBlobTypeException will be thrown.
 
         validateLabelNames(labels);
-        byte[] streamId = hashToGenerateStreamId(labels, type);
+        HashCode hash = hashToGenerateStreamId(labels, type);
+        byte[] streamId = hash.asBytes();
+        String streamIdHex = hash.toString();
 
-        byte[] data = ByteStreams.toByteArray(is);
+        File temporaryBufferFile = File.createTempFile(streamIdHex + "-", "." + type);
+        try {
+            try (OutputStream os = new BufferedOutputStream(new FileOutputStream(temporaryBufferFile))) {
+                ByteStreams.copy(is, os);
+            }
+
+            Pair<DateTime, DateTime> timeRange = registration.handler.analyzeTimeRange(temporaryBufferFile.toPath());
+
+            // Upload to BlobStorage.
 
 
-        return null;
+            return null;
+        } finally {
+            temporaryBufferFile.delete();
+        }
     }
 
     public List<Recording> search(String namespace, String type, Map<String, String> labels) {
@@ -89,6 +111,5 @@ public class RecordingService {
 
     public void download(String namespace, String path, OutputStream os) {
 
-        return null;
     }
 }

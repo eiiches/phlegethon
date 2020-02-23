@@ -2,7 +2,9 @@ package net.thisptr.phlegethon.server;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import net.thisptr.phlegethon.blob.BlobTypeRegistry;
 import net.thisptr.phlegethon.blob.storage.BlobStorage;
+import net.thisptr.phlegethon.blob.types.jfr.JfrBlobHandler;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +18,10 @@ import java.util.Map;
 
 @SpringBootApplication(scanBasePackages = "net.thisptr.phlegethon")
 public class Application {
+    static {
+        // For now, just manually & statically register here.
+        BlobTypeRegistry.getInstance().register(1, "jfr", new JfrBlobHandler());
+    }
 
     @Autowired
     public BlobStorage blobStorage;
