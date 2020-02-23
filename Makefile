@@ -14,10 +14,18 @@ gazelle:
 pin-maven:
 	bazel run @unpinned_maven//:pin
 
-.PHONY: run-server
-run-server:
+.PHONY: server/run
+server/run:
 	bazel run //server/src/main/java/net/thisptr/phlegethon/server:server-main -- --spring.config.additional-location=file://`pwd`/ --logging.level.root=debug
 
-.PHONY: run-jfr-uploader
-run-jfr-uploader:
+.PHONY: server/docker-image
+server/docker-image:
+	bazel run //server/src/main/java/net/thisptr/phlegethon/server:docker-image -- --norun
+
+.PHONY: jfr-uploader/run
+jfr-uploader/run:
 	bazel run //jfr-uploader:image
+
+.PHONY: jfr-uploader/docker-image
+jfr-uploader/docker-image:
+	bazel run //jfr-uploader:image -- --norun

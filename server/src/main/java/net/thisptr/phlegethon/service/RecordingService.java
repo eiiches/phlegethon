@@ -88,19 +88,39 @@ public class RecordingService {
 
         File temporaryBufferFile = File.createTempFile(streamIdHex + "-", "." + type);
         try {
+            // We can't know the size in advance. As keeping it all in memory might result in OOM, it's safer to save it to disk.
             try (OutputStream os = new BufferedOutputStream(new FileOutputStream(temporaryBufferFile))) {
                 ByteStreams.copy(is, os);
             }
 
             Pair<DateTime, DateTime> timeRange = registration.handler.analyzeTimeRange(temporaryBufferFile.toPath());
+            Recording recording = new Recording();
+            recording.labels = labels;
+            recording.type = type;
+            recording.firstEventAt = timeRange._1;
+            recording.lastEventAt = timeRange._2;
 
-            // TODO: Upload to BlobStorage.
+            // Upload to the storage.
+            String path = blobStorage.upload(recording, temporaryBufferFile);
+            recording.path = path;
 
-            return null;
+            // Update streams and labels in database. We maintain (firstEventAt, lastEventAt) for each labels and streams so
+            // that we can garbage collect old entries.
+            
+
+
+
+
+            return recording;
         } finally {
             temporaryBufferFile.delete();
         }
     }
+
+    public static class RecordingDao {
+
+    }
+
 
     public List<Recording> search(String namespace, String type, Map<String, String> labels) {
 
