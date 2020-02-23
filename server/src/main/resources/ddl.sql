@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS Labels (
 
 CREATE TABLE IF NOT EXISTS Streams (
     namespace_id INT UNSIGNED NOT NULL, -- foreign key (8 bytes)
-    stream_id BINARY(20) NOT NULL, -- This value is computed as sha1(label_ids, type). The same (label_ids, type) consistently maps to the same ID. This also serves as unique constraint on (label_ids, type) columns.
+    stream_id BINARY(20) NOT NULL, -- This value is computed as sha1(labels, type). The same (labels, type) consistently maps to the same ID. This also serves as unique constraint on (labels, type) columns.
 
     -- Ideally, these ids should reference Labels (label_id). Unfortunately, MySQL doesn't support Multi-valued foreign keys.
     label_ids JSON NOT NULL,

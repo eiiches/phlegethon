@@ -4,4 +4,7 @@ java_library(
     name = "storage",
     srcs = glob(["*.java"]),
     visibility = ["//server:__subpackages__"],
+    deps = [
+        "//server/src/main/java/net/thisptr/phlegethon/model",
+    ],
 )
