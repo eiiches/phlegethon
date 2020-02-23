@@ -1,16 +1,25 @@
 package net.thisptr.phlegethon.server;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.joda.cfg.JacksonJodaDateFormat;
+import com.fasterxml.jackson.datatype.joda.ser.DateTimeSerializer;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import net.thisptr.phlegethon.blob.BlobTypeRegistry;
 import net.thisptr.phlegethon.blob.storage.BlobStorage;
 import net.thisptr.phlegethon.blob.types.jfr.JfrBlobHandler;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.datetime.joda.DateTimeFormatterFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -83,5 +92,14 @@ public class Application {
             });
             return new HikariDataSource(config);
         }
+    }
+
+    @Bean
+    public JodaModule jacksonJodaModule() {
+        JodaModule module = new JodaModule();
+        DateTimeFormatterFactory formatterFactory = new DateTimeFormatterFactory();
+        formatterFactory.setIso(DateTimeFormat.ISO.DATE_TIME);
+        module.addSerializer(DateTime.class, new DateTimeSerializer(new JacksonJodaDateFormat(formatterFactory.createDateTimeFormatter().withZoneUTC())));
+        return module;
     }
 }

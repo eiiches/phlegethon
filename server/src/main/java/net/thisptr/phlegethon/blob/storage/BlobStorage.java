@@ -13,5 +13,5 @@ public interface BlobStorage {
 
     OutputStream download(String path) throws IOException;
 
-    String upload(int namespaceId, Recording recording, File file) throws IOException;
+    String upload(int namespaceId, byte[] streamId, Recording recording, File file) throws IOException;
 }

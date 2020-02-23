@@ -3,14 +3,20 @@ load("@io_bazel_rules_docker//java:image.bzl", "java_image")
 java_library(
     name = "server",
     srcs = glob(["Application.java"]),
+    resources = [
+        "//server/src/main/resources:application.yaml",
+    ],
     deps = [
         "//server/src/main/java/net/thisptr/phlegethon/blob",
         "//server/src/main/java/net/thisptr/phlegethon/blob/storage",
         "//server/src/main/java/net/thisptr/phlegethon/blob/types/jfr",
         "//server/src/main/java/net/thisptr/phlegethon/server/controller",
         "//server/src/main/java/net/thisptr/phlegethon/service",
+        "@maven//:com_fasterxml_jackson_core_jackson_databind",
+        "@maven//:com_fasterxml_jackson_datatype_jackson_datatype_joda",
         "@maven//:com_zaxxer_HikariCP",
         "@maven//:javax_validation_validation_api",
+        "@maven//:joda_time_joda_time",
         "@maven//:org_slf4j_slf4j_api",
         "@maven//:org_springframework_boot_spring_boot",
         "@maven//:org_springframework_boot_spring_boot_autoconfigure",

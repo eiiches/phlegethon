@@ -35,12 +35,15 @@ public class S3BlobStorage implements BlobStorage {
     }
 
     @Override
-    public String upload(int namespaceId, Recording recording, File file) throws IOException {
+    public String upload(int namespaceId, byte[] streamId, Recording recording, File file) throws IOException {
         StringBuilder sb = new StringBuilder();
         sb.append(namespaceId);
         sb.append('/');
         DateTime utcFirstEventAt = recording.firstEventAt.withZone(DateTimeZone.UTC);
         sb.append(DateTimeFormat.forPattern("yyyy/MM/dd").print(utcFirstEventAt));
+        sb.append('/');
+        for (byte b : streamId)
+            sb.append(String.format("%02x", b));
         sb.append('/');
         sb.append(DateTimeFormat.forPattern("HH/mm").print(utcFirstEventAt));
         sb.append('/');

@@ -7,6 +7,7 @@ import com.google.common.hash.HashCode;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
 import com.google.common.io.ByteStreams;
+import com.google.errorprone.annotations.Var;
 import net.thisptr.phlegethon.blob.BlobTypeRegistration;
 import net.thisptr.phlegethon.blob.BlobTypeRegistry;
 import net.thisptr.phlegethon.blob.storage.BlobStorage;
@@ -126,19 +127,19 @@ public class RecordingService {
             });
 
             // Upload to the storage.
-            String path = blobStorage.upload(namespace.id, recording, temporaryBufferFile);
+            String path = blobStorage.upload(namespace.id, streamId, recording, temporaryBufferFile);
             recording.path = path;
 
             return recording;
         } finally {
-            temporaryBufferFile.delete();
+            // temporaryBufferFile.delete();
         }
     }
 
     public static class StreamDao {
         public void insertOrUpdate(Connection conn, int namespaceId, byte[] streamId, List<Long> labelIds, int type, DateTime firstEventAt, DateTime lastEventAt) throws SQLException {
             StringBuilder labelIdsText = new StringBuilder("[");
-            String sep = "";
+            @Var String sep = "";
             for (Long labelId : labelIds) {
                 labelIdsText.append(sep);
                 labelIdsText.append(labelId);
@@ -149,8 +150,8 @@ public class RecordingService {
             FluentStatement.prepare(conn, "INSERT INTO Streams (namespace_id, stream_id, label_ids, data_type, first_event_at, last_event_at)"
                     + " VALUES ($namespace_id, $stream_id, $label_ids, $data_type, $first_event_at, $last_event_at)"
                     + " ON DUPLICATE KEY UPDATE"
-                    + "   first_event_at = MIN(first_event_at, $first_event_at),"
-                    + "   last_event_at = MAX(last_event_at, $last_event_at);")
+                    + "   first_event_at = LEAST(first_event_at, $first_event_at),"
+                    + "   last_event_at = GREATEST(last_event_at, $last_event_at);")
                     .bind("namespace_id", namespaceId)
                     .bind("stream_id", streamId)
                     .bind("label_ids", labelIdsText.toString())
@@ -170,8 +171,8 @@ public class RecordingService {
                     + " VALUES ($namespace_id, $name, $value, $first_event_at, $last_event_at)"
                     + " ON DUPLICATE KEY UPDATE"
                     + "   label_id = LAST_INSERT_ID(label_id),"
-                    + "   first_event_at = MIN(first_event_at, $first_event_at),"
-                    + "   last_event_at = MAX(last_event_at, $last_event_at);")
+                    + "   first_event_at = LEAST(first_event_at, $first_event_at),"
+                    + "   last_event_at = GREATEST(last_event_at, $last_event_at);")
                     .bind("namespace_id", namespaceId)
                     .bind("name", name)
                     .bind("value", value)

@@ -14,6 +14,7 @@ java_library(
         "//server/src/main/java/net/thisptr/phlegethon/misc/sql",
         "//server/src/main/java/net/thisptr/phlegethon/model",
         "@maven//:com_fasterxml_jackson_core_jackson_databind",
+        "@maven//:com_google_errorprone_error_prone_annotations",
         "@maven//:com_google_guava_guava",
         "@maven//:com_zaxxer_HikariCP",
         "@maven//:joda_time_joda_time",

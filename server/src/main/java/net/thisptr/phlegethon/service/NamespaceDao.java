@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 public class NamespaceDao {
     private static Namespace toNamespace(ResultSet rs) throws SQLException {
         Namespace namespace = new Namespace();
+        namespace.id = rs.getInt("namespace_id");
         namespace.name = rs.getString("name");
         return namespace;
     }
@@ -44,7 +45,7 @@ public class NamespaceDao {
     }
 
     public Namespace selectNamespace(Connection conn, String name, boolean forUpdate) throws SQLException {
-        return FluentStatement.prepare(conn, "SELECT name FROM Namespaces WHERE name = $name #suffix")
+        return FluentStatement.prepare(conn, "SELECT namespace_id, name FROM Namespaces WHERE name = $name #suffix")
                 .bind("name", name)
                 .bind("suffix", forUpdate ? "FOR UPDATE" : "")
                 .executeQuery((rs) -> {
@@ -55,7 +56,7 @@ public class NamespaceDao {
     }
 
     public List<Namespace> selectNamespaces(Connection conn) throws SQLException {
-        return FluentStatement.prepare(conn, "SELECT name FROM Namespaces")
+        return FluentStatement.prepare(conn, "SELECT namespace_id, name FROM Namespaces")
                 .executeQuery((rs) -> {
                     List<Namespace> namespaces = new ArrayList<>();
                     while (rs.next())

@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/namespaces/" + NamespaceController.NAMESPACE_PATTERN + "/recordings")
+@RequestMapping("/v1/namespaces/" + NamespaceController.NAMESPACE_PATTERN + "/recordings")
 public class RecordingController {
     private static final String LABEL_PREFIX = "label.";
 

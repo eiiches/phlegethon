@@ -1,5 +1,8 @@
 package net.thisptr.phlegethon.misc.sql;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FluentStatement {
+    private static final Logger LOG = LoggerFactory.getLogger(FluentStatement.class);
     private static Pattern PARAM_PATTERN = Pattern.compile("([#$])([a-z_][a-z0-9_]*)");
 
     private final Connection conn;
@@ -55,7 +59,9 @@ public class FluentStatement {
         }
         m.appendTail(sb);
 
-        PreparedStatement stmt = conn.prepareStatement(sb.toString());
+        String sql = sb.toString();
+        LOG.debug("SQL: {} [{}]", sql, values);
+        PreparedStatement stmt = conn.prepareStatement(sql);
         try {
             for (int i = 0; i < values.size(); ++i)
                 stmt.setObject(i + 1, values.get(i));

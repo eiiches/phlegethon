@@ -5,6 +5,7 @@ java_library(
         "//server/src/main/java/net/thisptr/phlegethon:__subpackages__",
     ],
     deps = [
+        "@maven//:org_slf4j_slf4j_api",
         # "//server/src/main/java/net/thisptr/phlegethon/storage",
         # "//server/src/main/java/net/thisptr/phlegethon/model",
         # "@maven//:org_springframework_spring_web",
