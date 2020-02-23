@@ -1,6 +1,11 @@
 package net.thisptr.phlegethon.server.controller;
 
-import org.springframework.web.bind.annotation.*;
+import com.google.errorprone.annotations.Var;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -20,14 +25,15 @@ public class RecordingController {
     public void upload(@PathVariable(value = "namespace", required = true) String namespace,
                        @RequestParam(value = "type", required = true) String type,
                        @RequestParam Map<String, String> allParams) {
-        final Map<String, String> labels = extractLabels(allParams);
+        Map<String, String> labels = extractLabels(allParams);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/search")
     public void search(@PathVariable(value = "namespace", required = true) String namespace,
                        @RequestParam(value = "type", required = true) String type,
                        @RequestParam Map<String, String> allParams) {
-        final Map<String, String> labels = extractLabels(allParams);
+        @Var Map<String, String> labels = extractLabels(allParams);
+        labels = extractLabels(allParams);
 
     }
 

@@ -87,6 +87,8 @@ maven_install(
         "com.fasterxml.jackson.core:jackson-databind:2.10.2",
         "mysql:mysql-connector-java:8.0.19",
         "com.zaxxer:HikariCP:3.4.2",
+        "com.google.guava:guava:28.2-jre",
+        "com.google.errorprone:error_prone_annotations:2.3.4",
     ],
     maven_install_json = "//:maven_install.json",
     repositories = [

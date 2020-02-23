@@ -1,6 +1,6 @@
 .PHONY: build
 build:
-	bazel build //...
+	bazel build //... --javacopt='-Xep:Var'
 
 .PHONY: test
 test:

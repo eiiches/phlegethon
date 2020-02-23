@@ -5,6 +5,8 @@ java_library(
     srcs = glob(["Application.java"]),
     deps = [
         "//server/src/main/java/net/thisptr/phlegethon/storage",
+        "@maven//:com_zaxxer_HikariCP",
+        "@maven//:javax_validation_validation_api",
         "@maven//:org_slf4j_slf4j_api",
         "@maven//:org_springframework_boot_spring_boot",
         "@maven//:org_springframework_boot_spring_boot_autoconfigure",

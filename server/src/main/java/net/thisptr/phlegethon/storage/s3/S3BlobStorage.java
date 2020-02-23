@@ -1,15 +1,7 @@
 package net.thisptr.phlegethon.storage.s3;
 
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.client.builder.AwsClientBuilder;
-import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration;
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import net.thisptr.phlegethon.storage.BlobStorage;
-import sun.rmi.transport.Endpoint;
 
 import java.io.IOException;
 import java.io.InputStream;
