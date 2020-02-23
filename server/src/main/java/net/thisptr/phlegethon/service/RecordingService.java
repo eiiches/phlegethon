@@ -64,14 +64,16 @@ public class RecordingService {
     }
 
     private static HashCode hashToGenerateStreamId(Map<String, String> labels, String type) {
-        @SuppressWarnings("deprecation") // I'm not using SHA-1 for cryptographic purpose.
-                Hasher hasher = Hashing.sha1().newHasher();
+        // I'm not using SHA-1 for cryptographic purpose.
+        @SuppressWarnings("deprecation") Hasher hasher = Hashing.sha1().newHasher();
+
         hasher.putString(type, StandardCharsets.UTF_8);
         // This sorts label names in UTF-16 lexicographical order. As the names only contain ASCII chars, this is same as UTF-8 lexicographical order.
         new TreeMap<>(labels).forEach((name, value) -> {
             hasher.putString(name, StandardCharsets.UTF_8);
             hasher.putString(value, StandardCharsets.UTF_8);
         });
+
         return hasher.hash();
     }
 
