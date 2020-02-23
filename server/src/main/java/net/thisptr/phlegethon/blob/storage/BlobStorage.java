@@ -1,4 +1,4 @@
-package net.thisptr.phlegethon.storage;
+package net.thisptr.phlegethon.blob.storage;
 
 import java.io.IOException;
 import java.io.InputStream;

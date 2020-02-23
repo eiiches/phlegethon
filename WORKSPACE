@@ -89,6 +89,7 @@ maven_install(
         "com.zaxxer:HikariCP:3.4.2",
         "com.google.guava:guava:28.2-jre",
         "com.google.errorprone:error_prone_annotations:2.3.4",
+        "joda-time:joda-time:2.10.5",
     ],
     fetch_sources = True,
     maven_install_json = "//:maven_install.json",

@@ -11,6 +11,7 @@ java_library(
         # "//server/src/main/java/net/thisptr/phlegethon/storage",
         "//server/src/main/java/net/thisptr/phlegethon/misc/sql",
         "//server/src/main/java/net/thisptr/phlegethon/model",
+        "//server/src/main/java/net/thisptr/phlegethon/blob",
         # "@maven//:org_springframework_spring_web",
         # "@maven//:com_fasterxml_jackson_core_jackson_databind",
         "@maven//:com_zaxxer_HikariCP",

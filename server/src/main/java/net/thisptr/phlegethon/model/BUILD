@@ -9,5 +9,6 @@ java_library(
         # "@maven//:org_springframework_spring_web",
         # "@maven//:com_fasterxml_jackson_core_jackson_databind",
         "@maven//:com_fasterxml_jackson_core_jackson_annotations",
+        "@maven//:joda_time_joda_time",
     ],
 )

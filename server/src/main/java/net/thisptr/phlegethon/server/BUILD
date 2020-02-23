@@ -4,9 +4,9 @@ java_library(
     name = "libs",
     srcs = glob(["Application.java"]),
     deps = [
+        "//server/src/main/java/net/thisptr/phlegethon/blob/storage",
         "//server/src/main/java/net/thisptr/phlegethon/server/controller",
         "//server/src/main/java/net/thisptr/phlegethon/service",
-        "//server/src/main/java/net/thisptr/phlegethon/storage",
         "@maven//:com_zaxxer_HikariCP",
         "@maven//:javax_validation_validation_api",
         "@maven//:org_slf4j_slf4j_api",
@@ -23,7 +23,7 @@ java_image(
     srcs = glob(["Main.java"]),
     main_class = "net.thisptr.phlegethon.server.Main",
     runtime_deps = [
-        "//server/src/main/java/net/thisptr/phlegethon/storage/s3",
+        "//server/src/main/java/net/thisptr/phlegethon/blob/storage/s3",
         "@maven//:mysql_mysql_connector_java",
     ],
     deps = [
@@ -37,7 +37,7 @@ java_binary(
     srcs = glob(["Main.java"]),
     main_class = "net.thisptr.phlegethon.server.Main",
     runtime_deps = [
-        "//server/src/main/java/net/thisptr/phlegethon/storage/s3",
+        "//server/src/main/java/net/thisptr/phlegethon/blob/storage/s3",
         "@maven//:mysql_mysql_connector_java",
     ],
     deps = [

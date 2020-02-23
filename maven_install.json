@@ -69,7 +69,7 @@
                     "org.apache.httpcomponents:httpclient:4.5.9",
                     "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:jar:2.6.7",
                     "com.fasterxml.jackson.core:jackson-databind:jar:2.10.2",
-                    "joda-time:joda-time:2.8.1"
+                    "joda-time:joda-time:2.10.5"
                 ],
                 "dependencies": [
                     "org.apache.httpcomponents:httpcore:4.4.11",
@@ -81,7 +81,7 @@
                     "org.apache.httpcomponents:httpclient:4.5.9",
                     "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:jar:2.6.7",
                     "com.fasterxml.jackson.core:jackson-databind:jar:2.10.2",
-                    "joda-time:joda-time:2.8.1"
+                    "joda-time:joda-time:2.10.5"
                 ],
                 "url": "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-core/1.11.727/aws-java-sdk-core-1.11.727.jar",
                 "mirror_urls": [
@@ -93,18 +93,18 @@
                 "coord": "com.amazonaws:aws-java-sdk-core:jar:sources:1.11.727",
                 "file": "v1/https/repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-core/1.11.727/aws-java-sdk-core-1.11.727-sources.jar",
                 "directDependencies": [
+                    "joda-time:joda-time:jar:sources:2.10.5",
                     "commons-logging:commons-logging:jar:sources:1.2",
-                    "joda-time:joda-time:jar:sources:2.8.1",
                     "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:jar:sources:2.6.7",
                     "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2",
                     "org.apache.httpcomponents:httpclient:jar:sources:4.5.9",
                     "software.amazon.ion:ion-java:jar:sources:1.0.2"
                 ],
                 "dependencies": [
+                    "joda-time:joda-time:jar:sources:2.10.5",
                     "org.apache.httpcomponents:httpcore:jar:sources:4.4.11",
                     "commons-logging:commons-logging:jar:sources:1.2",
                     "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2",
-                    "joda-time:joda-time:jar:sources:2.8.1",
                     "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
                     "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:jar:sources:2.6.7",
                     "commons-codec:commons-codec:jar:sources:1.11",
@@ -138,7 +138,7 @@
                     "com.amazonaws:jmespath-java:1.11.727",
                     "com.fasterxml.jackson.core:jackson-databind:jar:2.10.2",
                     "com.amazonaws:aws-java-sdk-core:1.11.727",
-                    "joda-time:joda-time:2.8.1"
+                    "joda-time:joda-time:2.10.5"
                 ],
                 "url": "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-kms/1.11.727/aws-java-sdk-kms-1.11.727.jar",
                 "mirror_urls": [
@@ -154,10 +154,10 @@
                     "com.amazonaws:jmespath-java:jar:sources:1.11.727"
                 ],
                 "dependencies": [
+                    "joda-time:joda-time:jar:sources:2.10.5",
                     "org.apache.httpcomponents:httpcore:jar:sources:4.4.11",
                     "commons-logging:commons-logging:jar:sources:1.2",
                     "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2",
-                    "joda-time:joda-time:jar:sources:2.8.1",
                     "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
                     "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:jar:sources:2.6.7",
                     "com.amazonaws:jmespath-java:jar:sources:1.11.727",
@@ -195,7 +195,7 @@
                     "com.amazonaws:jmespath-java:1.11.727",
                     "com.fasterxml.jackson.core:jackson-databind:jar:2.10.2",
                     "com.amazonaws:aws-java-sdk-core:1.11.727",
-                    "joda-time:joda-time:2.8.1"
+                    "joda-time:joda-time:2.10.5"
                 ],
                 "url": "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-s3/1.11.727/aws-java-sdk-s3-1.11.727.jar",
                 "mirror_urls": [
@@ -212,10 +212,10 @@
                     "com.amazonaws:jmespath-java:jar:sources:1.11.727"
                 ],
                 "dependencies": [
+                    "joda-time:joda-time:jar:sources:2.10.5",
                     "org.apache.httpcomponents:httpcore:jar:sources:4.4.11",
                     "commons-logging:commons-logging:jar:sources:1.2",
                     "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2",
-                    "joda-time:joda-time:jar:sources:2.8.1",
                     "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
                     "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:jar:sources:2.6.7",
                     "com.amazonaws:jmespath-java:jar:sources:1.11.727",
@@ -858,26 +858,26 @@
                 "sha256": "45288d606637aa39c845151aca445c8e220ee2f238c23ebe694c30b2719cad70"
             },
             {
-                "coord": "joda-time:joda-time:2.8.1",
-                "file": "v1/https/repo1.maven.org/maven2/joda-time/joda-time/2.8.1/joda-time-2.8.1.jar",
+                "coord": "joda-time:joda-time:2.10.5",
+                "file": "v1/https/repo1.maven.org/maven2/joda-time/joda-time/2.10.5/joda-time-2.10.5.jar",
                 "directDependencies": [],
                 "dependencies": [],
-                "url": "https://repo1.maven.org/maven2/joda-time/joda-time/2.8.1/joda-time-2.8.1.jar",
+                "url": "https://repo1.maven.org/maven2/joda-time/joda-time/2.10.5/joda-time-2.10.5.jar",
                 "mirror_urls": [
-                    "https://repo1.maven.org/maven2/joda-time/joda-time/2.8.1/joda-time-2.8.1.jar"
+                    "https://repo1.maven.org/maven2/joda-time/joda-time/2.10.5/joda-time-2.10.5.jar"
                 ],
-                "sha256": "b4670b95f75957c974284c5f3ada966040be2578f643c5c6083d262162061fa2"
+                "sha256": "4ee73e7ff8e2df0d4e3408cf1a1527a59f265dd9fb43fb9b2eb818d87f93759e"
             },
             {
-                "coord": "joda-time:joda-time:jar:sources:2.8.1",
-                "file": "v1/https/repo1.maven.org/maven2/joda-time/joda-time/2.8.1/joda-time-2.8.1-sources.jar",
+                "coord": "joda-time:joda-time:jar:sources:2.10.5",
+                "file": "v1/https/repo1.maven.org/maven2/joda-time/joda-time/2.10.5/joda-time-2.10.5-sources.jar",
                 "directDependencies": [],
                 "dependencies": [],
-                "url": "https://repo1.maven.org/maven2/joda-time/joda-time/2.8.1/joda-time-2.8.1-sources.jar",
+                "url": "https://repo1.maven.org/maven2/joda-time/joda-time/2.10.5/joda-time-2.10.5-sources.jar",
                 "mirror_urls": [
-                    "https://repo1.maven.org/maven2/joda-time/joda-time/2.8.1/joda-time-2.8.1-sources.jar"
+                    "https://repo1.maven.org/maven2/joda-time/joda-time/2.10.5/joda-time-2.10.5-sources.jar"
                 ],
-                "sha256": "59086b3e0608df2eac1b21063d6bae37851173e24efc4cacd6705326408723d9"
+                "sha256": "250a7b443d6cef34634b6044e4f042276d16e5f815747c46da8427eb5335ffd2"
             },
             {
                 "coord": "junit:junit:4.13",
@@ -2223,6 +2223,6 @@
             }
         ],
         "version": "0.1.0",
-        "__AUTOGENERATED_FILE_DO_NOT_MODIFY_THIS_FILE_MANUALLY": -815487940
+        "__AUTOGENERATED_FILE_DO_NOT_MODIFY_THIS_FILE_MANUALLY": 862226959
     }
 }

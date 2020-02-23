@@ -5,7 +5,7 @@ java_library(
     srcs = glob(["*.java"]),
     visibility = ["//server/src/main/java/net/thisptr/phlegethon/server:__subpackages__"],
     deps = [
-        "//server/src/main/java/net/thisptr/phlegethon/storage",
+        "//server/src/main/java/net/thisptr/phlegethon/blob/storage",
         "@maven//:com_amazonaws_aws_java_sdk_core",
         "@maven//:com_amazonaws_aws_java_sdk_s3",
         "@maven//:javax_validation_validation_api",

@@ -2,7 +2,7 @@ package net.thisptr.phlegethon.server;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import net.thisptr.phlegethon.storage.BlobStorage;
+import net.thisptr.phlegethon.blob.storage.BlobStorage;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

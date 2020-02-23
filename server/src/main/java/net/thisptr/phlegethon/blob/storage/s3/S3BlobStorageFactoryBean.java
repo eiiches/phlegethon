@@ -1,10 +1,10 @@
-package net.thisptr.phlegethon.storage.s3;
+package net.thisptr.phlegethon.blob.storage.s3;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import net.thisptr.phlegethon.storage.BlobStorage;
+import net.thisptr.phlegethon.blob.storage.BlobStorage;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
