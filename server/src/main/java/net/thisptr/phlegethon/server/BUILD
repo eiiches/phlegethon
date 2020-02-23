@@ -20,6 +20,7 @@ java_image(
     main_class = "net.thisptr.phlegethon.server.Main",
     runtime_deps = [
         "//server/src/main/java/net/thisptr/phlegethon/storage/s3",
+        "@maven//:mysql_mysql_connector_java",
     ],
     deps = [
         ":libs",
@@ -33,6 +34,7 @@ java_binary(
     main_class = "net.thisptr.phlegethon.server.Main",
     runtime_deps = [
         "//server/src/main/java/net/thisptr/phlegethon/storage/s3",
+        "@maven//:mysql_mysql_connector_java",
     ],
     deps = [
         ":libs",

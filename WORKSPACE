@@ -84,6 +84,9 @@ maven_install(
         "com.amazonaws:aws-java-sdk-s3:1.11.727",
         "org.hibernate.validator:hibernate-validator:6.1.2.Final",
         "javax.validation:validation-api:2.0.0.Final",
+        "com.fasterxml.jackson.core:jackson-databind:2.10.2",
+        "mysql:mysql-connector-java:8.0.19",
+        "com.zaxxer:HikariCP:3.4.2",
     ],
     maven_install_json = "//:maven_install.json",
     repositories = [
