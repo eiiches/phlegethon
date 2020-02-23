@@ -1,0 +1,17 @@
+# docker run --name mysql -p 3306:3306 --rm -e MYSQL_ROOT_PASSWORD=12345678 -e MYSQL_DATABASE=phlegethon mysql
+# docker run --rm --name minio -p 9000:9000 -e MINIO_ACCESS_KEY=test -e MINIO_SECRET_KEY=12345678 minio/minio server /data
+phlegethon:
+    storage:
+        type: s3
+        s3:
+            bucket_name: test
+            endpoint: http://localhost:9000
+            region: ap-northeast-1
+            access_key_id: test
+            secret_access_key: '12345678'
+    db:
+        url: jdbc:mysql://localhost:3306/phlegethon
+        username: root
+        password: '12345678'
+        properties:
+            cachePrepStmts: true

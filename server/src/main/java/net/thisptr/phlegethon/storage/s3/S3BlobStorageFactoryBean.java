@@ -38,13 +38,14 @@ public class S3BlobStorageFactoryBean implements FactoryBean<BlobStorage> {
     public BlobStorage getObject() throws Exception {
         AmazonS3ClientBuilder builder = AmazonS3ClientBuilder.standard()
                 .enablePathStyleAccess();
-        if (endpoint != null)
+        if (endpoint != null) {
             builder.withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(endpoint, region));
-        if (region != null)
+        } else if (region != null) {
             builder.withRegion(region);
+        }
         if (accessKeyId != null && secretAccessKey != null)
             builder.withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKeyId, secretAccessKey)));
-        return new S3BlobStorage(builder.build());
+        return new S3BlobStorage(builder.build(), bucketName);
     }
 
     public String getEndpoint() {

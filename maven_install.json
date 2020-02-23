@@ -22,6 +22,23 @@
                 "sha256": "fb53f8539e7fcb8f093a56e138112056ec1dc809ebb020b59d8a36a5ebac37e0"
             },
             {
+                "coord": "ch.qos.logback:logback-classic:jar:sources:1.2.3",
+                "file": "v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3-sources.jar",
+                "directDependencies": [
+                    "ch.qos.logback:logback-core:jar:sources:1.2.3",
+                    "org.slf4j:slf4j-api:jar:sources:1.7.30"
+                ],
+                "dependencies": [
+                    "org.slf4j:slf4j-api:jar:sources:1.7.30",
+                    "ch.qos.logback:logback-core:jar:sources:1.2.3"
+                ],
+                "url": "https://repo1.maven.org/maven2/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3-sources.jar"
+                ],
+                "sha256": "480cb5e99519271c9256716d4be1a27054047435ff72078d9deae5c6a19f63eb"
+            },
+            {
                 "coord": "ch.qos.logback:logback-core:1.2.3",
                 "file": "v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar",
                 "directDependencies": [],
@@ -31,6 +48,17 @@
                     "https://repo1.maven.org/maven2/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar"
                 ],
                 "sha256": "5946d837fe6f960c02a53eda7a6926ecc3c758bbdd69aa453ee429f858217f22"
+            },
+            {
+                "coord": "ch.qos.logback:logback-core:jar:sources:1.2.3",
+                "file": "v1/https/repo1.maven.org/maven2/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3-sources.jar"
+                ],
+                "sha256": "1f69b6b638ec551d26b10feeade5a2b77abe347f9759da95022f0da9a63a9971"
             },
             {
                 "coord": "com.amazonaws:aws-java-sdk-core:1.11.727",
@@ -62,6 +90,35 @@
                 "sha256": "f8395bab3c74dfd09b6efe9b4f3e423031eb4ebaebcf390aee163b3e7c58ab8d"
             },
             {
+                "coord": "com.amazonaws:aws-java-sdk-core:jar:sources:1.11.727",
+                "file": "v1/https/repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-core/1.11.727/aws-java-sdk-core-1.11.727-sources.jar",
+                "directDependencies": [
+                    "commons-logging:commons-logging:jar:sources:1.2",
+                    "joda-time:joda-time:jar:sources:2.8.1",
+                    "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:jar:sources:2.6.7",
+                    "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2",
+                    "org.apache.httpcomponents:httpclient:jar:sources:4.5.9",
+                    "software.amazon.ion:ion-java:jar:sources:1.0.2"
+                ],
+                "dependencies": [
+                    "org.apache.httpcomponents:httpcore:jar:sources:4.4.11",
+                    "commons-logging:commons-logging:jar:sources:1.2",
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2",
+                    "joda-time:joda-time:jar:sources:2.8.1",
+                    "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:jar:sources:2.6.7",
+                    "commons-codec:commons-codec:jar:sources:1.11",
+                    "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2",
+                    "org.apache.httpcomponents:httpclient:jar:sources:4.5.9",
+                    "software.amazon.ion:ion-java:jar:sources:1.0.2"
+                ],
+                "url": "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-core/1.11.727/aws-java-sdk-core-1.11.727-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-core/1.11.727/aws-java-sdk-core-1.11.727-sources.jar"
+                ],
+                "sha256": "9052b003babd4534e7bc0ba866b8c751c2072b2648f97d6ad4cfd8b067738117"
+            },
+            {
                 "coord": "com.amazonaws:aws-java-sdk-kms:1.11.727",
                 "file": "v1/https/repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-kms/1.11.727/aws-java-sdk-kms-1.11.727.jar",
                 "directDependencies": [
@@ -88,6 +145,33 @@
                     "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-kms/1.11.727/aws-java-sdk-kms-1.11.727.jar"
                 ],
                 "sha256": "8e6cb8eb61b9ad33578450a84a96a7155f08ea75ec31383953d542aab3e2d44a"
+            },
+            {
+                "coord": "com.amazonaws:aws-java-sdk-kms:jar:sources:1.11.727",
+                "file": "v1/https/repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-kms/1.11.727/aws-java-sdk-kms-1.11.727-sources.jar",
+                "directDependencies": [
+                    "com.amazonaws:aws-java-sdk-core:jar:sources:1.11.727",
+                    "com.amazonaws:jmespath-java:jar:sources:1.11.727"
+                ],
+                "dependencies": [
+                    "org.apache.httpcomponents:httpcore:jar:sources:4.4.11",
+                    "commons-logging:commons-logging:jar:sources:1.2",
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2",
+                    "joda-time:joda-time:jar:sources:2.8.1",
+                    "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:jar:sources:2.6.7",
+                    "com.amazonaws:jmespath-java:jar:sources:1.11.727",
+                    "commons-codec:commons-codec:jar:sources:1.11",
+                    "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2",
+                    "org.apache.httpcomponents:httpclient:jar:sources:4.5.9",
+                    "com.amazonaws:aws-java-sdk-core:jar:sources:1.11.727",
+                    "software.amazon.ion:ion-java:jar:sources:1.0.2"
+                ],
+                "url": "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-kms/1.11.727/aws-java-sdk-kms-1.11.727-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-kms/1.11.727/aws-java-sdk-kms-1.11.727-sources.jar"
+                ],
+                "sha256": "d603e147973fe516557141410fe5326788dcff7665badd63653cf13bdfede82e"
             },
             {
                 "coord": "com.amazonaws:aws-java-sdk-s3:1.11.727",
@@ -120,6 +204,35 @@
                 "sha256": "cbff8c888ceb63a525fb2d27e4819513765261a9f27124232add791b35339f7b"
             },
             {
+                "coord": "com.amazonaws:aws-java-sdk-s3:jar:sources:1.11.727",
+                "file": "v1/https/repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-s3/1.11.727/aws-java-sdk-s3-1.11.727-sources.jar",
+                "directDependencies": [
+                    "com.amazonaws:aws-java-sdk-core:jar:sources:1.11.727",
+                    "com.amazonaws:aws-java-sdk-kms:jar:sources:1.11.727",
+                    "com.amazonaws:jmespath-java:jar:sources:1.11.727"
+                ],
+                "dependencies": [
+                    "org.apache.httpcomponents:httpcore:jar:sources:4.4.11",
+                    "commons-logging:commons-logging:jar:sources:1.2",
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2",
+                    "joda-time:joda-time:jar:sources:2.8.1",
+                    "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:jar:sources:2.6.7",
+                    "com.amazonaws:jmespath-java:jar:sources:1.11.727",
+                    "commons-codec:commons-codec:jar:sources:1.11",
+                    "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2",
+                    "org.apache.httpcomponents:httpclient:jar:sources:4.5.9",
+                    "com.amazonaws:aws-java-sdk-core:jar:sources:1.11.727",
+                    "software.amazon.ion:ion-java:jar:sources:1.0.2",
+                    "com.amazonaws:aws-java-sdk-kms:jar:sources:1.11.727"
+                ],
+                "url": "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-s3/1.11.727/aws-java-sdk-s3-1.11.727-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-s3/1.11.727/aws-java-sdk-s3-1.11.727-sources.jar"
+                ],
+                "sha256": "a6e90a54040bdc2ca340e79b9d006c85aa7c04c5abc7a2fe6f8e63dbc521821e"
+            },
+            {
                 "coord": "com.amazonaws:jmespath-java:1.11.727",
                 "file": "v1/https/repo1.maven.org/maven2/com/amazonaws/jmespath-java/1.11.727/jmespath-java-1.11.727.jar",
                 "directDependencies": [
@@ -137,6 +250,23 @@
                 "sha256": "75167e60d9a0fbad0a653824af01930723eabaa77d4a5e2c442cbf4567fa0a04"
             },
             {
+                "coord": "com.amazonaws:jmespath-java:jar:sources:1.11.727",
+                "file": "v1/https/repo1.maven.org/maven2/com/amazonaws/jmespath-java/1.11.727/jmespath-java-1.11.727-sources.jar",
+                "directDependencies": [
+                    "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2"
+                ],
+                "dependencies": [
+                    "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2"
+                ],
+                "url": "https://repo1.maven.org/maven2/com/amazonaws/jmespath-java/1.11.727/jmespath-java-1.11.727-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/amazonaws/jmespath-java/1.11.727/jmespath-java-1.11.727-sources.jar"
+                ],
+                "sha256": "89f5f48377800e7d5a8f6842e1d2647ac698425940a85b8593b75ee7522932cf"
+            },
+            {
                 "coord": "com.fasterxml.jackson.core:jackson-annotations:2.10.2",
                 "file": "v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.10.2/jackson-annotations-2.10.2.jar",
                 "directDependencies": [],
@@ -148,6 +278,17 @@
                 "sha256": "8c3cba89bf3e03b35a0e6f892c2eb17ed8fdde2e214c3a4c18703d63796bae46"
             },
             {
+                "coord": "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
+                "file": "v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.10.2/jackson-annotations-2.10.2-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.10.2/jackson-annotations-2.10.2-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.10.2/jackson-annotations-2.10.2-sources.jar"
+                ],
+                "sha256": "9ab9d0a64a8d911bc2dd4edcbf76dcf43af0d9c1835f30a3117f972de55bbe90"
+            },
+            {
                 "coord": "com.fasterxml.jackson.core:jackson-core:2.10.2",
                 "file": "v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.10.2/jackson-core-2.10.2.jar",
                 "directDependencies": [],
@@ -157,6 +298,17 @@
                     "https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.10.2/jackson-core-2.10.2.jar"
                 ],
                 "sha256": "4c41f22a48f6ebb28752baeb6d25bf09ba4ff0ad8bfb82650dde448928b9da4f"
+            },
+            {
+                "coord": "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2",
+                "file": "v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.10.2/jackson-core-2.10.2-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.10.2/jackson-core-2.10.2-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.10.2/jackson-core-2.10.2-sources.jar"
+                ],
+                "sha256": "3f356724ca7a5ba77a18e5448e31d544a4e04b9beca585f680fed81ff80767fb"
             },
             {
                 "coord": "com.fasterxml.jackson.core:jackson-databind:2.10.2",
@@ -193,6 +345,40 @@
                 "sha256": "42c25644e35fadfbded1b7f35a8d1e70a86737f190e43aa2c56cea4b96cbda88"
             },
             {
+                "coord": "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2",
+                "file": "v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.10.2/jackson-databind-2.10.2-sources.jar",
+                "directDependencies": [
+                    "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2"
+                ],
+                "dependencies": [
+                    "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2"
+                ],
+                "url": "https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.10.2/jackson-databind-2.10.2-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.10.2/jackson-databind-2.10.2-sources.jar"
+                ],
+                "sha256": "6436b499a6d31caf37b2a03af3d1729c9d53b9971fbf40b9239da8551b3e8db6"
+            },
+            {
+                "coord": "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2",
+                "file": "v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.10.2/jackson-databind-2.10.2-sources.jar",
+                "directDependencies": [
+                    "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2"
+                ],
+                "dependencies": [
+                    "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2"
+                ],
+                "url": "https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.10.2/jackson-databind-2.10.2-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.10.2/jackson-databind-2.10.2-sources.jar"
+                ],
+                "sha256": "6436b499a6d31caf37b2a03af3d1729c9d53b9971fbf40b9239da8551b3e8db6"
+            },
+            {
                 "coord": "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:jar:2.6.7",
                 "file": "v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-cbor/2.6.7/jackson-dataformat-cbor-2.6.7.jar",
                 "directDependencies": [
@@ -206,6 +392,21 @@
                     "https://repo1.maven.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-cbor/2.6.7/jackson-dataformat-cbor-2.6.7.jar"
                 ],
                 "sha256": "956a0fb9186a796b8a6548909da1ee55004279647e261c7f540e5d49d4f199bf"
+            },
+            {
+                "coord": "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:jar:sources:2.6.7",
+                "file": "v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-cbor/2.6.7/jackson-dataformat-cbor-2.6.7-sources.jar",
+                "directDependencies": [
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2"
+                ],
+                "dependencies": [
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2"
+                ],
+                "url": "https://repo1.maven.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-cbor/2.6.7/jackson-dataformat-cbor-2.6.7-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-cbor/2.6.7/jackson-dataformat-cbor-2.6.7-sources.jar"
+                ],
+                "sha256": "7edf31f544892b2acda0b4e361125ab187768009f14c83232eaf8f0b8d401fe1"
             },
             {
                 "coord": "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.10.2",
@@ -224,6 +425,24 @@
                     "https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.10.2/jackson-datatype-jdk8-2.10.2.jar"
                 ],
                 "sha256": "e69a1ec4ffe6f13b2a035c0c13d77b1b08fdc9d3e1f606b69e74c4b2efc89197"
+            },
+            {
+                "coord": "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:sources:2.10.2",
+                "file": "v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.10.2/jackson-datatype-jdk8-2.10.2-sources.jar",
+                "directDependencies": [
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2"
+                ],
+                "dependencies": [
+                    "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2"
+                ],
+                "url": "https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.10.2/jackson-datatype-jdk8-2.10.2-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.10.2/jackson-datatype-jdk8-2.10.2-sources.jar"
+                ],
+                "sha256": "dff79e009f60ef4fcaa61d59cf76a11a6cbe3fb8d44924b5963516dbdbe56068"
             },
             {
                 "coord": "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.10.2",
@@ -245,6 +464,25 @@
                 "sha256": "a3212dceae078acb77987345ddf787a95401ce4d5e2b01e67607733b9d5a6b58"
             },
             {
+                "coord": "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:sources:2.10.2",
+                "file": "v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.10.2/jackson-datatype-jsr310-2.10.2-sources.jar",
+                "directDependencies": [
+                    "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2"
+                ],
+                "dependencies": [
+                    "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2"
+                ],
+                "url": "https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.10.2/jackson-datatype-jsr310-2.10.2-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.10.2/jackson-datatype-jsr310-2.10.2-sources.jar"
+                ],
+                "sha256": "f17704cc7c0e62423ac309043ab36fb2ec0349276e2b7176dcaa6fdea39a4c50"
+            },
+            {
                 "coord": "com.fasterxml.jackson.module:jackson-module-parameter-names:2.10.2",
                 "file": "v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.10.2/jackson-module-parameter-names-2.10.2.jar",
                 "directDependencies": [
@@ -263,6 +501,24 @@
                 "sha256": "98b958b9fc425ea56410ee2d236e406b5c18719c16462d083409b2c314a2e96d"
             },
             {
+                "coord": "com.fasterxml.jackson.module:jackson-module-parameter-names:jar:sources:2.10.2",
+                "file": "v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.10.2/jackson-module-parameter-names-2.10.2-sources.jar",
+                "directDependencies": [
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2"
+                ],
+                "dependencies": [
+                    "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2"
+                ],
+                "url": "https://repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.10.2/jackson-module-parameter-names-2.10.2-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.10.2/jackson-module-parameter-names-2.10.2-sources.jar"
+                ],
+                "sha256": "cf32fa070947b64164a4912d4713621cb20623fd4c17856fcff47e2b4a28740a"
+            },
+            {
                 "coord": "com.fasterxml:classmate:1.3.4",
                 "file": "v1/https/repo1.maven.org/maven2/com/fasterxml/classmate/1.3.4/classmate-1.3.4.jar",
                 "directDependencies": [],
@@ -272,6 +528,17 @@
                     "https://repo1.maven.org/maven2/com/fasterxml/classmate/1.3.4/classmate-1.3.4.jar"
                 ],
                 "sha256": "c2bfcc21467351d0f9a1558822b72dbac2b21f6b9f700a44fc6b345491ef3c88"
+            },
+            {
+                "coord": "com.fasterxml:classmate:jar:sources:1.3.4",
+                "file": "v1/https/repo1.maven.org/maven2/com/fasterxml/classmate/1.3.4/classmate-1.3.4-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/com/fasterxml/classmate/1.3.4/classmate-1.3.4-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/fasterxml/classmate/1.3.4/classmate-1.3.4-sources.jar"
+                ],
+                "sha256": "547e994f6b31599825aff360abdefd3d404b2ff06fdaa051f6f212ddbe48dd7a"
             },
             {
                 "coord": "com.google.code.findbugs:jsr305:3.0.2",
@@ -285,6 +552,17 @@
                 "sha256": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7"
             },
             {
+                "coord": "com.google.code.findbugs:jsr305:jar:sources:3.0.2",
+                "file": "v1/https/repo1.maven.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2-sources.jar"
+                ],
+                "sha256": "1c9e85e272d0708c6a591dc74828c71603053b48cc75ae83cce56912a2aa063b"
+            },
+            {
                 "coord": "com.google.errorprone:error_prone_annotations:2.3.4",
                 "file": "v1/https/repo1.maven.org/maven2/com/google/errorprone/error_prone_annotations/2.3.4/error_prone_annotations-2.3.4.jar",
                 "directDependencies": [],
@@ -296,6 +574,17 @@
                 "sha256": "baf7d6ea97ce606c53e11b6854ba5f2ce7ef5c24dddf0afa18d1260bd25b002c"
             },
             {
+                "coord": "com.google.errorprone:error_prone_annotations:jar:sources:2.3.4",
+                "file": "v1/https/repo1.maven.org/maven2/com/google/errorprone/error_prone_annotations/2.3.4/error_prone_annotations-2.3.4-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/com/google/errorprone/error_prone_annotations/2.3.4/error_prone_annotations-2.3.4-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/google/errorprone/error_prone_annotations/2.3.4/error_prone_annotations-2.3.4-sources.jar"
+                ],
+                "sha256": "0b1011d1e2ea2eab35a545cffd1cff3877f131134c8020885e8eaf60a7d72f91"
+            },
+            {
                 "coord": "com.google.guava:failureaccess:1.0.1",
                 "file": "v1/https/repo1.maven.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar",
                 "directDependencies": [],
@@ -305,6 +594,17 @@
                     "https://repo1.maven.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar"
                 ],
                 "sha256": "a171ee4c734dd2da837e4b16be9df4661afab72a41adaf31eb84dfdaf936ca26"
+            },
+            {
+                "coord": "com.google.guava:failureaccess:jar:sources:1.0.1",
+                "file": "v1/https/repo1.maven.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1-sources.jar"
+                ],
+                "sha256": "092346eebbb1657b51aa7485a246bf602bb464cc0b0e2e1c7e7201fadce1e98f"
             },
             {
                 "coord": "com.google.guava:guava:28.2-jre",
@@ -332,6 +632,31 @@
                 "sha256": "fc3aa363ad87223d1fbea584eee015a862150f6d34c71f24dc74088a635f08ef"
             },
             {
+                "coord": "com.google.guava:guava:jar:sources:28.2-jre",
+                "file": "v1/https/repo1.maven.org/maven2/com/google/guava/guava/28.2-jre/guava-28.2-jre-sources.jar",
+                "directDependencies": [
+                    "com.google.code.findbugs:jsr305:jar:sources:3.0.2",
+                    "com.google.j2objc:j2objc-annotations:jar:sources:1.3",
+                    "com.google.errorprone:error_prone_annotations:jar:sources:2.3.4",
+                    "org.checkerframework:checker-qual:jar:sources:2.10.0",
+                    "com.google.guava:listenablefuture:jar:sources:9999.0-empty-to-avoid-conflict-with-guava",
+                    "com.google.guava:failureaccess:jar:sources:1.0.1"
+                ],
+                "dependencies": [
+                    "com.google.code.findbugs:jsr305:jar:sources:3.0.2",
+                    "com.google.j2objc:j2objc-annotations:jar:sources:1.3",
+                    "com.google.errorprone:error_prone_annotations:jar:sources:2.3.4",
+                    "org.checkerframework:checker-qual:jar:sources:2.10.0",
+                    "com.google.guava:listenablefuture:jar:sources:9999.0-empty-to-avoid-conflict-with-guava",
+                    "com.google.guava:failureaccess:jar:sources:1.0.1"
+                ],
+                "url": "https://repo1.maven.org/maven2/com/google/guava/guava/28.2-jre/guava-28.2-jre-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/google/guava/guava/28.2-jre/guava-28.2-jre-sources.jar"
+                ],
+                "sha256": "e4a71a9d1f5f5f886a1802c257d3fcb78c6c234e2e183257f3ed1474802d077b"
+            },
+            {
                 "coord": "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
                 "file": "v1/https/repo1.maven.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar",
                 "directDependencies": [],
@@ -341,6 +666,12 @@
                     "https://repo1.maven.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar"
                 ],
                 "sha256": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99"
+            },
+            {
+                "coord": "com.google.guava:listenablefuture:jar:sources:9999.0-empty-to-avoid-conflict-with-guava",
+                "file": null,
+                "directDependencies": [],
+                "dependencies": []
             },
             {
                 "coord": "com.google.j2objc:j2objc-annotations:1.3",
@@ -354,6 +685,17 @@
                 "sha256": "21af30c92267bd6122c0e0b4d20cccb6641a37eaf956c6540ec471d584e64a7b"
             },
             {
+                "coord": "com.google.j2objc:j2objc-annotations:jar:sources:1.3",
+                "file": "v1/https/repo1.maven.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3-sources.jar"
+                ],
+                "sha256": "ba4df669fec153fa4cd0ef8d02c6d3ef0702b7ac4cabe080facf3b6e490bb972"
+            },
+            {
                 "coord": "com.google.protobuf:protobuf-java:3.6.1",
                 "file": "v1/https/repo1.maven.org/maven2/com/google/protobuf/protobuf-java/3.6.1/protobuf-java-3.6.1.jar",
                 "directDependencies": [],
@@ -363,6 +705,17 @@
                     "https://repo1.maven.org/maven2/com/google/protobuf/protobuf-java/3.6.1/protobuf-java-3.6.1.jar"
                 ],
                 "sha256": "fb66d913ff0578553b2e28a3338cbbbe2657e6cfe0e98d939f23aea219daf508"
+            },
+            {
+                "coord": "com.google.protobuf:protobuf-java:jar:sources:3.6.1",
+                "file": "v1/https/repo1.maven.org/maven2/com/google/protobuf/protobuf-java/3.6.1/protobuf-java-3.6.1-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/com/google/protobuf/protobuf-java/3.6.1/protobuf-java-3.6.1-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/google/protobuf/protobuf-java/3.6.1/protobuf-java-3.6.1-sources.jar"
+                ],
+                "sha256": "9e8996b159b1b676adfe58bce785a73ded6e4a21c25a69251ef25e585ebfaeee"
             },
             {
                 "coord": "com.zaxxer:HikariCP:3.4.2",
@@ -380,6 +733,21 @@
                 "sha256": "ae7a767bf37c9792523ed3ed722b46e8cf2360f546f6250eb98c83355ad697f9"
             },
             {
+                "coord": "com.zaxxer:HikariCP:jar:sources:3.4.2",
+                "file": "v1/https/repo1.maven.org/maven2/com/zaxxer/HikariCP/3.4.2/HikariCP-3.4.2-sources.jar",
+                "directDependencies": [
+                    "org.slf4j:slf4j-api:jar:sources:1.7.30"
+                ],
+                "dependencies": [
+                    "org.slf4j:slf4j-api:jar:sources:1.7.30"
+                ],
+                "url": "https://repo1.maven.org/maven2/com/zaxxer/HikariCP/3.4.2/HikariCP-3.4.2-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/com/zaxxer/HikariCP/3.4.2/HikariCP-3.4.2-sources.jar"
+                ],
+                "sha256": "b78ac4f9aef2495c160ec0294ffa1718eacebda418e2a8c1d54dbe5119a0e504"
+            },
+            {
                 "coord": "commons-codec:commons-codec:1.11",
                 "file": "v1/https/repo1.maven.org/maven2/commons-codec/commons-codec/1.11/commons-codec-1.11.jar",
                 "directDependencies": [],
@@ -389,6 +757,17 @@
                     "https://repo1.maven.org/maven2/commons-codec/commons-codec/1.11/commons-codec-1.11.jar"
                 ],
                 "sha256": "e599d5318e97aa48f42136a2927e6dfa4e8881dff0e6c8e3109ddbbff51d7b7d"
+            },
+            {
+                "coord": "commons-codec:commons-codec:jar:sources:1.11",
+                "file": "v1/https/repo1.maven.org/maven2/commons-codec/commons-codec/1.11/commons-codec-1.11-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/commons-codec/commons-codec/1.11/commons-codec-1.11-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/commons-codec/commons-codec/1.11/commons-codec-1.11-sources.jar"
+                ],
+                "sha256": "901cb5d1f7c2877017c95d3c5efd5a497738d0162ef72cdf58e9cb13f50b2e9c"
             },
             {
                 "coord": "commons-logging:commons-logging:1.2",
@@ -402,6 +781,17 @@
                 "sha256": "daddea1ea0be0f56978ab3006b8ac92834afeefbd9b7e4e6316fca57df0fa636"
             },
             {
+                "coord": "commons-logging:commons-logging:jar:sources:1.2",
+                "file": "v1/https/repo1.maven.org/maven2/commons-logging/commons-logging/1.2/commons-logging-1.2-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/commons-logging/commons-logging/1.2/commons-logging-1.2-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/commons-logging/commons-logging/1.2/commons-logging-1.2-sources.jar"
+                ],
+                "sha256": "44347acfe5860461728e9cb33251e97345be36f8a0dfd5c5130c172559455f41"
+            },
+            {
                 "coord": "jakarta.annotation:jakarta.annotation-api:1.3.5",
                 "file": "v1/https/repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.5/jakarta.annotation-api-1.3.5.jar",
                 "directDependencies": [],
@@ -411,6 +801,17 @@
                     "https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.5/jakarta.annotation-api-1.3.5.jar"
                 ],
                 "sha256": "85fb03fc054cdf4efca8efd9b6712bbb418e1ab98241c4539c8585bbc23e1b8a"
+            },
+            {
+                "coord": "jakarta.annotation:jakarta.annotation-api:jar:sources:1.3.5",
+                "file": "v1/https/repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.5/jakarta.annotation-api-1.3.5-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.5/jakarta.annotation-api-1.3.5-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.5/jakarta.annotation-api-1.3.5-sources.jar"
+                ],
+                "sha256": "aa27e9291dce4ddbb0aea52a1cbef41c6330b96b0ae387a995ed412b68a3af7c"
             },
             {
                 "coord": "jakarta.validation:jakarta.validation-api:2.0.2",
@@ -424,6 +825,17 @@
                 "sha256": "b42d42428f3d922c892a909fa043287d577c0c5b165ad9b7d568cebf87fc9ea4"
             },
             {
+                "coord": "jakarta.validation:jakarta.validation-api:jar:sources:2.0.2",
+                "file": "v1/https/repo1.maven.org/maven2/jakarta/validation/jakarta.validation-api/2.0.2/jakarta.validation-api-2.0.2-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/jakarta/validation/jakarta.validation-api/2.0.2/jakarta.validation-api-2.0.2-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/jakarta/validation/jakarta.validation-api/2.0.2/jakarta.validation-api-2.0.2-sources.jar"
+                ],
+                "sha256": "19c594e00f04d7f3953a065d798d9ee5edf37d00e01e5894babd61bc7652fa5c"
+            },
+            {
                 "coord": "javax.validation:validation-api:2.0.0.Final",
                 "file": "v1/https/repo1.maven.org/maven2/javax/validation/validation-api/2.0.0.Final/validation-api-2.0.0.Final.jar",
                 "directDependencies": [],
@@ -435,6 +847,17 @@
                 "sha256": "85a0326d97f5439bbfa7888cd48588f948f2eb8cce907643ee7e7b0793906e5d"
             },
             {
+                "coord": "javax.validation:validation-api:jar:sources:2.0.0.Final",
+                "file": "v1/https/repo1.maven.org/maven2/javax/validation/validation-api/2.0.0.Final/validation-api-2.0.0.Final-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.0.Final/validation-api-2.0.0.Final-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/javax/validation/validation-api/2.0.0.Final/validation-api-2.0.0.Final-sources.jar"
+                ],
+                "sha256": "45288d606637aa39c845151aca445c8e220ee2f238c23ebe694c30b2719cad70"
+            },
+            {
                 "coord": "joda-time:joda-time:2.8.1",
                 "file": "v1/https/repo1.maven.org/maven2/joda-time/joda-time/2.8.1/joda-time-2.8.1.jar",
                 "directDependencies": [],
@@ -444,6 +867,17 @@
                     "https://repo1.maven.org/maven2/joda-time/joda-time/2.8.1/joda-time-2.8.1.jar"
                 ],
                 "sha256": "b4670b95f75957c974284c5f3ada966040be2578f643c5c6083d262162061fa2"
+            },
+            {
+                "coord": "joda-time:joda-time:jar:sources:2.8.1",
+                "file": "v1/https/repo1.maven.org/maven2/joda-time/joda-time/2.8.1/joda-time-2.8.1-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/joda-time/joda-time/2.8.1/joda-time-2.8.1-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/joda-time/joda-time/2.8.1/joda-time-2.8.1-sources.jar"
+                ],
+                "sha256": "59086b3e0608df2eac1b21063d6bae37851173e24efc4cacd6705326408723d9"
             },
             {
                 "coord": "junit:junit:4.13",
@@ -461,6 +895,21 @@
                 "sha256": "4b8532f63bdc0e0661507f947eb324a954d1dbac631ad19c8aa9a00feed1d863"
             },
             {
+                "coord": "junit:junit:jar:sources:4.13",
+                "file": "v1/https/repo1.maven.org/maven2/junit/junit/4.13/junit-4.13-sources.jar",
+                "directDependencies": [
+                    "org.hamcrest:hamcrest-core:jar:sources:1.3"
+                ],
+                "dependencies": [
+                    "org.hamcrest:hamcrest-core:jar:sources:1.3"
+                ],
+                "url": "https://repo1.maven.org/maven2/junit/junit/4.13/junit-4.13-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/junit/junit/4.13/junit-4.13-sources.jar"
+                ],
+                "sha256": "3d5451031736d4904582b211858a09eeefdb26eb08f0633ca8addf04fde3e0fc"
+            },
+            {
                 "coord": "mysql:mysql-connector-java:8.0.19",
                 "file": "v1/https/repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.19/mysql-connector-java-8.0.19.jar",
                 "directDependencies": [
@@ -474,6 +923,21 @@
                     "https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.19/mysql-connector-java-8.0.19.jar"
                 ],
                 "sha256": "f93c6d717fff1bdc8941f0feba66ac13692e58dc382ca4b543cabbdb150d8bf7"
+            },
+            {
+                "coord": "mysql:mysql-connector-java:jar:sources:8.0.19",
+                "file": "v1/https/repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.19/mysql-connector-java-8.0.19-sources.jar",
+                "directDependencies": [
+                    "com.google.protobuf:protobuf-java:jar:sources:3.6.1"
+                ],
+                "dependencies": [
+                    "com.google.protobuf:protobuf-java:jar:sources:3.6.1"
+                ],
+                "url": "https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.19/mysql-connector-java-8.0.19-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.19/mysql-connector-java-8.0.19-sources.jar"
+                ],
+                "sha256": "deababf6a00b51bd5e2ebd217656271d6e73a66c002d7b364b4691c376611ba5"
             },
             {
                 "coord": "org.apache.httpcomponents:httpclient:4.5.9",
@@ -495,6 +959,25 @@
                 "sha256": "6c7e3bb423d8c5574f28157fe42b4c38d6a3477bfa2954cfe5f330b14ecad8a9"
             },
             {
+                "coord": "org.apache.httpcomponents:httpclient:jar:sources:4.5.9",
+                "file": "v1/https/repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.5.9/httpclient-4.5.9-sources.jar",
+                "directDependencies": [
+                    "commons-codec:commons-codec:jar:sources:1.11",
+                    "commons-logging:commons-logging:jar:sources:1.2",
+                    "org.apache.httpcomponents:httpcore:jar:sources:4.4.11"
+                ],
+                "dependencies": [
+                    "org.apache.httpcomponents:httpcore:jar:sources:4.4.11",
+                    "commons-codec:commons-codec:jar:sources:1.11",
+                    "commons-logging:commons-logging:jar:sources:1.2"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.5.9/httpclient-4.5.9-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.5.9/httpclient-4.5.9-sources.jar"
+                ],
+                "sha256": "9303165425fff50c9e961684eed6e7c37336096a6abe48259bd10c41642cd382"
+            },
+            {
                 "coord": "org.apache.httpcomponents:httpcore:4.4.11",
                 "file": "v1/https/repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.4.11/httpcore-4.4.11.jar",
                 "directDependencies": [],
@@ -506,6 +989,17 @@
                 "sha256": "d799522d579aac06b170603f8f080f6e3248dadc01f9652cdd7ea7bc318c21ce"
             },
             {
+                "coord": "org.apache.httpcomponents:httpcore:jar:sources:4.4.11",
+                "file": "v1/https/repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.4.11/httpcore-4.4.11-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.4.11/httpcore-4.4.11-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.4.11/httpcore-4.4.11-sources.jar"
+                ],
+                "sha256": "fe687d437b9636a44a1aba22a0740b4793e81a88daabec51a0d9aa03421e832f"
+            },
+            {
                 "coord": "org.apache.logging.log4j:log4j-api:2.12.1",
                 "file": "v1/https/repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.12.1/log4j-api-2.12.1.jar",
                 "directDependencies": [],
@@ -515,6 +1009,17 @@
                     "https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.12.1/log4j-api-2.12.1.jar"
                 ],
                 "sha256": "429534d03bdb728879ab551d469e26f6f7ff4c8a8627f59ac68ab6ef26063515"
+            },
+            {
+                "coord": "org.apache.logging.log4j:log4j-api:jar:sources:2.12.1",
+                "file": "v1/https/repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.12.1/log4j-api-2.12.1-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.12.1/log4j-api-2.12.1-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.12.1/log4j-api-2.12.1-sources.jar"
+                ],
+                "sha256": "55633f0c5d31b046400c1717a7b7e9ea77444a179e755a2c046f671c6cad1223"
             },
             {
                 "coord": "org.apache.logging.log4j:log4j-to-slf4j:2.12.1",
@@ -532,6 +1037,23 @@
                     "https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-to-slf4j/2.12.1/log4j-to-slf4j-2.12.1.jar"
                 ],
                 "sha256": "69d4aa504294033ea0d1236aabe81ed3f6393b6eb42e61899b197a51a3df73e9"
+            },
+            {
+                "coord": "org.apache.logging.log4j:log4j-to-slf4j:jar:sources:2.12.1",
+                "file": "v1/https/repo1.maven.org/maven2/org/apache/logging/log4j/log4j-to-slf4j/2.12.1/log4j-to-slf4j-2.12.1-sources.jar",
+                "directDependencies": [
+                    "org.apache.logging.log4j:log4j-api:jar:sources:2.12.1",
+                    "org.slf4j:slf4j-api:jar:sources:1.7.30"
+                ],
+                "dependencies": [
+                    "org.apache.logging.log4j:log4j-api:jar:sources:2.12.1",
+                    "org.slf4j:slf4j-api:jar:sources:1.7.30"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-to-slf4j/2.12.1/log4j-to-slf4j-2.12.1-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-to-slf4j/2.12.1/log4j-to-slf4j-2.12.1-sources.jar"
+                ],
+                "sha256": "90ddfd89629180bb4ba51636e78e9b6a78986b69fa1f813a39a0d87e3addaa6e"
             },
             {
                 "coord": "org.apache.tomcat.embed:tomcat-embed-core:9.0.30",
@@ -563,6 +1085,35 @@
                 "sha256": "b1415eecbc9f14e3745c1bfd41512a1b8e1af1332a7beaed4be30b2e0ba7b330"
             },
             {
+                "coord": "org.apache.tomcat.embed:tomcat-embed-core:jar:sources:9.0.30",
+                "file": "v1/https/repo1.maven.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/9.0.30/tomcat-embed-core-9.0.30-sources.jar",
+                "directDependencies": [
+                    "org.apache.tomcat:tomcat-annotations-api:jar:sources:9.0.30"
+                ],
+                "dependencies": [
+                    "org.apache.tomcat:tomcat-annotations-api:jar:sources:9.0.30"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/9.0.30/tomcat-embed-core-9.0.30-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/9.0.30/tomcat-embed-core-9.0.30-sources.jar"
+                ],
+                "sha256": "37790a6815e2d366d3597544de221f89b704bc421a2109f91e5843807322c638"
+            },
+            {
+                "coord": "org.apache.tomcat.embed:tomcat-embed-core:jar:sources:9.0.30",
+                "file": "v1/https/repo1.maven.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/9.0.30/tomcat-embed-core-9.0.30-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "exclusions": [
+                    "org.apache.tomcat:tomcat-annotations-api"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/9.0.30/tomcat-embed-core-9.0.30-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/9.0.30/tomcat-embed-core-9.0.30-sources.jar"
+                ],
+                "sha256": "37790a6815e2d366d3597544de221f89b704bc421a2109f91e5843807322c638"
+            },
+            {
                 "coord": "org.apache.tomcat.embed:tomcat-embed-el:9.0.30",
                 "file": "v1/https/repo1.maven.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/9.0.30/tomcat-embed-el-9.0.30.jar",
                 "directDependencies": [],
@@ -572,6 +1123,17 @@
                     "https://repo1.maven.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/9.0.30/tomcat-embed-el-9.0.30.jar"
                 ],
                 "sha256": "76255aed732a16de40eb1f48fc3c5350eb368d1a80f58a3a0a46170d149fe7eb"
+            },
+            {
+                "coord": "org.apache.tomcat.embed:tomcat-embed-el:jar:sources:9.0.30",
+                "file": "v1/https/repo1.maven.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/9.0.30/tomcat-embed-el-9.0.30-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/9.0.30/tomcat-embed-el-9.0.30-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/9.0.30/tomcat-embed-el-9.0.30-sources.jar"
+                ],
+                "sha256": "8798efbf7d62272c27ccc185213584927e95203d9b6e8bcf1058c2eb44a531b0"
             },
             {
                 "coord": "org.apache.tomcat.embed:tomcat-embed-websocket:9.0.30",
@@ -590,6 +1152,22 @@
                 "sha256": "4ce32add19b34a80376edb1e1678c373cb720c28c7a0d37a4361bf659c2ea84c"
             },
             {
+                "coord": "org.apache.tomcat.embed:tomcat-embed-websocket:jar:sources:9.0.30",
+                "file": "v1/https/repo1.maven.org/maven2/org/apache/tomcat/embed/tomcat-embed-websocket/9.0.30/tomcat-embed-websocket-9.0.30-sources.jar",
+                "directDependencies": [
+                    "org.apache.tomcat.embed:tomcat-embed-core:jar:sources:9.0.30"
+                ],
+                "dependencies": [
+                    "org.apache.tomcat.embed:tomcat-embed-core:jar:sources:9.0.30",
+                    "org.apache.tomcat:tomcat-annotations-api:jar:sources:9.0.30"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/apache/tomcat/embed/tomcat-embed-websocket/9.0.30/tomcat-embed-websocket-9.0.30-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/apache/tomcat/embed/tomcat-embed-websocket/9.0.30/tomcat-embed-websocket-9.0.30-sources.jar"
+                ],
+                "sha256": "e905bd687f0ce4a303edac3c3294a5b9d89b58cfcaec2726e6960733fd192d51"
+            },
+            {
                 "coord": "org.apache.tomcat:tomcat-annotations-api:9.0.30",
                 "file": "v1/https/repo1.maven.org/maven2/org/apache/tomcat/tomcat-annotations-api/9.0.30/tomcat-annotations-api-9.0.30.jar",
                 "directDependencies": [],
@@ -599,6 +1177,17 @@
                     "https://repo1.maven.org/maven2/org/apache/tomcat/tomcat-annotations-api/9.0.30/tomcat-annotations-api-9.0.30.jar"
                 ],
                 "sha256": "e6882e0960712a129883f699675a6743cb127bef1ab999f5fb29650e3aa078fa"
+            },
+            {
+                "coord": "org.apache.tomcat:tomcat-annotations-api:jar:sources:9.0.30",
+                "file": "v1/https/repo1.maven.org/maven2/org/apache/tomcat/tomcat-annotations-api/9.0.30/tomcat-annotations-api-9.0.30-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/org/apache/tomcat/tomcat-annotations-api/9.0.30/tomcat-annotations-api-9.0.30-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/apache/tomcat/tomcat-annotations-api/9.0.30/tomcat-annotations-api-9.0.30-sources.jar"
+                ],
+                "sha256": "c1d5687ae70b625aff417a99d4f1582ec267d2ab4416cbc624f0af9e3b8e4583"
             },
             {
                 "coord": "org.assertj:assertj-core:3.13.2",
@@ -612,6 +1201,17 @@
                 "sha256": "d8b69805f83d9666aa67dbe3a9b937468160768df407a23d7874752f2cc5b8ac"
             },
             {
+                "coord": "org.assertj:assertj-core:jar:sources:3.13.2",
+                "file": "v1/https/repo1.maven.org/maven2/org/assertj/assertj-core/3.13.2/assertj-core-3.13.2-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/org/assertj/assertj-core/3.13.2/assertj-core-3.13.2-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/assertj/assertj-core/3.13.2/assertj-core-3.13.2-sources.jar"
+                ],
+                "sha256": "f02edaa380cb7b35825f40938774d1bfb4702f2f47ddd6eaa9efcd062bbf32e0"
+            },
+            {
                 "coord": "org.checkerframework:checker-qual:2.10.0",
                 "file": "v1/https/repo1.maven.org/maven2/org/checkerframework/checker-qual/2.10.0/checker-qual-2.10.0.jar",
                 "directDependencies": [],
@@ -623,6 +1223,17 @@
                 "sha256": "d261fde25d590f6b69db7721d469ac1b0a19a17ccaaaa751c31f0d8b8260b894"
             },
             {
+                "coord": "org.checkerframework:checker-qual:jar:sources:2.10.0",
+                "file": "v1/https/repo1.maven.org/maven2/org/checkerframework/checker-qual/2.10.0/checker-qual-2.10.0-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.10.0/checker-qual-2.10.0-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/checkerframework/checker-qual/2.10.0/checker-qual-2.10.0-sources.jar"
+                ],
+                "sha256": "aff9b7b482d65b947dfabf57c5fe5fc2b6d150b8583bdbc2308601eab6c9cede"
+            },
+            {
                 "coord": "org.hamcrest:hamcrest-core:1.3",
                 "file": "v1/https/repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar",
                 "directDependencies": [],
@@ -632,6 +1243,17 @@
                     "https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"
                 ],
                 "sha256": "66fdef91e9739348df7a096aa384a5685f4e875584cce89386a7a47251c4d8e9"
+            },
+            {
+                "coord": "org.hamcrest:hamcrest-core:jar:sources:1.3",
+                "file": "v1/https/repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar"
+                ],
+                "sha256": "e223d2d8fbafd66057a8848cc94222d63c3cedd652cc48eddc0ab5c39c0f84df"
             },
             {
                 "coord": "org.hibernate.validator:hibernate-validator:6.1.2.Final",
@@ -653,6 +1275,25 @@
                 "sha256": "bafec3d83fa838d2b54fc0c9e54818218320175e6a3b48b0bf5169c4634ad222"
             },
             {
+                "coord": "org.hibernate.validator:hibernate-validator:jar:sources:6.1.2.Final",
+                "file": "v1/https/repo1.maven.org/maven2/org/hibernate/validator/hibernate-validator/6.1.2.Final/hibernate-validator-6.1.2.Final-sources.jar",
+                "directDependencies": [
+                    "com.fasterxml:classmate:jar:sources:1.3.4",
+                    "jakarta.validation:jakarta.validation-api:jar:sources:2.0.2",
+                    "org.jboss.logging:jboss-logging:jar:sources:3.3.2.Final"
+                ],
+                "dependencies": [
+                    "com.fasterxml:classmate:jar:sources:1.3.4",
+                    "org.jboss.logging:jboss-logging:jar:sources:3.3.2.Final",
+                    "jakarta.validation:jakarta.validation-api:jar:sources:2.0.2"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/hibernate/validator/hibernate-validator/6.1.2.Final/hibernate-validator-6.1.2.Final-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/hibernate/validator/hibernate-validator/6.1.2.Final/hibernate-validator-6.1.2.Final-sources.jar"
+                ],
+                "sha256": "8cdc0169c957f2df089e415c19dafab748c8f95fd03938123a5609d3ef98649c"
+            },
+            {
                 "coord": "org.jboss.logging:jboss-logging:3.3.2.Final",
                 "file": "v1/https/repo1.maven.org/maven2/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar",
                 "directDependencies": [],
@@ -662,6 +1303,17 @@
                     "https://repo1.maven.org/maven2/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar"
                 ],
                 "sha256": "cb914bfe888da7d9162e965ac8b0d6f28f2f32eca944a00fbbf6dd3cf1aacc13"
+            },
+            {
+                "coord": "org.jboss.logging:jboss-logging:jar:sources:3.3.2.Final",
+                "file": "v1/https/repo1.maven.org/maven2/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final-sources.jar"
+                ],
+                "sha256": "8eab58199828e20a57a298dc733a42ddfd5936f59217f75da35dfdc74973228a"
             },
             {
                 "coord": "org.slf4j:jul-to-slf4j:1.7.30",
@@ -679,6 +1331,21 @@
                 "sha256": "bbcbfdaa72572255c4f85207a9bfdb24358dc993e41252331bd4d0913e4988b9"
             },
             {
+                "coord": "org.slf4j:jul-to-slf4j:jar:sources:1.7.30",
+                "file": "v1/https/repo1.maven.org/maven2/org/slf4j/jul-to-slf4j/1.7.30/jul-to-slf4j-1.7.30-sources.jar",
+                "directDependencies": [
+                    "org.slf4j:slf4j-api:jar:sources:1.7.30"
+                ],
+                "dependencies": [
+                    "org.slf4j:slf4j-api:jar:sources:1.7.30"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/slf4j/jul-to-slf4j/1.7.30/jul-to-slf4j-1.7.30-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/slf4j/jul-to-slf4j/1.7.30/jul-to-slf4j-1.7.30-sources.jar"
+                ],
+                "sha256": "27f2004c22deb54eca903490ea79d8feea56146430f5fd5be7c39b1a9f488796"
+            },
+            {
                 "coord": "org.slf4j:slf4j-api:1.7.30",
                 "file": "v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar",
                 "directDependencies": [],
@@ -688,6 +1355,17 @@
                     "https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar"
                 ],
                 "sha256": "cdba07964d1bb40a0761485c6b1e8c2f8fd9eb1d19c53928ac0d7f9510105c57"
+            },
+            {
+                "coord": "org.slf4j:slf4j-api:jar:sources:1.7.30",
+                "file": "v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30-sources.jar"
+                ],
+                "sha256": "9ee459644577590fed7ea94afae781fa3cc9311d4553faee8a3219ffbd7cc386"
             },
             {
                 "coord": "org.springframework.boot:spring-boot-autoconfigure:2.2.4.RELEASE",
@@ -709,6 +1387,27 @@
                     "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-autoconfigure/2.2.4.RELEASE/spring-boot-autoconfigure-2.2.4.RELEASE.jar"
                 ],
                 "sha256": "2ce0288593b2053bdba628974d1d785bf02af541264f633dfa29f294a01d520b"
+            },
+            {
+                "coord": "org.springframework.boot:spring-boot-autoconfigure:jar:sources:2.2.4.RELEASE",
+                "file": "v1/https/repo1.maven.org/maven2/org/springframework/boot/spring-boot-autoconfigure/2.2.4.RELEASE/spring-boot-autoconfigure-2.2.4.RELEASE-sources.jar",
+                "directDependencies": [
+                    "org.springframework.boot:spring-boot:jar:sources:2.2.4.RELEASE"
+                ],
+                "dependencies": [
+                    "org.springframework.boot:spring-boot:jar:sources:2.2.4.RELEASE",
+                    "org.springframework:spring-jcl:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-aop:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-context:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-beans:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-expression:jar:sources:5.2.3.RELEASE"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-autoconfigure/2.2.4.RELEASE/spring-boot-autoconfigure-2.2.4.RELEASE-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-autoconfigure/2.2.4.RELEASE/spring-boot-autoconfigure-2.2.4.RELEASE-sources.jar"
+                ],
+                "sha256": "2bc3cd9e81c1ef40edb6b26606fe6affce4feee0fd8fc104b82b247cbf4ac360"
             },
             {
                 "coord": "org.springframework.boot:spring-boot-starter-json:2.2.4.RELEASE",
@@ -755,6 +1454,50 @@
                 "sha256": "a33b4c5ba212347cf956114d3cfecdc8de43a9c5ec4c5c861bbbb0d7698db1d9"
             },
             {
+                "coord": "org.springframework.boot:spring-boot-starter-json:jar:sources:2.2.4.RELEASE",
+                "file": "v1/https/repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-json/2.2.4.RELEASE/spring-boot-starter-json-2.2.4.RELEASE-sources.jar",
+                "directDependencies": [
+                    "com.fasterxml.jackson.module:jackson-module-parameter-names:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:sources:2.10.2",
+                    "org.springframework:spring-web:jar:sources:5.2.3.RELEASE",
+                    "org.springframework.boot:spring-boot-starter:jar:sources:2.2.4.RELEASE",
+                    "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:sources:2.10.2"
+                ],
+                "dependencies": [
+                    "org.apache.logging.log4j:log4j-api:jar:sources:2.12.1",
+                    "com.fasterxml.jackson.module:jackson-module-parameter-names:jar:sources:2.10.2",
+                    "org.springframework.boot:spring-boot:jar:sources:2.2.4.RELEASE",
+                    "org.slf4j:jul-to-slf4j:jar:sources:1.7.30",
+                    "org.springframework:spring-jcl:jar:sources:5.2.3.RELEASE",
+                    "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:sources:2.10.2",
+                    "org.springframework:spring-web:jar:sources:5.2.3.RELEASE",
+                    "org.springframework.boot:spring-boot-starter-logging:jar:sources:2.2.4.RELEASE",
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2",
+                    "org.slf4j:slf4j-api:jar:sources:1.7.30",
+                    "org.apache.logging.log4j:log4j-to-slf4j:jar:sources:2.12.1",
+                    "ch.qos.logback:logback-core:jar:sources:1.2.3",
+                    "org.yaml:snakeyaml:jar:sources:1.25",
+                    "ch.qos.logback:logback-classic:jar:sources:1.2.3",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE",
+                    "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
+                    "org.springframework.boot:spring-boot-autoconfigure:jar:sources:2.2.4.RELEASE",
+                    "jakarta.annotation:jakarta.annotation-api:jar:sources:1.3.5",
+                    "org.springframework.boot:spring-boot-starter:jar:sources:2.2.4.RELEASE",
+                    "org.springframework:spring-aop:jar:sources:5.2.3.RELEASE",
+                    "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2",
+                    "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:sources:2.10.2",
+                    "org.springframework:spring-context:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-beans:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-expression:jar:sources:5.2.3.RELEASE"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-json/2.2.4.RELEASE/spring-boot-starter-json-2.2.4.RELEASE-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-json/2.2.4.RELEASE/spring-boot-starter-json-2.2.4.RELEASE-sources.jar"
+                ],
+                "sha256": "eeb123ca43cfcb1568bff4dbb1e046fd77b50c2b413e9437f4dcf57630f1e27d"
+            },
+            {
                 "coord": "org.springframework.boot:spring-boot-starter-logging:2.2.4.RELEASE",
                 "file": "v1/https/repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-logging/2.2.4.RELEASE/spring-boot-starter-logging-2.2.4.RELEASE.jar",
                 "directDependencies": [
@@ -777,6 +1520,28 @@
                 "sha256": "75bab656a801e932d56e7726a772601d15f959b8ed01853287338aa37931ed12"
             },
             {
+                "coord": "org.springframework.boot:spring-boot-starter-logging:jar:sources:2.2.4.RELEASE",
+                "file": "v1/https/repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-logging/2.2.4.RELEASE/spring-boot-starter-logging-2.2.4.RELEASE-sources.jar",
+                "directDependencies": [
+                    "ch.qos.logback:logback-classic:jar:sources:1.2.3",
+                    "org.apache.logging.log4j:log4j-to-slf4j:jar:sources:2.12.1",
+                    "org.slf4j:jul-to-slf4j:jar:sources:1.7.30"
+                ],
+                "dependencies": [
+                    "org.apache.logging.log4j:log4j-api:jar:sources:2.12.1",
+                    "org.slf4j:jul-to-slf4j:jar:sources:1.7.30",
+                    "org.slf4j:slf4j-api:jar:sources:1.7.30",
+                    "org.apache.logging.log4j:log4j-to-slf4j:jar:sources:2.12.1",
+                    "ch.qos.logback:logback-core:jar:sources:1.2.3",
+                    "ch.qos.logback:logback-classic:jar:sources:1.2.3"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-logging/2.2.4.RELEASE/spring-boot-starter-logging-2.2.4.RELEASE-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-logging/2.2.4.RELEASE/spring-boot-starter-logging-2.2.4.RELEASE-sources.jar"
+                ],
+                "sha256": "b3bb5dd204fba94ff9870856ac0f93ca33554a39894d9280fc02c9b52af345c2"
+            },
+            {
                 "coord": "org.springframework.boot:spring-boot-starter-tomcat:2.2.4.RELEASE",
                 "file": "v1/https/repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-tomcat/2.2.4.RELEASE/spring-boot-starter-tomcat-2.2.4.RELEASE.jar",
                 "directDependencies": [
@@ -797,6 +1562,28 @@
                     "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-tomcat/2.2.4.RELEASE/spring-boot-starter-tomcat-2.2.4.RELEASE.jar"
                 ],
                 "sha256": "b763a0cd9c0887f2a26408feb0cb30171233fd7bd03d50ae160c5317d16ab825"
+            },
+            {
+                "coord": "org.springframework.boot:spring-boot-starter-tomcat:jar:sources:2.2.4.RELEASE",
+                "file": "v1/https/repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-tomcat/2.2.4.RELEASE/spring-boot-starter-tomcat-2.2.4.RELEASE-sources.jar",
+                "directDependencies": [
+                    "jakarta.annotation:jakarta.annotation-api:jar:sources:1.3.5",
+                    "org.apache.tomcat.embed:tomcat-embed-core:jar:sources:9.0.30",
+                    "org.apache.tomcat.embed:tomcat-embed-el:jar:sources:9.0.30",
+                    "org.apache.tomcat.embed:tomcat-embed-websocket:jar:sources:9.0.30"
+                ],
+                "dependencies": [
+                    "org.apache.tomcat.embed:tomcat-embed-websocket:jar:sources:9.0.30",
+                    "org.apache.tomcat.embed:tomcat-embed-core:jar:sources:9.0.30",
+                    "jakarta.annotation:jakarta.annotation-api:jar:sources:1.3.5",
+                    "org.apache.tomcat.embed:tomcat-embed-el:jar:sources:9.0.30",
+                    "org.apache.tomcat:tomcat-annotations-api:jar:sources:9.0.30"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-tomcat/2.2.4.RELEASE/spring-boot-starter-tomcat-2.2.4.RELEASE-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-tomcat/2.2.4.RELEASE/spring-boot-starter-tomcat-2.2.4.RELEASE-sources.jar"
+                ],
+                "sha256": "0dc093e9474ffd57dfcd2ffd2795eec4e698781274fe7590cd1f6ad7facc5d13"
             },
             {
                 "coord": "org.springframework.boot:spring-boot-starter-validation:2.2.4.RELEASE",
@@ -838,6 +1625,47 @@
                     "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-validation/2.2.4.RELEASE/spring-boot-starter-validation-2.2.4.RELEASE.jar"
                 ],
                 "sha256": "1b577694e05d7673fa5d196f809abe1595c0c47bb2234e648d482dc183a9c8f2"
+            },
+            {
+                "coord": "org.springframework.boot:spring-boot-starter-validation:jar:sources:2.2.4.RELEASE",
+                "file": "v1/https/repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-validation/2.2.4.RELEASE/spring-boot-starter-validation-2.2.4.RELEASE-sources.jar",
+                "directDependencies": [
+                    "jakarta.validation:jakarta.validation-api:jar:sources:2.0.2",
+                    "org.hibernate.validator:hibernate-validator:jar:sources:6.1.2.Final",
+                    "org.springframework.boot:spring-boot-starter:jar:sources:2.2.4.RELEASE"
+                ],
+                "dependencies": [
+                    "org.apache.logging.log4j:log4j-api:jar:sources:2.12.1",
+                    "org.springframework.boot:spring-boot:jar:sources:2.2.4.RELEASE",
+                    "org.slf4j:jul-to-slf4j:jar:sources:1.7.30",
+                    "org.springframework:spring-jcl:jar:sources:5.2.3.RELEASE",
+                    "org.hibernate.validator:hibernate-validator:jar:sources:6.1.2.Final",
+                    "org.springframework.boot:spring-boot-starter-logging:jar:sources:2.2.4.RELEASE",
+                    "org.slf4j:slf4j-api:jar:sources:1.7.30",
+                    "org.apache.logging.log4j:log4j-to-slf4j:jar:sources:2.12.1",
+                    "ch.qos.logback:logback-core:jar:sources:1.2.3",
+                    "org.yaml:snakeyaml:jar:sources:1.25",
+                    "ch.qos.logback:logback-classic:jar:sources:1.2.3",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE",
+                    "org.springframework.boot:spring-boot-autoconfigure:jar:sources:2.2.4.RELEASE",
+                    "jakarta.validation:jakarta.validation-api:jar:sources:2.0.2",
+                    "jakarta.annotation:jakarta.annotation-api:jar:sources:1.3.5",
+                    "com.fasterxml:classmate:jar:sources:1.3.4",
+                    "org.springframework.boot:spring-boot-starter:jar:sources:2.2.4.RELEASE",
+                    "org.springframework:spring-aop:jar:sources:5.2.3.RELEASE",
+                    "org.jboss.logging:jboss-logging:jar:sources:3.3.2.Final",
+                    "org.springframework:spring-context:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-beans:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-expression:jar:sources:5.2.3.RELEASE"
+                ],
+                "exclusions": [
+                    "org.apache.tomcat.embed:tomcat-embed-el"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-validation/2.2.4.RELEASE/spring-boot-starter-validation-2.2.4.RELEASE-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-validation/2.2.4.RELEASE/spring-boot-starter-validation-2.2.4.RELEASE-sources.jar"
+                ],
+                "sha256": "974a09d44a38d6a653bed49d6892869888a39135893989ae828de7f1c1704aa4"
             },
             {
                 "coord": "org.springframework.boot:spring-boot-starter-web:2.2.4.RELEASE",
@@ -896,6 +1724,62 @@
                 "sha256": "eb4d4ad19fe1724fd02cfce9c467c0b67766b5a4a54d0e54fc51826d9e3d87b8"
             },
             {
+                "coord": "org.springframework.boot:spring-boot-starter-web:jar:sources:2.2.4.RELEASE",
+                "file": "v1/https/repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-web/2.2.4.RELEASE/spring-boot-starter-web-2.2.4.RELEASE-sources.jar",
+                "directDependencies": [
+                    "org.springframework:spring-web:jar:sources:5.2.3.RELEASE",
+                    "org.springframework.boot:spring-boot-starter-tomcat:jar:sources:2.2.4.RELEASE",
+                    "org.springframework.boot:spring-boot-starter-json:jar:sources:2.2.4.RELEASE",
+                    "org.springframework.boot:spring-boot-starter:jar:sources:2.2.4.RELEASE",
+                    "org.springframework:spring-webmvc:jar:sources:5.2.3.RELEASE",
+                    "org.springframework.boot:spring-boot-starter-validation:jar:sources:2.2.4.RELEASE"
+                ],
+                "dependencies": [
+                    "org.apache.logging.log4j:log4j-api:jar:sources:2.12.1",
+                    "com.fasterxml.jackson.module:jackson-module-parameter-names:jar:sources:2.10.2",
+                    "org.springframework.boot:spring-boot:jar:sources:2.2.4.RELEASE",
+                    "org.slf4j:jul-to-slf4j:jar:sources:1.7.30",
+                    "org.springframework:spring-jcl:jar:sources:5.2.3.RELEASE",
+                    "org.apache.tomcat.embed:tomcat-embed-websocket:jar:sources:9.0.30",
+                    "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:sources:2.10.2",
+                    "org.springframework:spring-web:jar:sources:5.2.3.RELEASE",
+                    "org.hibernate.validator:hibernate-validator:jar:sources:6.1.2.Final",
+                    "org.springframework.boot:spring-boot-starter-logging:jar:sources:2.2.4.RELEASE",
+                    "com.fasterxml.jackson.core:jackson-core:jar:sources:2.10.2",
+                    "org.slf4j:slf4j-api:jar:sources:1.7.30",
+                    "org.apache.logging.log4j:log4j-to-slf4j:jar:sources:2.12.1",
+                    "ch.qos.logback:logback-core:jar:sources:1.2.3",
+                    "org.yaml:snakeyaml:jar:sources:1.25",
+                    "org.apache.tomcat.embed:tomcat-embed-core:jar:sources:9.0.30",
+                    "ch.qos.logback:logback-classic:jar:sources:1.2.3",
+                    "org.springframework.boot:spring-boot-starter-tomcat:jar:sources:2.2.4.RELEASE",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE",
+                    "com.fasterxml.jackson.core:jackson-annotations:jar:sources:2.10.2",
+                    "org.springframework.boot:spring-boot-autoconfigure:jar:sources:2.2.4.RELEASE",
+                    "jakarta.validation:jakarta.validation-api:jar:sources:2.0.2",
+                    "org.springframework.boot:spring-boot-starter-json:jar:sources:2.2.4.RELEASE",
+                    "jakarta.annotation:jakarta.annotation-api:jar:sources:1.3.5",
+                    "com.fasterxml:classmate:jar:sources:1.3.4",
+                    "org.apache.tomcat.embed:tomcat-embed-el:jar:sources:9.0.30",
+                    "org.springframework.boot:spring-boot-starter:jar:sources:2.2.4.RELEASE",
+                    "org.springframework:spring-webmvc:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-aop:jar:sources:5.2.3.RELEASE",
+                    "com.fasterxml.jackson.core:jackson-databind:jar:sources:2.10.2",
+                    "org.jboss.logging:jboss-logging:jar:sources:3.3.2.Final",
+                    "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:sources:2.10.2",
+                    "org.springframework:spring-context:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-beans:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-expression:jar:sources:5.2.3.RELEASE",
+                    "org.apache.tomcat:tomcat-annotations-api:jar:sources:9.0.30",
+                    "org.springframework.boot:spring-boot-starter-validation:jar:sources:2.2.4.RELEASE"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-web/2.2.4.RELEASE/spring-boot-starter-web-2.2.4.RELEASE-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter-web/2.2.4.RELEASE/spring-boot-starter-web-2.2.4.RELEASE-sources.jar"
+                ],
+                "sha256": "99fd68900512c97bb2f5d11afb177b90d92a24b1616ddb56e8193d334742fe48"
+            },
+            {
                 "coord": "org.springframework.boot:spring-boot-starter:2.2.4.RELEASE",
                 "file": "v1/https/repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter/2.2.4.RELEASE/spring-boot-starter-2.2.4.RELEASE.jar",
                 "directDependencies": [
@@ -932,6 +1816,42 @@
                 "sha256": "436ce65593dc1f34efd9dda09cbfa4466c40245b5054e102f3ace3ac56884665"
             },
             {
+                "coord": "org.springframework.boot:spring-boot-starter:jar:sources:2.2.4.RELEASE",
+                "file": "v1/https/repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter/2.2.4.RELEASE/spring-boot-starter-2.2.4.RELEASE-sources.jar",
+                "directDependencies": [
+                    "org.springframework.boot:spring-boot:jar:sources:2.2.4.RELEASE",
+                    "org.springframework.boot:spring-boot-starter-logging:jar:sources:2.2.4.RELEASE",
+                    "org.yaml:snakeyaml:jar:sources:1.25",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE",
+                    "org.springframework.boot:spring-boot-autoconfigure:jar:sources:2.2.4.RELEASE",
+                    "jakarta.annotation:jakarta.annotation-api:jar:sources:1.3.5"
+                ],
+                "dependencies": [
+                    "org.apache.logging.log4j:log4j-api:jar:sources:2.12.1",
+                    "org.springframework.boot:spring-boot:jar:sources:2.2.4.RELEASE",
+                    "org.slf4j:jul-to-slf4j:jar:sources:1.7.30",
+                    "org.springframework:spring-jcl:jar:sources:5.2.3.RELEASE",
+                    "org.springframework.boot:spring-boot-starter-logging:jar:sources:2.2.4.RELEASE",
+                    "org.slf4j:slf4j-api:jar:sources:1.7.30",
+                    "org.apache.logging.log4j:log4j-to-slf4j:jar:sources:2.12.1",
+                    "ch.qos.logback:logback-core:jar:sources:1.2.3",
+                    "org.yaml:snakeyaml:jar:sources:1.25",
+                    "ch.qos.logback:logback-classic:jar:sources:1.2.3",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE",
+                    "org.springframework.boot:spring-boot-autoconfigure:jar:sources:2.2.4.RELEASE",
+                    "jakarta.annotation:jakarta.annotation-api:jar:sources:1.3.5",
+                    "org.springframework:spring-aop:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-context:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-beans:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-expression:jar:sources:5.2.3.RELEASE"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter/2.2.4.RELEASE/spring-boot-starter-2.2.4.RELEASE-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-starter/2.2.4.RELEASE/spring-boot-starter-2.2.4.RELEASE-sources.jar"
+                ],
+                "sha256": "c122c569ca57331d145c426c1274e41e821a671c9c5e5f3c110122225ad1cd4c"
+            },
+            {
                 "coord": "org.springframework.boot:spring-boot:2.2.4.RELEASE",
                 "file": "v1/https/repo1.maven.org/maven2/org/springframework/boot/spring-boot/2.2.4.RELEASE/spring-boot-2.2.4.RELEASE.jar",
                 "directDependencies": [
@@ -953,6 +1873,27 @@
                 "sha256": "176befc7b90e8498f44e21994a70d69ba360ef1e858ff3cea8282e802372daf2"
             },
             {
+                "coord": "org.springframework.boot:spring-boot:jar:sources:2.2.4.RELEASE",
+                "file": "v1/https/repo1.maven.org/maven2/org/springframework/boot/spring-boot/2.2.4.RELEASE/spring-boot-2.2.4.RELEASE-sources.jar",
+                "directDependencies": [
+                    "org.springframework:spring-context:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE"
+                ],
+                "dependencies": [
+                    "org.springframework:spring-jcl:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-aop:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-context:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-beans:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-expression:jar:sources:5.2.3.RELEASE"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot/2.2.4.RELEASE/spring-boot-2.2.4.RELEASE-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/springframework/boot/spring-boot/2.2.4.RELEASE/spring-boot-2.2.4.RELEASE-sources.jar"
+                ],
+                "sha256": "fa2b53100c7756b03884ef4283ee6a8ad8675b026c7654153bdce7201aa05eb0"
+            },
+            {
                 "coord": "org.springframework:spring-aop:5.2.3.RELEASE",
                 "file": "v1/https/repo1.maven.org/maven2/org/springframework/spring-aop/5.2.3.RELEASE/spring-aop-5.2.3.RELEASE.jar",
                 "directDependencies": [
@@ -971,6 +1912,24 @@
                 "sha256": "a8f9743e22ea74c99e8d6fc16a72034010beadbe852a1c318b3a9ab77c07851c"
             },
             {
+                "coord": "org.springframework:spring-aop:jar:sources:5.2.3.RELEASE",
+                "file": "v1/https/repo1.maven.org/maven2/org/springframework/spring-aop/5.2.3.RELEASE/spring-aop-5.2.3.RELEASE-sources.jar",
+                "directDependencies": [
+                    "org.springframework:spring-beans:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE"
+                ],
+                "dependencies": [
+                    "org.springframework:spring-beans:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-jcl:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/springframework/spring-aop/5.2.3.RELEASE/spring-aop-5.2.3.RELEASE-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/springframework/spring-aop/5.2.3.RELEASE/spring-aop-5.2.3.RELEASE-sources.jar"
+                ],
+                "sha256": "18da176cbdf4ccb1b76999892743dc61ca36546deb927b3ff6cd23686c2a3bd6"
+            },
+            {
                 "coord": "org.springframework:spring-beans:5.2.3.RELEASE",
                 "file": "v1/https/repo1.maven.org/maven2/org/springframework/spring-beans/5.2.3.RELEASE/spring-beans-5.2.3.RELEASE.jar",
                 "directDependencies": [
@@ -985,6 +1944,22 @@
                     "https://repo1.maven.org/maven2/org/springframework/spring-beans/5.2.3.RELEASE/spring-beans-5.2.3.RELEASE.jar"
                 ],
                 "sha256": "d3083070ad4eaf32e003b86ca0e7c0cb4fd2819800fef86ceb1043d387c14e2d"
+            },
+            {
+                "coord": "org.springframework:spring-beans:jar:sources:5.2.3.RELEASE",
+                "file": "v1/https/repo1.maven.org/maven2/org/springframework/spring-beans/5.2.3.RELEASE/spring-beans-5.2.3.RELEASE-sources.jar",
+                "directDependencies": [
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE"
+                ],
+                "dependencies": [
+                    "org.springframework:spring-jcl:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/springframework/spring-beans/5.2.3.RELEASE/spring-beans-5.2.3.RELEASE-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/springframework/spring-beans/5.2.3.RELEASE/spring-beans-5.2.3.RELEASE-sources.jar"
+                ],
+                "sha256": "2f5d6a1425934d463f232a0936d66e22989cc0bcd0b888515a1400667ceb893d"
             },
             {
                 "coord": "org.springframework:spring-context:5.2.3.RELEASE",
@@ -1009,6 +1984,28 @@
                 "sha256": "82c625cffed80685b153700359a6c6d5c91018069a0171cf21a7defb0267e993"
             },
             {
+                "coord": "org.springframework:spring-context:jar:sources:5.2.3.RELEASE",
+                "file": "v1/https/repo1.maven.org/maven2/org/springframework/spring-context/5.2.3.RELEASE/spring-context-5.2.3.RELEASE-sources.jar",
+                "directDependencies": [
+                    "org.springframework:spring-aop:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-beans:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-expression:jar:sources:5.2.3.RELEASE"
+                ],
+                "dependencies": [
+                    "org.springframework:spring-jcl:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-aop:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-beans:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-expression:jar:sources:5.2.3.RELEASE"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/springframework/spring-context/5.2.3.RELEASE/spring-context-5.2.3.RELEASE-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/springframework/spring-context/5.2.3.RELEASE/spring-context-5.2.3.RELEASE-sources.jar"
+                ],
+                "sha256": "5b496f69fda3a6f174b41eac850240ab9bd60f49177140b05bcf91efcc741e8b"
+            },
+            {
                 "coord": "org.springframework:spring-core:5.2.3.RELEASE",
                 "file": "v1/https/repo1.maven.org/maven2/org/springframework/spring-core/5.2.3.RELEASE/spring-core-5.2.3.RELEASE.jar",
                 "directDependencies": [
@@ -1022,6 +2019,21 @@
                     "https://repo1.maven.org/maven2/org/springframework/spring-core/5.2.3.RELEASE/spring-core-5.2.3.RELEASE.jar"
                 ],
                 "sha256": "6df908f4deaeefd2b03b56a00246cc0dc0d941d9636e811025bc6fc5a2a44851"
+            },
+            {
+                "coord": "org.springframework:spring-core:jar:sources:5.2.3.RELEASE",
+                "file": "v1/https/repo1.maven.org/maven2/org/springframework/spring-core/5.2.3.RELEASE/spring-core-5.2.3.RELEASE-sources.jar",
+                "directDependencies": [
+                    "org.springframework:spring-jcl:jar:sources:5.2.3.RELEASE"
+                ],
+                "dependencies": [
+                    "org.springframework:spring-jcl:jar:sources:5.2.3.RELEASE"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/springframework/spring-core/5.2.3.RELEASE/spring-core-5.2.3.RELEASE-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/springframework/spring-core/5.2.3.RELEASE/spring-core-5.2.3.RELEASE-sources.jar"
+                ],
+                "sha256": "9875d1bd096d6fe2590d7a5e8eb7fcdf7ca09476106a684db35d5b488ec29e79"
             },
             {
                 "coord": "org.springframework:spring-expression:5.2.3.RELEASE",
@@ -1040,6 +2052,22 @@
                 "sha256": "1ba798e1f4da9e5ad68e67d7e7abe39f141674762c8755d952edeb0380d384b9"
             },
             {
+                "coord": "org.springframework:spring-expression:jar:sources:5.2.3.RELEASE",
+                "file": "v1/https/repo1.maven.org/maven2/org/springframework/spring-expression/5.2.3.RELEASE/spring-expression-5.2.3.RELEASE-sources.jar",
+                "directDependencies": [
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE"
+                ],
+                "dependencies": [
+                    "org.springframework:spring-jcl:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/springframework/spring-expression/5.2.3.RELEASE/spring-expression-5.2.3.RELEASE-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/springframework/spring-expression/5.2.3.RELEASE/spring-expression-5.2.3.RELEASE-sources.jar"
+                ],
+                "sha256": "8469165376e277e468825616f11437c17647c01a1ee6c7293805a14c22be53d6"
+            },
+            {
                 "coord": "org.springframework:spring-jcl:5.2.3.RELEASE",
                 "file": "v1/https/repo1.maven.org/maven2/org/springframework/spring-jcl/5.2.3.RELEASE/spring-jcl-5.2.3.RELEASE.jar",
                 "directDependencies": [],
@@ -1049,6 +2077,17 @@
                     "https://repo1.maven.org/maven2/org/springframework/spring-jcl/5.2.3.RELEASE/spring-jcl-5.2.3.RELEASE.jar"
                 ],
                 "sha256": "ddac1c1c3362ac3ff415febf2fc3fd9c8facb9423eb4ede9b6444d68bb3a578f"
+            },
+            {
+                "coord": "org.springframework:spring-jcl:jar:sources:5.2.3.RELEASE",
+                "file": "v1/https/repo1.maven.org/maven2/org/springframework/spring-jcl/5.2.3.RELEASE/spring-jcl-5.2.3.RELEASE-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/org/springframework/spring-jcl/5.2.3.RELEASE/spring-jcl-5.2.3.RELEASE-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/springframework/spring-jcl/5.2.3.RELEASE/spring-jcl-5.2.3.RELEASE-sources.jar"
+                ],
+                "sha256": "8662e1f9347bce0caf63faa67d246c636b8cc63f2647a7d63f6ccea938b44b88"
             },
             {
                 "coord": "org.springframework:spring-web:5.2.3.RELEASE",
@@ -1067,6 +2106,24 @@
                     "https://repo1.maven.org/maven2/org/springframework/spring-web/5.2.3.RELEASE/spring-web-5.2.3.RELEASE.jar"
                 ],
                 "sha256": "25d264969c624cb8103a7f2b36b148ea1be8b87780c4758e7f9a6e2bc8416d76"
+            },
+            {
+                "coord": "org.springframework:spring-web:jar:sources:5.2.3.RELEASE",
+                "file": "v1/https/repo1.maven.org/maven2/org/springframework/spring-web/5.2.3.RELEASE/spring-web-5.2.3.RELEASE-sources.jar",
+                "directDependencies": [
+                    "org.springframework:spring-beans:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE"
+                ],
+                "dependencies": [
+                    "org.springframework:spring-beans:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-jcl:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/springframework/spring-web/5.2.3.RELEASE/spring-web-5.2.3.RELEASE-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/springframework/spring-web/5.2.3.RELEASE/spring-web-5.2.3.RELEASE-sources.jar"
+                ],
+                "sha256": "54b7df24ea939dc8d418b5facdfc8a94545393e7358de23219adcac14bc16c0d"
             },
             {
                 "coord": "org.springframework:spring-webmvc:5.2.3.RELEASE",
@@ -1095,6 +2152,32 @@
                 "sha256": "b3b0a2477e67b050dd5c08dc96e76db5950cbccba075e782c24f73eda49a0160"
             },
             {
+                "coord": "org.springframework:spring-webmvc:jar:sources:5.2.3.RELEASE",
+                "file": "v1/https/repo1.maven.org/maven2/org/springframework/spring-webmvc/5.2.3.RELEASE/spring-webmvc-5.2.3.RELEASE-sources.jar",
+                "directDependencies": [
+                    "org.springframework:spring-web:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-aop:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-context:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-beans:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-expression:jar:sources:5.2.3.RELEASE"
+                ],
+                "dependencies": [
+                    "org.springframework:spring-jcl:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-web:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-core:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-aop:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-context:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-beans:jar:sources:5.2.3.RELEASE",
+                    "org.springframework:spring-expression:jar:sources:5.2.3.RELEASE"
+                ],
+                "url": "https://repo1.maven.org/maven2/org/springframework/spring-webmvc/5.2.3.RELEASE/spring-webmvc-5.2.3.RELEASE-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/springframework/spring-webmvc/5.2.3.RELEASE/spring-webmvc-5.2.3.RELEASE-sources.jar"
+                ],
+                "sha256": "bffdcf1a3915283970e58a6abe35e98e9c0fe276ae845988c22631f51107b986"
+            },
+            {
                 "coord": "org.yaml:snakeyaml:1.25",
                 "file": "v1/https/repo1.maven.org/maven2/org/yaml/snakeyaml/1.25/snakeyaml-1.25.jar",
                 "directDependencies": [],
@@ -1106,6 +2189,17 @@
                 "sha256": "b50ef33187e7dc922b26dbe4dd0fdb3a9cf349e75a08b95269901548eee546eb"
             },
             {
+                "coord": "org.yaml:snakeyaml:jar:sources:1.25",
+                "file": "v1/https/repo1.maven.org/maven2/org/yaml/snakeyaml/1.25/snakeyaml-1.25-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/org/yaml/snakeyaml/1.25/snakeyaml-1.25-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/org/yaml/snakeyaml/1.25/snakeyaml-1.25-sources.jar"
+                ],
+                "sha256": "fcc58a580b640e80f6c71acdd20b00dd87b80c9944dcad0389a904b77f04c88d"
+            },
+            {
                 "coord": "software.amazon.ion:ion-java:1.0.2",
                 "file": "v1/https/repo1.maven.org/maven2/software/amazon/ion/ion-java/1.0.2/ion-java-1.0.2.jar",
                 "directDependencies": [],
@@ -1115,9 +2209,20 @@
                     "https://repo1.maven.org/maven2/software/amazon/ion/ion-java/1.0.2/ion-java-1.0.2.jar"
                 ],
                 "sha256": "0d127b205a1fce0abc2a3757a041748651bc66c15cf4c059bac5833b27d471a5"
+            },
+            {
+                "coord": "software.amazon.ion:ion-java:jar:sources:1.0.2",
+                "file": "v1/https/repo1.maven.org/maven2/software/amazon/ion/ion-java/1.0.2/ion-java-1.0.2-sources.jar",
+                "directDependencies": [],
+                "dependencies": [],
+                "url": "https://repo1.maven.org/maven2/software/amazon/ion/ion-java/1.0.2/ion-java-1.0.2-sources.jar",
+                "mirror_urls": [
+                    "https://repo1.maven.org/maven2/software/amazon/ion/ion-java/1.0.2/ion-java-1.0.2-sources.jar"
+                ],
+                "sha256": "d827fc9775443697bbcdfeb8ea2d3d75bf5ad7f2ca540dabda1a5f83cd0a39de"
             }
         ],
         "version": "0.1.0",
-        "__AUTOGENERATED_FILE_DO_NOT_MODIFY_THIS_FILE_MANUALLY": 397638873
+        "__AUTOGENERATED_FILE_DO_NOT_MODIFY_THIS_FILE_MANUALLY": -815487940
     }
 }

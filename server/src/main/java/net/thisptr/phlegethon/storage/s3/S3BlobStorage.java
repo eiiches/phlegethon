@@ -9,9 +9,14 @@ import java.io.OutputStream;
 
 public class S3BlobStorage implements BlobStorage {
     private final AmazonS3 client;
+    private final String bucketName;
 
-    public S3BlobStorage(AmazonS3 client) {
+    public S3BlobStorage(AmazonS3 client, String bucketName) {
         this.client = client;
+        this.bucketName = bucketName;
+
+        if (!client.doesBucketExistV2(bucketName))
+            client.createBucket(bucketName);
     }
 
     @Override

@@ -32,9 +32,7 @@ public class RecordingController {
     public void search(@PathVariable(value = "namespace", required = true) String namespace,
                        @RequestParam(value = "type", required = true) String type,
                        @RequestParam Map<String, String> allParams) {
-        @Var Map<String, String> labels = extractLabels(allParams);
-        labels = extractLabels(allParams);
-
+        Map<String, String> labels = extractLabels(allParams);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/download")

@@ -4,6 +4,8 @@ java_library(
     name = "libs",
     srcs = glob(["Application.java"]),
     deps = [
+        "//server/src/main/java/net/thisptr/phlegethon/server/controller",
+        "//server/src/main/java/net/thisptr/phlegethon/service",
         "//server/src/main/java/net/thisptr/phlegethon/storage",
         "@maven//:com_zaxxer_HikariCP",
         "@maven//:javax_validation_validation_api",

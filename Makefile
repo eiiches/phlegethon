@@ -1,10 +1,12 @@
+BAZEL_OPTS=--javacopt='-Xep:Var'
+
 .PHONY: build
 build:
-	bazel build //... --javacopt='-Xep:Var'
+	bazel build //... $(BAZEL_OPTS)
 
 .PHONY: test
 test:
-	bazel test //...
+	bazel test //... $(BAZEL_OPTS)
 
 .PHONY: gazelle
 gazelle:
@@ -16,8 +18,8 @@ pin-maven:
 
 .PHONY: run-server
 run-server:
-	bazel run //server/src/main/java/net/thisptr/phlegethon/server:server
+	bazel run //server/src/main/java/net/thisptr/phlegethon/server:server $(BAZEL_OPTS) -- --spring.config.additional-location=file://`pwd`/ --logging.level.root=debug
 
 .PHONY: run-jfr-uploader
 run-jfr-uploader:
-	bazel run //jfr-uploader:image
+	bazel run //jfr-uploader:image $(BAZEL_OPTS)
