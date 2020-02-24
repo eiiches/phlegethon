@@ -1,5 +1,5 @@
-Phlegethon - Remote JFR Storage & Viewer
-========================================
+Phlegethon - Remote JFR Storage &amp; Viewer
+============================================
 
 Requirements
 ------------
