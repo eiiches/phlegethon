@@ -86,9 +86,9 @@ API
 
 * GET /v1/namespaces/{namespace}/streams/{stream_id}
 
-* GET /v1/namespaces/{namespace}/streams/{stream_id}/recordings
+* GET /v1/namespaces/{namespace}/streams/{stream_id}/recordings?start={start_unix_epoch_millis}&amp;end={end_unix_epoch_millis}
 
-* GET /v1/namespaces/{namespace}/streams/{stream_id}/recordings/{recording_key}
+* GET /v1/namespaces/{namespace}/streams/{stream_id}/recordings/{recording_name}
 
-* GET /v1/namespaces/{namespace}/streams/{stream_id}/recordings/{recording_key}/download
+* GET /v1/namespaces/{namespace}/streams/{stream_id}/recordings/{recording_name}/download
 
