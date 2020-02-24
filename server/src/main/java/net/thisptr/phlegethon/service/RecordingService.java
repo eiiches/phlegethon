@@ -15,9 +15,9 @@ import net.thisptr.phlegethon.model.Namespace;
 import net.thisptr.phlegethon.model.NamespaceId;
 import net.thisptr.phlegethon.model.Recording;
 import net.thisptr.phlegethon.model.RecordingFileName;
+import net.thisptr.phlegethon.model.RecordingList;
 import net.thisptr.phlegethon.model.Stream;
 import net.thisptr.phlegethon.model.StreamId;
-import net.thisptr.phlegethon.model.RecordingList;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -112,6 +112,10 @@ public class RecordingService {
             recording.lastEventAt = timeRange._2;
             recording.streamId = streamId;
             recording.name = new RecordingFileName(recording.firstEventAt.getMillis(), recording.lastEventAt.getMillis());
+
+            if (recording.lastEventAt.getMillis() - recording.firstEventAt.getMillis() > 24 * 60 * 60 * 1000L) {
+                throw new RecordingTooLargeException("You can't upload a recording which exceeds 24 hours.");
+            }
 
             // Create or update streams and labels in database. We maintain (firstEventAt, lastEventAt) for each labels
             // and streams so that we can garbage collect old entries.
