@@ -3,6 +3,7 @@ package net.thisptr.phlegethon.server.controller;
 import net.thisptr.phlegethon.misc.Pair;
 import net.thisptr.phlegethon.model.Recording;
 import net.thisptr.phlegethon.model.Stream;
+import net.thisptr.phlegethon.model.StreamId;
 import net.thisptr.phlegethon.service.RecordingService;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,11 @@ public class StreamController {
                                @RequestParam Map<String, String> allParams) throws Exception {
         Map<String, String> labels = Utils.extractParamsByPrefix(allParams, "label.");
         return recordingService.search(namespace, type, labels, Pair.of(new DateTime(start), new DateTime(end)));
+    }
+
+    @RequestMapping(method = RequestMethod.GET , path = "/{streamId:[a-z0-9]+}")
+    public Stream get(@PathVariable(value = "namespace") String namespace,
+                      @PathVariable(value = "streamId") StreamId streamId) throws Exception {
+        return recordingService.getStream(namespace, streamId);
     }
 }

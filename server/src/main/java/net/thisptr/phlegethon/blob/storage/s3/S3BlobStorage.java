@@ -2,6 +2,7 @@ package net.thisptr.phlegethon.blob.storage.s3;
 
 import com.amazonaws.services.s3.AmazonS3;
 import net.thisptr.phlegethon.blob.storage.BlobStorage;
+import net.thisptr.phlegethon.model.NamespaceId;
 import net.thisptr.phlegethon.model.Recording;
 import net.thisptr.phlegethon.model.StreamId;
 import org.joda.time.DateTime;
@@ -35,9 +36,9 @@ public class S3BlobStorage implements BlobStorage {
     }
 
     @Override
-    public String upload(int namespaceId, StreamId streamId, Recording recording, File file) throws IOException {
+    public String upload(NamespaceId namespaceId, StreamId streamId, Recording recording, File file) throws IOException {
         StringBuilder sb = new StringBuilder();
-        sb.append(namespaceId);
+        sb.append(namespaceId.toInt());
         sb.append('/');
         DateTime utcFirstEventAt = recording.firstEventAt.withZone(DateTimeZone.UTC);
         sb.append(DateTimeFormat.forPattern("yyyy/MM/dd").print(utcFirstEventAt));

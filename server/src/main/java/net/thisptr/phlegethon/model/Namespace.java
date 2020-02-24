@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Namespace {
     @JsonIgnore // We don't expose this ID to users.
-    public int id;
+    public NamespaceId id;
 
     @JsonProperty("name")
     public String name;

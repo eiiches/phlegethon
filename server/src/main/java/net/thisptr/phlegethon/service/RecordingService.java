@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-import com.google.common.hash.HashCode;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
 import com.google.common.io.ByteStreams;
@@ -17,6 +16,7 @@ import net.thisptr.phlegethon.misc.Pair;
 import net.thisptr.phlegethon.misc.sql.FluentStatement;
 import net.thisptr.phlegethon.misc.sql.Transaction;
 import net.thisptr.phlegethon.model.Namespace;
+import net.thisptr.phlegethon.model.NamespaceId;
 import net.thisptr.phlegethon.model.Recording;
 import net.thisptr.phlegethon.model.Stream;
 import net.thisptr.phlegethon.model.StreamId;
@@ -144,7 +144,6 @@ public class RecordingService {
         }
     }
 
-
     public static class StreamDao {
         private static String toJson(List<Long> labelIds) {
             StringBuilder labelIdsText = new StringBuilder("[");
@@ -158,13 +157,13 @@ public class RecordingService {
             return labelIdsText.toString();
         }
 
-        public void insertOrUpdate(Connection conn, int namespaceId, StreamId streamId, List<Long> labelIds, int type, DateTime firstEventAt, DateTime lastEventAt) throws SQLException {
+        public void insertOrUpdate(Connection conn, NamespaceId namespaceId, StreamId streamId, List<Long> labelIds, int type, DateTime firstEventAt, DateTime lastEventAt) throws SQLException {
             FluentStatement.prepare(conn, "INSERT INTO Streams (namespace_id, stream_id, label_ids, data_type, first_event_at, last_event_at)"
                     + " VALUES ($namespace_id, $stream_id, $label_ids, $data_type, $first_event_at, $last_event_at)"
                     + " ON DUPLICATE KEY UPDATE"
                     + "   first_event_at = LEAST(first_event_at, $first_event_at),"
                     + "   last_event_at = GREATEST(last_event_at, $last_event_at);")
-                    .bind("namespace_id", namespaceId)
+                    .bind("namespace_id", namespaceId.toInt())
                     .bind("stream_id", streamId.toBytes())
                     .bind("label_ids", toJson(labelIds))
                     .bind("data_type", type)
@@ -196,7 +195,7 @@ public class RecordingService {
          * @param type        or null
          * @param minStreamId or null
          */
-        public List<StreamRecord> select(Connection conn, int namespaceId, List<Long> labelIds, Integer type, byte[] minStreamId, int limit) throws JsonProcessingException, SQLException {
+        public List<StreamRecord> select(Connection conn, NamespaceId namespaceId, List<Long> labelIds, Integer type, byte[] minStreamId, int limit) throws JsonProcessingException, SQLException {
             return FluentStatement.prepare(conn, "SELECT stream_id, label_ids, data_type, first_event_at, last_event_at FROM Streams"
                     + " WHERE "
                     + "   namespace_id = $namespace_id"
@@ -204,7 +203,7 @@ public class RecordingService {
                     + (type != null ? "   AND data_type = $data_type" : "")
                     + (minStreamId != null ? "   AND stream_id >= $min_stream_id" : "")
                     + "   ORDER BY stream_id LIMIT #limit")
-                    .bind("namespace_id", namespaceId)
+                    .bind("namespace_id", namespaceId.toInt())
                     .bind("label_ids", toJson(labelIds))
                     .bind("data_type", type)
                     .bind("min_stream_id", minStreamId)
@@ -221,6 +220,20 @@ public class RecordingService {
                     });
         }
 
+        public StreamRecord select(Connection conn, NamespaceId namespaceId, StreamId streamId) throws JsonProcessingException, SQLException {
+            return FluentStatement.prepare(conn, "SELECT stream_id, label_ids, data_type, first_event_at, last_event_at FROM Streams"
+                    + " WHERE namespace_id = $namespace_id AND stream_id = $stream_id")
+                    .bind("namespace_id", namespaceId.toInt())
+                    .bind("stream_id", streamId.toBytes())
+                    .executeQuery((rs) -> {
+                        if (!rs.next())
+                            return null;
+                        List<Long> ids = MAPPER.readValue(rs.getString(2), new TypeReference<List<Long>>() {
+                        });
+                        return new StreamRecord(rs.getBytes(1), ids, rs.getInt(3), rs.getLong(4), rs.getLong(5));
+                    });
+        }
+
         private static final ObjectMapper MAPPER = new ObjectMapper();
     }
 
@@ -228,14 +241,14 @@ public class RecordingService {
     private final LabelDao labelDao = new LabelDao();
 
     public static class LabelDao {
-        public long insertOrUpdate(Connection conn, int namespaceId, String name, String value, DateTime firstEventAt, DateTime lastEventAt) throws SQLException {
+        public long insertOrUpdate(Connection conn, NamespaceId namespaceId, String name, String value, DateTime firstEventAt, DateTime lastEventAt) throws SQLException {
             FluentStatement.prepare(conn, "INSERT INTO Labels (namespace_id, name, value, first_event_at, last_event_at)"
                     + " VALUES ($namespace_id, $name, $value, $first_event_at, $last_event_at)"
                     + " ON DUPLICATE KEY UPDATE"
                     + "   label_id = LAST_INSERT_ID(label_id),"
                     + "   first_event_at = LEAST(first_event_at, $first_event_at),"
                     + "   last_event_at = GREATEST(last_event_at, $last_event_at);")
-                    .bind("namespace_id", namespaceId)
+                    .bind("namespace_id", namespaceId.toInt())
                     .bind("name", name)
                     .bind("value", value)
                     .bind("first_event_at", firstEventAt.getMillis())
@@ -265,11 +278,11 @@ public class RecordingService {
             }
         }
 
-        public Label select(Connection conn, int namespaceId, String name, String value) throws SQLException {
+        public Label select(Connection conn, NamespaceId namespaceId, String name, String value) throws SQLException {
             return FluentStatement.prepare(conn, "SELECT label_id, name, value, first_event_at, last_event_at FROM Labels WHERE namespace_id = $namespace_id"
                     + " AND name = $name"
                     + " AND value = $value")
-                    .bind("namespace_id", namespaceId)
+                    .bind("namespace_id", namespaceId.toInt())
                     .bind("name", name)
                     .bind("value", value)
                     .executeQuery((rs -> {
@@ -279,9 +292,9 @@ public class RecordingService {
                     }));
         }
 
-        public Label select(Connection conn, int namespaceId, long labelId) throws SQLException {
+        public Label select(Connection conn, NamespaceId namespaceId, long labelId) throws SQLException {
             return FluentStatement.prepare(conn, "SELECT label_id, name, value, first_event_at, last_event_at FROM Labels WHERE namespace_id = $namespace_id AND label_id = $label_id")
-                    .bind("namespace_id", namespaceId)
+                    .bind("namespace_id", namespaceId.toInt())
                     .bind("label_id", labelId)
                     .executeQuery((rs) -> {
                         if (!rs.next())
@@ -320,39 +333,62 @@ public class RecordingService {
                 labelIds.add(label.labelId);
             }
 
-            List<Stream> streams = new ArrayList<>();
 
             byte[] minStreamId = null;
             // minStreamId is for pagination.
+            // TODO: Filter streams using (first_event_at, last_event_at) columns.
             List<StreamDao.StreamRecord> streamRecords = streamDao.select(conn, namespace.id, labelIds, typeId, minStreamId, 100);
 
-            nextStream:
+            List<Stream> streams = new ArrayList<>();
             for (StreamDao.StreamRecord streamRecord : streamRecords) {
-                Stream stream = new Stream();
-                stream.id = new StreamId(streamRecord.streamId);
-                // TODO: If type is unsupported, set to <unknown> or something.
-                stream.type = BlobTypeRegistry.getInstance().getRegistration(streamRecord.type).name;
-                stream.firstEventAt = new DateTime(streamRecord.firstEventAt);
-                stream.lastEventAt = new DateTime(streamRecord.lastEventAt);
-
-                stream.labels = new HashMap<>();
-                for (Long labelId : streamRecord.labelIds) {
-                    @Var LabelDao.Label label = labelCache.getIfPresent(labelId);
-                    if (label == null) {
-                        label = labelDao.select(conn, namespace.id, labelId);
-                        if (label == null) {
-                            // TODO: Log warning
-                            continue nextStream;
-                        }
-                        labelCache.put(label.labelId, label);
-                    }
-                    stream.labels.put(label.name, label.value);
+                try {
+                    streams.add(toStream(conn, namespace.id, streamRecord));
+                } catch (LabelNotFoundException e) {
+                    continue;
                 }
-
-                streams.add(stream);
             }
-
             return streams;
+        });
+    }
+
+    private static class LabelNotFoundException extends RuntimeException {
+        public LabelNotFoundException(String message) {
+            super(message);
+        }
+    }
+
+    private Stream toStream(Connection conn, NamespaceId namespaceId, StreamDao.StreamRecord streamRecord) throws SQLException {
+        Stream stream = new Stream();
+        stream.id = new StreamId(streamRecord.streamId);
+        // TODO: If type is unsupported, set to <unknown> or something.
+        stream.type = BlobTypeRegistry.getInstance().getRegistration(streamRecord.type).name;
+        stream.firstEventAt = new DateTime(streamRecord.firstEventAt);
+        stream.lastEventAt = new DateTime(streamRecord.lastEventAt);
+
+        stream.labels = new HashMap<>();
+        for (Long labelId : streamRecord.labelIds) {
+            @Var LabelDao.Label label = labelCache.getIfPresent(labelId);
+            if (label == null) {
+                label = labelDao.select(conn, namespaceId, labelId);
+                if (label == null) {
+                    throw new LabelNotFoundException("Label (id = " + labelId + ") is missing.");
+                }
+                labelCache.put(label.labelId, label);
+            }
+            stream.labels.put(label.name, label.value);
+        }
+
+        return stream;
+    }
+
+    public Stream getStream(String namespaceName, StreamId streamId) throws Exception {
+        return Transaction.doInTransaction(dataSource, true, (conn) -> {
+            Namespace namespace = namespaceDao.selectNamespace(conn, namespaceName, false);
+            if (namespace == null)
+                throw new NamespaceNotFoundException(namespaceName);
+
+            StreamDao.StreamRecord streamRecord = streamDao.select(conn, namespace.id, streamId);
+            return toStream(conn, namespace.id, streamRecord);
         });
     }
 

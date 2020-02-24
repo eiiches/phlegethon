@@ -1,5 +1,6 @@
 package net.thisptr.phlegethon.blob.storage;
 
+import net.thisptr.phlegethon.model.NamespaceId;
 import net.thisptr.phlegethon.model.Recording;
 import net.thisptr.phlegethon.model.StreamId;
 
@@ -14,5 +15,5 @@ public interface BlobStorage {
 
     OutputStream download(String path) throws IOException;
 
-    String upload(int namespaceId, StreamId streamId, Recording recording, File file) throws IOException;
+    String upload(NamespaceId namespaceId, StreamId streamId, Recording recording, File file) throws IOException;
 }

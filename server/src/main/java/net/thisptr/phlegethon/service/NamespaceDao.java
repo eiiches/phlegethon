@@ -3,6 +3,7 @@ package net.thisptr.phlegethon.service;
 import com.google.common.io.CharStreams;
 import net.thisptr.phlegethon.misc.sql.FluentStatement;
 import net.thisptr.phlegethon.model.Namespace;
+import net.thisptr.phlegethon.model.NamespaceId;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,7 +19,7 @@ import java.util.stream.Collectors;
 public class NamespaceDao {
     private static Namespace toNamespace(ResultSet rs) throws SQLException {
         Namespace namespace = new Namespace();
-        namespace.id = rs.getInt("namespace_id");
+        namespace.id = new NamespaceId(rs.getInt("namespace_id"));
         namespace.name = rs.getString("name");
         return namespace;
     }

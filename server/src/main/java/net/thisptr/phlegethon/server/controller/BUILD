@@ -13,6 +13,8 @@ java_library(
         "@maven//:com_google_errorprone_error_prone_annotations",
         "@maven//:joda_time_joda_time",
         "@maven//:org_springframework_spring_beans",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_core",
         "@maven//:org_springframework_spring_web",
     ],
 )

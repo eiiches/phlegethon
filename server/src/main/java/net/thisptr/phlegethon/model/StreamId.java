@@ -13,6 +13,16 @@ public class StreamId {
 
     private static final char[] HEX_CHARS = "0123456789abcdef".toCharArray();
 
+    public static StreamId valueOf(String s) {
+        if (s.length() != 40)
+            throw new IllegalArgumentException("StreamId must have 20 bytes (or 40 bytes if hex encoded).");
+        byte[] bytes = new byte[20];
+        for (int i = 0; i < 20; ++i) {
+            bytes[i] = (byte) Integer.parseInt(s.substring(i << 1, (i << 1) + 2), 16);
+        }
+        return new StreamId(bytes);
+    }
+
     public byte[] toBytes() {
         return bytes.clone();
     }
