@@ -9,7 +9,6 @@ import org.joda.time.format.DateTimeFormat;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 
 public class S3BlobStorage implements BlobStorage {
@@ -34,6 +33,8 @@ public class S3BlobStorage implements BlobStorage {
         return null;
     }
 
+    private static final char[] HEX_CHARS = "0123456789abcdef".toCharArray();
+
     @Override
     public String upload(int namespaceId, byte[] streamId, Recording recording, File file) throws IOException {
         StringBuilder sb = new StringBuilder();
@@ -42,8 +43,10 @@ public class S3BlobStorage implements BlobStorage {
         DateTime utcFirstEventAt = recording.firstEventAt.withZone(DateTimeZone.UTC);
         sb.append(DateTimeFormat.forPattern("yyyy/MM/dd").print(utcFirstEventAt));
         sb.append('/');
-        for (byte b : streamId)
-            sb.append(String.format("%02x", b));
+        for (byte b : streamId) {
+            sb.append(HEX_CHARS[((b & 0xff) >>> 4)]);
+            sb.append(HEX_CHARS[b & 0x0f]);
+        }
         sb.append('/');
         sb.append(DateTimeFormat.forPattern("HH/mm").print(utcFirstEventAt));
         sb.append('/');
