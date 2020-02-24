@@ -16,14 +16,14 @@ Running a server
    make server/docker-image
    ```
 
-2. Start MySQL and Minio (if you don't have).
+2. Start MySQL and Minio.
 
    ```sh
    docker run --name mysql -p 3306:3306 --rm -e MYSQL_ROOT_PASSWORD=12345678 -e MYSQL_DATABASE=phlegethon mysql
    docker run --rm --name minio -p 9000:9000 -e MINIO_ACCESS_KEY=test -e MINIO_SECRET_KEY=12345678 minio/minio server /data
    ```
 
-3. Write a configuration file and run.
+3. Edit a configuration file and start a server.
 
    ```sh
    cat > application.yaml <<EOF
