@@ -25,4 +25,11 @@ public class BlobTypeRegistry {
             throw new UnsupportedBlobTypeException(type);
         return registration;
     }
+
+    public BlobTypeRegistration getRegistration(int id) throws UnsupportedBlobTypeException {
+        return types.values().stream()
+                .filter(registration -> registration.id == id)
+                .findFirst()
+                .orElseThrow(() -> new UnsupportedBlobTypeException(String.valueOf(id)));
+    }
 }

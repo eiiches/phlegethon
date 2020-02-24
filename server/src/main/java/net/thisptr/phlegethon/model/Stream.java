@@ -6,8 +6,11 @@ import org.joda.time.DateTime;
 
 import java.util.Map;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Recording {
+@JsonIgnoreProperties(ignoreUnknown =  true)
+public class Stream {
+    @JsonProperty("id")
+    public StreamId id;
+
     @JsonProperty("type")
     public String type;
 
@@ -19,10 +22,4 @@ public class Recording {
 
     @JsonProperty("last_event_at")
     public DateTime lastEventAt;
-
-    @JsonProperty("stream_id")
-    public StreamId streamId;
-
-    @JsonProperty("path")
-    public String path;
 }
