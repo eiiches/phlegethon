@@ -1,6 +1,8 @@
 Phlegethon - Remote JFR Storage &amp; Viewer
 ============================================
 
+*Status: The development has just started. Far from feature complete. Not ready for use.*
+
 Requirements
 ------------
 
