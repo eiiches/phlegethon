@@ -9,6 +9,7 @@ java_library(
         "//server/src/main/java/net/thisptr/phlegethon/model",
         "@maven//:com_amazonaws_aws_java_sdk_core",
         "@maven//:com_amazonaws_aws_java_sdk_s3",
+        "@maven//:com_google_guava_guava",
         "@maven//:javax_validation_validation_api",
         "@maven//:joda_time_joda_time",
         "@maven//:org_hibernate_validator_hibernate_validator",

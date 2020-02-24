@@ -1,9 +1,10 @@
 package net.thisptr.phlegethon.blob.storage.s3;
 
 import com.amazonaws.services.s3.AmazonS3;
+import com.google.common.io.ByteStreams;
 import net.thisptr.phlegethon.blob.storage.BlobStorage;
 import net.thisptr.phlegethon.model.NamespaceId;
-import net.thisptr.phlegethon.model.Recording;
+import net.thisptr.phlegethon.model.RecordingFileName;
 import net.thisptr.phlegethon.model.StreamId;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -11,6 +12,7 @@ import org.joda.time.format.DateTimeFormat;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 
 public class S3BlobStorage implements BlobStorage {
@@ -31,32 +33,38 @@ public class S3BlobStorage implements BlobStorage {
     }
 
     @Override
-    public OutputStream download(String path) throws IOException {
-        return null;
+    public void download(NamespaceId namespaceId, StreamId streamId, RecordingFileName recordingName, OutputStream os) throws IOException {
+        String key = toKey(namespaceId, streamId, recordingName);
+        try (InputStream is = client.getObject(bucketName, key).getObjectContent()) {
+            ByteStreams.copy(is, os);
+        }
     }
 
-    @Override
-    public String upload(NamespaceId namespaceId, StreamId streamId, Recording recording, File file) throws IOException {
-        StringBuilder name = new StringBuilder();
-        name.append(recording.firstEventAt.getMillis());
-        name.append('-');
-        name.append(recording.lastEventAt.getMillis());
-
+    private static String toKey(NamespaceId namespaceId, StreamId streamId, RecordingFileName recordingName) {
         StringBuilder sb = new StringBuilder();
         sb.append(namespaceId.toInt());
         sb.append('/');
-        DateTime utcFirstEventAt = recording.firstEventAt.withZone(DateTimeZone.UTC);
+        DateTime utcFirstEventAt = new DateTime(recordingName.firstEventAt, DateTimeZone.UTC);
         sb.append(DateTimeFormat.forPattern("yyyy/MM/dd").print(utcFirstEventAt));
         sb.append('/');
         sb.append(streamId.toHex());
         sb.append('/');
         sb.append(DateTimeFormat.forPattern("HH/mm").print(utcFirstEventAt));
         sb.append('/');
-        sb.append(name);
-        sb.append('.');
-        sb.append(recording.type);
+        sb.append(recordingName.toString());
         String key = sb.toString();
+        return key;
+    }
+
+    @Override
+    public boolean exists(NamespaceId namespaceId, StreamId streamId, RecordingFileName recordingName) throws IOException {
+        String key = toKey(namespaceId, streamId, recordingName);
+        return client.doesObjectExist(bucketName, key);
+    }
+
+    @Override
+    public void upload(NamespaceId namespaceId, StreamId streamId, RecordingFileName recordingName, File file) throws IOException {
+        String key = toKey(namespaceId, streamId, recordingName);
         client.putObject(bucketName, key, file);
-        return name.toString();
     }
 }

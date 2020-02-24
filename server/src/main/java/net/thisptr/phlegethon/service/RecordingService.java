@@ -14,6 +14,7 @@ import net.thisptr.phlegethon.misc.sql.Transaction;
 import net.thisptr.phlegethon.model.Namespace;
 import net.thisptr.phlegethon.model.NamespaceId;
 import net.thisptr.phlegethon.model.Recording;
+import net.thisptr.phlegethon.model.RecordingFileName;
 import net.thisptr.phlegethon.model.Stream;
 import net.thisptr.phlegethon.model.StreamId;
 import net.thisptr.phlegethon.model.RecordingList;
@@ -110,6 +111,7 @@ public class RecordingService {
             recording.firstEventAt = timeRange._1;
             recording.lastEventAt = timeRange._2;
             recording.streamId = streamId;
+            recording.name = new RecordingFileName(recording.firstEventAt.getMillis(), recording.lastEventAt.getMillis());
 
             // Create or update streams and labels in database. We maintain (firstEventAt, lastEventAt) for each labels
             // and streams so that we can garbage collect old entries.
@@ -132,9 +134,7 @@ public class RecordingService {
             });
 
             // Upload to the storage.
-            String name = blobStorage.upload(namespace.id, streamId, recording, temporaryBufferFile);
-            recording.name = name;
-
+            blobStorage.upload(namespace.id, streamId, recording.name, temporaryBufferFile);
             return recording;
         } finally {
             temporaryBufferFile.delete();
@@ -233,20 +233,33 @@ public class RecordingService {
 
     private static final Logger LOG = LoggerFactory.getLogger(RecordingService.class);
 
-    public void download(String namespace, StreamId streamId, String path, OutputStream os) {
-        // TODO: implement
+    public void download(String namespaceName, StreamId streamId, RecordingFileName recordingName, OutputStream os) throws Exception {
+        Namespace namespace = namespaceService.getNamespace(namespaceName);
+        Stream stream = getStream(namespaceName, streamId);
 
+        blobStorage.download(namespace.id, streamId, recordingName, os);
     }
 
-    public RecordingList listRecordings(String namespaceName, StreamId streamId, String cursor) throws SQLException {
+    public RecordingList listRecordings(String namespaceName, StreamId streamId, String cursor, Long start, Long end) throws SQLException {
         // TODO: implement
         Namespace namespace = namespaceService.getNamespace(namespaceName);
         return null;
     }
 
-    public Recording getRecording(String namespaceName, StreamId streamId, String recordingId) throws SQLException {
-        // TODO: implement
+    public Recording getRecording(String namespaceName, StreamId streamId, RecordingFileName recordingName) throws Exception {
         Namespace namespace = namespaceService.getNamespace(namespaceName);
-        return null;
+        Stream stream = getStream(namespaceName, streamId);
+
+        if (!blobStorage.exists(namespace.id, streamId, recordingName))
+            throw new RecordingNotFoundException(namespaceName, streamId, recordingName);
+
+        Recording recording = new Recording();
+        recording.type = stream.type;
+        recording.streamId = streamId;
+        recording.firstEventAt = new DateTime(recordingName.firstEventAt);
+        recording.lastEventAt = new DateTime(recordingName.lastEventAt);
+        recording.labels = stream.labels;
+        recording.name = recordingName;
+        return recording;
     }
 }

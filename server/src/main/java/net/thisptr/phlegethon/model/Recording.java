@@ -24,5 +24,5 @@ public class Recording {
     public StreamId streamId;
 
     @JsonProperty("name")
-    public String name;
+    public RecordingFileName name;
 }

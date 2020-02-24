@@ -52,6 +52,12 @@ public class NamespaceService {
         });
     }
 
+    /**
+     * @param name
+     * @return
+     * @throws SQLException
+     * @throws NamespaceNotFoundException if namespace is not found
+     */
     public Namespace getNamespace(String name) throws SQLException {
         return Transaction.doInTransaction(dataSource, true, (conn) -> {
             Namespace namespace = dao.selectNamespace(conn, name, false);

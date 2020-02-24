@@ -2,6 +2,7 @@ package net.thisptr.phlegethon.server.controller;
 
 import net.thisptr.phlegethon.misc.Pair;
 import net.thisptr.phlegethon.model.Recording;
+import net.thisptr.phlegethon.model.RecordingFileName;
 import net.thisptr.phlegethon.model.RecordingList;
 import net.thisptr.phlegethon.model.Stream;
 import net.thisptr.phlegethon.model.StreamId;
@@ -13,9 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import javax.servlet.http.HttpServletResponse;
 
-import java.io.OutputStream;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 
@@ -50,23 +50,25 @@ public class StreamController {
     @RequestMapping(method = RequestMethod.GET, path = "/" + STREAM_ID_PATTERN + "/recordings")
     public RecordingList get(@PathVariable(value = "namespace") String namespace,
                              @PathVariable(value = "streamId") StreamId streamId,
+                             @RequestParam(value = "start", required = false) Long start,
+                             @RequestParam(value = "end", required = false) Long end,
                              @RequestParam(value = "cursor", required = false) String cursor) throws Exception {
-        return recordingService.listRecordings(namespace, streamId, cursor);
+        return recordingService.listRecordings(namespace, streamId, cursor, start, end);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/" + STREAM_ID_PATTERN + "/recordings/{recordingName}")
     public Recording getRecording(@PathVariable(value = "namespace") String namespace,
                                   @PathVariable(value = "streamId") StreamId streamId,
-                                  @PathVariable(value = "recordingName") String recordingName) throws Exception {
+                                  @PathVariable(value = "recordingName") RecordingFileName recordingName) throws Exception {
         return recordingService.getRecording(namespace, streamId, recordingName);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/" + STREAM_ID_PATTERN + "/recordings/{recordingName}/download")
     public void download(@PathVariable(value = "namespace", required = true) String namespace,
                          @PathVariable(value = "streamId") StreamId streamId,
-                         @PathVariable(value = "recordingName") String recordingName,
+                         @PathVariable(value = "recordingName") RecordingFileName recordingName,
                          HttpServletResponse servletResponse) throws Exception {
-        Recording recording = recordingService.getRecording(namespace, streamId, recordingName );
+        Recording recording = recordingService.getRecording(namespace, streamId, recordingName);
 
         StringBuilder filename = new StringBuilder();
         filename.append(namespace); // [a-z][a-z0-9-]*
@@ -78,7 +80,8 @@ public class StreamController {
         filename.append(recording.type);
 
         // The filename never contains quotes, etc. It'safe.
-        servletResponse.setHeader("Content-Disposition", "attachment; filename=\" + filename + \"");
+        servletResponse.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
+        servletResponse.setHeader("Content-type", "application/octet-stream");
         recordingService.download(namespace, streamId, recordingName, servletResponse.getOutputStream());
     }
 }
