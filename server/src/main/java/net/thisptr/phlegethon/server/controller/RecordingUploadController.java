@@ -17,11 +17,11 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/v1/namespaces/" + NamespaceController.NAMESPACE_PATTERN + "/recordings")
-public class RecordingController {
+public class RecordingUploadController {
     private final RecordingService recordingService;
 
     @Autowired
-    public RecordingController(RecordingService recordingService) {
+    public RecordingUploadController(RecordingService recordingService) {
         this.recordingService = recordingService;
     }
 
@@ -32,12 +32,5 @@ public class RecordingController {
                             InputStream is) throws Exception {
         Map<String, String> labels = Utils.extractParamsByPrefix(allParams, "label.");
         return recordingService.upload(namespace, type, labels, is);
-    }
-
-    @RequestMapping(method = RequestMethod.GET, path = "/download")
-    public void download(@PathVariable(value = "namespace", required = true) String namespace,
-                         @PathVariable("path") String path,
-                         OutputStream os) {
-        recordingService.download(namespace, path, os);
     }
 }

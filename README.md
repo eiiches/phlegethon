@@ -66,3 +66,29 @@ Running a jfr-uploader
    ```sh
    docker run --rm --name phlegethon-jfr-uploader -v `pwd` run //jfr-uploader:docker-image -labels container_name=test -url http://localhost:8080 -namespace test -repository /tmp/jfr-uploader-test
    ```
+
+API
+---
+
+* GET /v1/namespaces
+
+* POST /v1/namespaces
+
+* GET /v1/namespaces/{namespace}
+
+* DELETE /v1/namespaces/{namespace}
+
+* PUT /v1/namespaces/{namespace}
+
+* POST /v1/namespaces/{namespace}/recordings/upload?label.{label1_name}={label1_value}&amp;...&amp;type=jfr
+
+* GET /v1/namespaces/{namespace}/streams/search?label.{label1_name}={label1_value}&amp;...&amp;start={start_unix_epoch_millis}&amp;end={end_unix_epoch_millis}&amp;type=jfr
+
+* GET /v1/namespaces/{namespace}/streams/{stream_id}
+
+* GET /v1/namespaces/{namespace}/streams/{stream_id}/recordings
+
+* GET /v1/namespaces/{namespace}/streams/{stream_id}/recordings/{recording_key}
+
+* GET /v1/namespaces/{namespace}/streams/{stream_id}/recordings/{recording_key}/download
+
