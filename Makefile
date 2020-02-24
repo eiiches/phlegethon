@@ -9,6 +9,7 @@ test:
 .PHONY: gazelle
 gazelle:
 	bazel run //:gazelle
+	bazel run //:gazelle -- update-repos -from_file=jfr-uploader/go.mod
 
 .PHONY: pin-maven
 pin-maven:
@@ -24,7 +25,7 @@ server/docker-image:
 
 .PHONY: jfr-uploader/run
 jfr-uploader/run:
-	bazel run //jfr-uploader:image
+	bazel run //jfr-uploader
 
 .PHONY: jfr-uploader/docker-image
 jfr-uploader/docker-image:
