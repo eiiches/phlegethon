@@ -20,6 +20,7 @@ import net.thisptr.phlegethon.model.NamespaceId;
 import net.thisptr.phlegethon.model.Recording;
 import net.thisptr.phlegethon.model.Stream;
 import net.thisptr.phlegethon.model.StreamId;
+import net.thisptr.phlegethon.model.RecordingList;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -135,13 +136,23 @@ public class RecordingService {
             });
 
             // Upload to the storage.
-            String path = blobStorage.upload(namespace.id, streamId, recording, temporaryBufferFile);
-            recording.path = path;
+            String name = blobStorage.upload(namespace.id, streamId, recording, temporaryBufferFile);
+            recording.name = name;
 
             return recording;
         } finally {
             temporaryBufferFile.delete();
         }
+    }
+
+    public RecordingList listRecordings(String namespaceName, StreamId streamId, String cursor) throws SQLException {
+        Namespace namespace = namespaceService.getNamespace(namespaceName);
+        return null;
+    }
+
+    public Recording getRecording(String namespaceName, StreamId streamId, String recordingId) throws SQLException {
+        Namespace namespace = namespaceService.getNamespace(namespaceName);
+        return null;
     }
 
     public static class StreamDao {
@@ -394,7 +405,7 @@ public class RecordingService {
 
     private static final Logger LOG = LoggerFactory.getLogger(RecordingService.class);
 
-    public void download(String namespace, String path, OutputStream os) {
+    public void download(String namespace, StreamId streamId, String path, OutputStream os) {
 
     }
 }

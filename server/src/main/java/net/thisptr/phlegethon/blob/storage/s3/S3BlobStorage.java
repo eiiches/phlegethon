@@ -37,6 +37,11 @@ public class S3BlobStorage implements BlobStorage {
 
     @Override
     public String upload(NamespaceId namespaceId, StreamId streamId, Recording recording, File file) throws IOException {
+        StringBuilder name = new StringBuilder();
+        name.append(recording.firstEventAt.getMillis());
+        name.append('-');
+        name.append(recording.lastEventAt.getMillis());
+
         StringBuilder sb = new StringBuilder();
         sb.append(namespaceId.toInt());
         sb.append('/');
@@ -47,13 +52,11 @@ public class S3BlobStorage implements BlobStorage {
         sb.append('/');
         sb.append(DateTimeFormat.forPattern("HH/mm").print(utcFirstEventAt));
         sb.append('/');
-        sb.append(recording.firstEventAt.getMillis());
-        sb.append('-');
-        sb.append(recording.lastEventAt.getMillis());
+        sb.append(name);
         sb.append('.');
         sb.append(recording.type);
         String key = sb.toString();
         client.putObject(bucketName, key, file);
-        return key;
+        return name.toString();
     }
 }

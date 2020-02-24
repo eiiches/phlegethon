@@ -87,6 +87,7 @@ maven_install(
         "com.google.errorprone:error_prone_annotations:2.3.4",
         "joda-time:joda-time:2.10.5",
         "com.fasterxml.jackson.datatype:jackson-datatype-joda:2.10.2",
+        "javax.servlet:javax.servlet-api:3.0.1",
     ],
     fetch_sources = True,
     maven_install_json = "//:maven_install.json",

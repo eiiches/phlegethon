@@ -23,6 +23,6 @@ public class Recording {
     @JsonProperty("stream_id")
     public StreamId streamId;
 
-    @JsonProperty("path")
-    public String path;
+    @JsonProperty("name")
+    public String name;
 }
