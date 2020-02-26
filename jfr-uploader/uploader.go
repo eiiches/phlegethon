@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -26,7 +25,7 @@ func NewJfrUploader(options *Options) (*JfrUploader, error) {
 }
 
 func (this *JfrUploader) uploadFile(path string) error {
-	fmt.Printf("uploading %s\n", path)
+	sugar.Infow("upload", "path", path)
 	return nil
 }
 

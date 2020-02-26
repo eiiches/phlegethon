@@ -16,11 +16,16 @@ type Options struct {
 	Namespace       string            `json:"namespace"`
 }
 
+var (
+	logger *zap.Logger
+	sugar  *zap.SugaredLogger
+)
+
 func main() {
-	logger, _ := zap.NewProduction()
+	logger, _ = zap.NewProduction()
 	defer logger.Sync()
 
-	sugar := logger.Sugar()
+	sugar = logger.Sugar()
 
 	app := &cli.App{
 		Name:  "Phlegethon JFR Uploader",
