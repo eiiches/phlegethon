@@ -8,10 +8,17 @@ go_image(
 
 go_library(
     name = "go_default_library",
-    srcs = ["main.go"],
+    srcs = [
+        "main.go",
+        "state.go",
+        "uploader.go",
+    ],
     importpath = "github.com/example/project/jfr-uploader",
     visibility = ["//visibility:private"],
-    deps = ["@com_github_urfave_cli_v2//:go_default_library"],
+    deps = [
+        "@com_github_mattn_go_sqlite3//:go_default_library",
+        "@com_github_urfave_cli_v2//:go_default_library",
+    ],
 )
 
 go_binary(

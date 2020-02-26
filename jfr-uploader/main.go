@@ -53,8 +53,9 @@ func main() {
 				fmt.Printf("Options: %s\n", bytes)
 			}
 
-			uploader := &JfrUploader{
-				Options: options,
+			uploader, err := NewJfrUploader(options)
+			if err != nil {
+				return err
 			}
 			return uploader.Run()
 		},
