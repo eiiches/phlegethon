@@ -1,6 +1,9 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
+	"net/http"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -11,6 +14,7 @@ import (
 type JfrUploader struct {
 	options *Options
 	state   *StateStore
+	client  *http.Client
 }
 
 func NewJfrUploader(options *Options) (*JfrUploader, error) {
@@ -21,12 +25,51 @@ func NewJfrUploader(options *Options) (*JfrUploader, error) {
 	return &JfrUploader{
 		options: options,
 		state:   state,
+		client: &http.Client{
+			Timeout: 60 * time.Second,
+		},
 	}, nil
 }
 
 func (this *JfrUploader) uploadFile(path string) error {
-	sugar.Infow("uploaded a jfr recording", "file", path, "response", "TBD")
-	return nil
+	fp, err := os.Open(filepath.Join(this.options.LocalRepository, path))
+	if err != nil {
+		return err
+	}
+	defer fp.Close()
+
+	req, err := http.NewRequest("POST", this.options.URL+"/v1/namespaces/"+this.options.Namespace+"/recordings/upload", fp)
+	if err != nil {
+		return err
+	}
+	params := req.URL.Query()
+	params.Add("type", "jfr")
+	for labelName, labelValue := range this.options.Labels {
+		params.Add("label."+labelName, labelValue)
+	}
+	req.URL.RawQuery = params.Encode()
+	req.Header.Set("Content-type", "application/octet-stream")
+
+	resp, err := this.client.Do(req)
+	if err != nil {
+		return err
+	}
+
+	var respBody interface{}
+	if err := json.NewDecoder(resp.Body).Decode(&respBody); err != nil {
+		return err
+	}
+	if err := resp.Body.Close(); err != nil {
+		return err
+	}
+
+	if resp.StatusCode != 200 {
+		sugar.Errorw("failed to upload a jfr recording", "file", path, "status", resp.StatusCode, "response", respBody)
+		return fmt.Errorf("got error response from server")
+	} else {
+		sugar.Infow("uploaded a jfr recording", "file", path, "status", resp.StatusCode, "response", respBody)
+		return nil
+	}
 }
 
 func (this *JfrUploader) listJfrFiles() ([]string, error) {
@@ -79,7 +122,9 @@ func (this *JfrUploader) runOnce() error {
 		}
 		sugar.Debugw("detected a new jfr recording", "file", jfrFile)
 		// file exists, and not yet uploaded
-		this.uploadFile(jfrFile)
+		if err := this.uploadFile(jfrFile); err != nil {
+			continue // retry on next routine check
+		}
 		this.state.InsertUploadedFileRecord(jfrFile)
 	}
 

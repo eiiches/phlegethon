@@ -123,7 +123,7 @@ public class RecordingService {
                 // If other thread tries to update this namespace, it will be blocked.
                 Namespace ns = namespaceDao.selectNamespace(conn, namespaceName, true);
                 if (ns == null)
-                    throw new NamespaceNotFoundException(ns.name);
+                    throw new NamespaceNotFoundException(namespaceName);
 
                 List<Long> labelIds = new ArrayList<>();
                 for (Map.Entry<String, String> entry : labels.entrySet()) {
