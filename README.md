@@ -66,7 +66,7 @@ Running a jfr-uploader
 3. Start a jfr-uploader.
 
    ```sh
-   docker run --rm --name phlegethon-jfr-uploader -v `pwd` run //jfr-uploader:docker-image -labels container_name=test -url http://localhost:8080 -namespace test -repository /tmp/jfr-uploader-test
+   docker run --rm --name phlegethon-jfr-uploader -v /tmp/jfr-uploader-test:/tmp/jfr-uploader-test bazel/jfr-uploader:image --label container_name=test --url http://<SERVER_IP>:8080 --namespace test --jfr-repository /tmp/jfr-uploader-test
    ```
 
 API

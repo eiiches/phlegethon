@@ -22,7 +22,9 @@ var (
 )
 
 func main() {
-	logger, _ = zap.NewProduction()
+	loggerConfig := zap.NewProductionConfig()
+	loggerConfig.Level.SetLevel(zap.DebugLevel)
+	logger, _ = loggerConfig.Build()
 	defer logger.Sync()
 
 	sugar = logger.Sugar()

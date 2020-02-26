@@ -25,7 +25,7 @@ func NewJfrUploader(options *Options) (*JfrUploader, error) {
 }
 
 func (this *JfrUploader) uploadFile(path string) error {
-	sugar.Infow("upload", "path", path)
+	sugar.Infow("uploaded a jfr recording", "file", path, "response", "TBD")
 	return nil
 }
 
@@ -77,6 +77,7 @@ func (this *JfrUploader) runOnce() error {
 			delete(uploadedFiles, jfrFile)
 			continue
 		}
+		sugar.Debugw("detected a new jfr recording", "file", jfrFile)
 		// file exists, and not yet uploaded
 		this.uploadFile(jfrFile)
 		this.state.InsertUploadedFileRecord(jfrFile)
@@ -84,6 +85,7 @@ func (this *JfrUploader) runOnce() error {
 
 	// file already gone, but stale entry exists
 	for uploadedFile := range uploadedFiles {
+		sugar.Debugw("detected a deleted jfr recording", "file", uploadedFile)
 		this.state.DeleteUploadedFileRecord(uploadedFile)
 	}
 	return err
@@ -91,7 +93,9 @@ func (this *JfrUploader) runOnce() error {
 
 func (this *JfrUploader) Run() error {
 	for {
-		this.runOnce()
+		if err := this.runOnce(); err != nil {
+			sugar.Errorw("routine check failed", "error", err)
+		}
 		time.Sleep(10 * time.Second)
 	}
 }
