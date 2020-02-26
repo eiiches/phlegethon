@@ -45,6 +45,7 @@ func (this *StateStore) DeleteUploadedFileRecord(path string) error {
 	if err != nil {
 		return err
 	}
+	defer stmt.Close()
 	if _, err := stmt.Exec(path); err != nil {
 		return err
 	}
@@ -56,6 +57,7 @@ func (this *StateStore) InsertUploadedFileRecord(path string) error {
 	if err != nil {
 		return err
 	}
+	defer stmt.Close()
 	if _, err := stmt.Exec(path); err != nil {
 		return err
 	}
