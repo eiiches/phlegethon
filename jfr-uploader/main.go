@@ -1,9 +1,9 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/urfave/cli/v2"
+	"go.uber.org/zap"
 	"log"
 	"os"
 	"strings"
@@ -17,6 +17,11 @@ type Options struct {
 }
 
 func main() {
+	logger, _ := zap.NewProduction()
+	defer logger.Sync()
+
+	sugar := logger.Sugar()
+
 	app := &cli.App{
 		Name:  "Phlegethon JFR Uploader",
 		Usage: "Uploads JFR recordings continuously to Phlegethon JFR Remote Storage",
@@ -24,13 +29,13 @@ func main() {
 			options := &Options{}
 
 			options.LocalRepository = c.String("jfr-repository")
-			fmt.Printf("Argument: --jfr-repository %s\n", options.LocalRepository)
+			sugar.Infow("argument", "name", "--jfr-repository", "value", options.LocalRepository)
 
 			options.URL = c.String("url")
-			fmt.Printf("Argument: --url %s\n", options.URL)
+			sugar.Infow("argument", "name", "--url", "value", options.URL)
 
 			options.Namespace = c.String("namespace")
-			fmt.Printf("Argument: --namespace %s\n", options.Namespace)
+			sugar.Infow("argument", "name", "--namespace", "value", options.Namespace)
 
 			options.Labels = map[string]string{}
 			labelArgs := c.StringSlice("label")
@@ -40,19 +45,15 @@ func main() {
 					nvpair[0] = strings.TrimSpace(nvpair[0])
 					nvpair[1] = strings.TrimSpace(nvpair[1])
 					options.Labels[nvpair[0]] = nvpair[1]
-					fmt.Printf("Argument: --label %s=%s\n", nvpair[0], nvpair[1])
+					sugar.Infow("argument", "name", "--label", "value", fmt.Sprintf("%s=%s", nvpair[0], nvpair[1]))
 				} else if len(nvpair) == 1 {
 					nvpair[0] = strings.TrimSpace(nvpair[0])
 					options.Labels[nvpair[0]] = ""
-					fmt.Printf("Argument: --label %s=\n", nvpair[0])
+					sugar.Infow("argument", "name", "--label", "value", fmt.Sprintf("%s=", nvpair[0]))
 				}
 			}
 
-			bytes, err := json.Marshal(options)
-			if err == nil {
-				fmt.Printf("Options: %s\n", bytes)
-			}
-
+			sugar.Infow("options", "options", options)
 			uploader, err := NewJfrUploader(options)
 			if err != nil {
 				return err

@@ -18,6 +18,7 @@ go_library(
     deps = [
         "@com_github_mattn_go_sqlite3//:go_default_library",
         "@com_github_urfave_cli_v2//:go_default_library",
+        "@org_uber_go_zap//:go_default_library",
     ],
 )
 
