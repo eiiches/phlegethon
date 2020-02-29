@@ -6,6 +6,7 @@ import (
 	"go.uber.org/zap"
 	"log"
 	"os"
+	"regexp"
 	"strings"
 )
 
@@ -20,6 +21,16 @@ var (
 	logger *zap.Logger
 	sugar  *zap.SugaredLogger
 )
+
+const (
+	labelNamePattern = `^[a-z][a-z0-9_]*$`
+)
+
+func validateLabel(name string, value string) {
+	if !regexp.MustCompile(labelNamePattern).MatchString(name) {
+		sugar.Fatalw("invalid --label argument; label name must match "+labelNamePattern, "name", "--label", "value", fmt.Sprintf("%s=%s", name, value))
+	}
+}
 
 func main() {
 	loggerConfig := zap.NewProductionConfig()
@@ -50,13 +61,13 @@ func main() {
 				nvpair := strings.SplitN(labelArg, "=", 2)
 				if len(nvpair) == 2 {
 					nvpair[0] = strings.TrimSpace(nvpair[0])
-					// TODO: validate label name
 					nvpair[1] = strings.TrimSpace(nvpair[1])
+					validateLabel(nvpair[0], nvpair[1])
 					options.Labels[nvpair[0]] = nvpair[1]
 					sugar.Infow("argument", "name", "--label", "value", fmt.Sprintf("%s=%s", nvpair[0], nvpair[1]))
 				} else if len(nvpair) == 1 {
 					nvpair[0] = strings.TrimSpace(nvpair[0])
-					// TODO: validate label name
+					validateLabel(nvpair[0], "")
 					options.Labels[nvpair[0]] = ""
 					sugar.Infow("argument", "name", "--label", "value", fmt.Sprintf("%s=", nvpair[0]))
 				}
