@@ -13,7 +13,6 @@ java_library(
         "@maven//:com_amazonaws_aws_java_sdk_core",
         "@maven//:com_amazonaws_aws_java_sdk_s3",
         "@maven//:com_google_errorprone_error_prone_annotations",
-        "@maven//:com_google_guava_guava",
         "@maven//:javax_validation_validation_api",
         "@maven//:joda_time_joda_time",
         "@maven//:org_slf4j_slf4j_api",
