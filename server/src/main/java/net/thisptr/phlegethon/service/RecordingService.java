@@ -54,7 +54,6 @@ public class RecordingService {
     private final BlobTypeRegistry typeRegistry = BlobTypeRegistry.getInstance();
     private final DataSource dataSource;
     private final BlobStorage blobStorage;
-    private final NamespaceService namespaceService;
 
     private final Cache<Long, LabelDao.Label> labelCache = CacheBuilder.newBuilder()
             .expireAfterAccess(10, TimeUnit.MINUTES)
@@ -64,8 +63,7 @@ public class RecordingService {
     private final NamespaceDao namespaceDao = new NamespaceDao();
 
     @Autowired
-    public RecordingService(NamespaceService namespaceService, DataSource dataSource, BlobStorage blobStorage) {
-        this.namespaceService = namespaceService;
+    public RecordingService(DataSource dataSource, BlobStorage blobStorage) {
         this.dataSource = dataSource;
         this.blobStorage = blobStorage;
     }
@@ -240,47 +238,47 @@ public class RecordingService {
         return stream;
     }
 
-    public Stream getStream(String namespaceName, StreamId streamId) throws Exception {
+    public Pair<Namespace, Stream> getStream(String namespaceName, StreamId streamId) throws Exception {
         return Transaction.doInTransaction(dataSource, true, (conn) -> {
             Namespace namespace = namespaceDao.selectNamespace(conn, namespaceName, false);
             if (namespace == null)
                 throw new NamespaceNotFoundException(namespaceName);
 
             StreamDao.StreamRecord streamRecord = streamDao.select(conn, namespace.id, streamId);
-            return toStream(conn, namespace.id, streamRecord);
+            return Pair.of(namespace, toStream(conn, namespace.id, streamRecord));
         });
     }
 
     private static final Logger LOG = LoggerFactory.getLogger(RecordingService.class);
 
     public InputStream download(String namespaceName, StreamId streamId, RecordingFileName recordingName) throws Exception {
-        Namespace namespace = namespaceService.getNamespace(namespaceName);
-        Stream stream = getStream(namespaceName, streamId);
+        Pair<Namespace, Stream> namespaceAndStream = getStream(namespaceName, streamId);
 
-        BlobTypeRegistration typeRegistration = typeRegistry.getRegistration(stream.type); // If the type is not registered, UnsupportedBlobTypeException will be thrown.
+        BlobTypeRegistration typeRegistration = typeRegistry.getRegistration(namespaceAndStream._2.type); // If the type is not registered, UnsupportedBlobTypeException will be thrown.
 
-        return typeRegistration.handler.decode(blobStorage.download(namespace.id, streamId, recordingName));
+        return typeRegistration.handler.decode(blobStorage.download(namespaceAndStream._1.id, streamId, recordingName));
     }
 
-    public RecordingList listRecordings(String namespaceName, StreamId streamId, String cursor, Long start, Long end) throws SQLException {
-        // TODO: implement
-        Namespace namespace = namespaceService.getNamespace(namespaceName);
+    public RecordingList listRecordings(String namespaceName, StreamId streamId, String cursor, Long start, Long end) throws Exception {
+        Pair<Namespace, Stream> namespaceAndStream = getStream(namespaceName, streamId);
+
+        // TODO: imple
+
         return null;
     }
 
     public Recording getRecording(String namespaceName, StreamId streamId, RecordingFileName recordingName) throws Exception {
-        Namespace namespace = namespaceService.getNamespace(namespaceName);
-        Stream stream = getStream(namespaceName, streamId);
+        Pair<Namespace, Stream> namespaceAndStream = getStream(namespaceName, streamId);
 
-        if (!blobStorage.exists(namespace.id, streamId, recordingName))
+        if (!blobStorage.exists(namespaceAndStream._1.id, streamId, recordingName))
             throw new RecordingNotFoundException(namespaceName, streamId, recordingName);
 
         Recording recording = new Recording();
-        recording.type = stream.type;
+        recording.type = namespaceAndStream._2.type;
         recording.streamId = streamId;
         recording.firstEventAt = new DateTime(recordingName.firstEventAt);
         recording.lastEventAt = new DateTime(recordingName.lastEventAt);
-        recording.labels = stream.labels;
+        recording.labels = namespaceAndStream._2.labels;
         recording.name = recordingName;
         return recording;
     }
