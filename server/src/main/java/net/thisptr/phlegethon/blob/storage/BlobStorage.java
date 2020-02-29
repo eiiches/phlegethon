@@ -3,6 +3,7 @@ package net.thisptr.phlegethon.blob.storage;
 import net.thisptr.phlegethon.model.NamespaceId;
 import net.thisptr.phlegethon.model.RecordingFileName;
 import net.thisptr.phlegethon.model.StreamId;
+import org.joda.time.DateTime;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,5 +18,5 @@ public interface BlobStorage {
 
     InputStream download(NamespaceId namespaceId, StreamId streamId, RecordingFileName recordingName) throws IOException;
 
-    void purge(NamespaceId namespaceId, Duration retention) throws IOException;
+    void purge(NamespaceId namespaceId, DateTime threshold) throws IOException;
 }

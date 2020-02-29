@@ -19,6 +19,7 @@ import net.thisptr.phlegethon.model.RecordingList;
 import net.thisptr.phlegethon.model.Stream;
 import net.thisptr.phlegethon.model.StreamId;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,6 @@ import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -300,7 +300,7 @@ public class RecordingService {
     }
 
     @Scheduled(fixedDelay = 60 * 60 * 1000L)
-    public void purgeOldRecordings() {
+    public void purgeOldRecordings() throws SQLException {
         // NOTE: do not throw an exception in this method, it will cause a scheduler to stop
 
         List<Namespace> namespaces;
@@ -314,12 +314,18 @@ public class RecordingService {
         }
 
         for (Namespace namespace : namespaces) {
+            DateTime threshold = new DateTime(DateTimeUtils.currentTimeMillis() - namespace.config.retentionSeconds * 1000L);
             try {
-                blobStorage.purge(namespace.id, Duration.ofSeconds(namespace.config.retentionSeconds));
+                blobStorage.purge(namespace.id, threshold);
             } catch (Throwable th) {
                 LOG.warn("Failed to purge old recordings (namespace = {}).", namespace.name, th);
-                return;
             }
+            Transaction.doInTransaction(dataSource, false, (conn) -> {
+                int deletedStreams = streamDao.deleteStreamsOlderThan(conn, namespace.id, threshold);
+                LOG.info("Purged {} streams from database (namespace = {}).", deletedStreams, namespace.name);
+                int deletedLabels = labelDao.deleteLabelsOlderThan(conn, namespace.id, threshold);
+                LOG.info("Purged {} labels from database (namespace = {}).", deletedLabels, namespace.name);
+            });
         }
     }
 }

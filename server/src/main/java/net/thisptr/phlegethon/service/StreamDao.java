@@ -42,6 +42,13 @@ public class StreamDao {
                 .executeUpdate();
     }
 
+    public int deleteStreamsOlderThan(Connection conn, NamespaceId namespaceId, DateTime threshold) throws SQLException {
+        return FluentStatement.prepare(conn, "DELETE FROM Streams WHERE namespace_id = $namespace_id AND last_event_at < $threshold")
+                .bind("namespace_id", namespaceId.toInt())
+                .bind("threshold", threshold.getMillis())
+                .executeUpdate();
+    }
+
     public static class StreamRecord {
         public byte[] streamId;
         public List<Long> labelIds;

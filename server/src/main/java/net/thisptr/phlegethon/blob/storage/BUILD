@@ -6,5 +6,6 @@ java_library(
     visibility = ["//server:__subpackages__"],
     deps = [
         "//server/src/main/java/net/thisptr/phlegethon/model",
+        "@maven//:joda_time_joda_time",
     ],
 )

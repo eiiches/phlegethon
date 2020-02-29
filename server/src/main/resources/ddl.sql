@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS Labels (
 
     CONSTRAINT label_pk PRIMARY KEY (label_id),
     CONSTRAINT label_unique UNIQUE (namespace_id, name, value),
-    CONSTRAINT label_namespace_id_fk FOREIGN KEY (namespace_id) REFERENCES Namespaces (namespace_id)
+    CONSTRAINT label_namespace_id_fk FOREIGN KEY (namespace_id) REFERENCES Namespaces (namespace_id),
+    INDEX label_last_event_at_idx (namespace_id, last_event_at)
 );
 
 CREATE TABLE IF NOT EXISTS Streams (
@@ -35,5 +36,6 @@ CREATE TABLE IF NOT EXISTS Streams (
 
     CONSTRAINT stream_pk PRIMARY KEY (namespace_id, stream_id),
     CONSTRAINT stream_namespace_id_fk FOREIGN KEY (namespace_id) REFERENCES Namespaces (namespace_id),
-    INDEX stream_label_idx (namespace_id, (CAST(label_ids AS UNSIGNED ARRAY)))
+    INDEX stream_label_idx (namespace_id, (CAST(label_ids AS UNSIGNED ARRAY))),
+    INDEX stream_last_event_at_idx (namespace_id, last_event_at)
 );

@@ -2,3 +2,8 @@ spring:
   jackson:
     serialization:
       write_dates_as_timestamps: true
+
+logging:
+  level:
+    root: INFO
+    net.thisptr.phlegethon: DEBUG

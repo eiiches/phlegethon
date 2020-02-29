@@ -17,7 +17,7 @@ pin-maven:
 
 .PHONY: server/run
 server/run:
-	bazel run //server/src/main/java/net/thisptr/phlegethon/server:server-main -- --spring.config.additional-location=file://`pwd`/ --logging.level.root=debug
+	bazel run //server/src/main/java/net/thisptr/phlegethon/server:server-main -- --spring.config.additional-location=file://`pwd`/
 
 .PHONY: server/docker-image
 server/docker-image:

@@ -84,9 +84,8 @@ public class S3BlobStorage implements BlobStorage {
     private static final Pattern KEY_PATTERN = Pattern.compile("(?<namespace>[0-9]+)/(?<date>[0-9]{4}/[0-9]{2}/[0-9]{2})/(?<stream>[a-f0-9]{40})/(?<hour>[0-9]{2})/(?<minute>[0-9]{2})/(?<name>[a-f0-9]{32})");
 
     @Override
-    public void purge(NamespaceId namespaceId, Duration retention) {
+    public void purge(NamespaceId namespaceId, DateTime threshold) {
         LOG.debug("Purging old recordings (namespace_id = {})", namespaceId);
-        DateTime threshold = new DateTime(DateTimeUtils.currentTimeMillis() - retention.toMillis());
         long start = System.currentTimeMillis();
         @Var int deletedObjects = 0;
 

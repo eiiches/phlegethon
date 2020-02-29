@@ -59,7 +59,7 @@ public class FluentStatement {
         m.appendTail(sb);
 
         String sql = sb.toString();
-        LOG.debug("SQL: {} [{}]", sql, values);
+        LOG.trace("SQL: {} [{}]", sql, values);
         PreparedStatement stmt = conn.prepareStatement(sql);
         try {
             for (int i = 0; i < values.size(); ++i)
