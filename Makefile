@@ -19,6 +19,10 @@ pin-maven:
 server/run:
 	bazel run //server/src/main/java/net/thisptr/phlegethon/server:server-main -- --spring.config.additional-location=file://`pwd`/
 
+.PHONY: server/run-image
+server/run-image: server/image
+	docker run --network host --rm --name phlegethon-server -v `pwd`/application.yaml:/etc/phlegethon/application.yaml:ro phlegethon/server --spring.config.additional-location=file:///etc/phlegethon/
+
 .PHONY: server/image
 server/image:
 	bazel run //server/src/main/java/net/thisptr/phlegethon/server:image-bundle -- --norun
@@ -30,6 +34,10 @@ server/create-test-namespace:
 .PHONY: jfr-uploader/run
 jfr-uploader/run:
 	bazel run //jfr-uploader -- --label app_name=test-app --url http://localhost:8080 --namespace test --jfr-repository /tmp/test-app --delete
+
+.PHONY: jfr-uploader/run-image
+jfr-uploader/run-image: jfr-uploader/image
+	docker run --network host --rm --name jfr-uploader -v /tmp/test-app:/data phlegethon/jfr-uploader --label app_name=test-app --url http://localhost:8080 --namespace test --jfr-repository /data --delete
 
 .PHONY: jfr-uploader/image
 jfr-uploader/image:
