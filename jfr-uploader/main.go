@@ -15,6 +15,7 @@ type Options struct {
 	URL             string            `json:"url"`
 	LocalRepository string            `json:"local_repository"`
 	Namespace       string            `json:"namespace"`
+	DeleteUploaded  bool              `json:"delete_uploaded"`
 }
 
 var (
@@ -73,6 +74,9 @@ func main() {
 				}
 			}
 
+			options.DeleteUploaded = c.Bool("delete")
+			sugar.Infow("argument", "name", "--delete", "value", options.DeleteUploaded)
+
 			sugar.Infow("options", "options", options)
 			uploader, err := NewJfrUploader(options)
 			if err != nil {
@@ -101,6 +105,11 @@ func main() {
 				Name:     "jfr-repository",
 				Usage:    "Path to JFR local repository. This should point to the same \"repository\" specified in -XX:FlightRecorderOptions.",
 				Required: true,
+			},
+			&cli.BoolFlag{
+				Name:     "delete",
+				Usage:    "If enabled, a jfr recording file will be deleted when the file is uploaded successfully. Note that JVM emits harmless error logs that indicate it failed to delete the recordings.",
+				Required: false,
 			},
 		},
 	}

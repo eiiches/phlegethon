@@ -118,6 +118,14 @@ func (this *JfrUploader) runOnce() error {
 		// file exists, already uploaded
 		if uploadedFiles[jfrFile] {
 			delete(uploadedFiles, jfrFile)
+			if this.options.DeleteUploaded {
+				if err := os.Remove(filepath.Join(this.options.LocalRepository, jfrFile)); err != nil {
+					sugar.Warnw("failed to remove an already uploaded jfr recording", "file", jfrFile)
+				} else {
+					sugar.Debugw("deleted an already upload jfr recording", "file", jfrFile)
+					this.state.DeleteUploadedFileRecord(jfrFile)
+				}
+			}
 			continue
 		}
 		sugar.Debugw("detected a new jfr recording", "file", jfrFile)
@@ -125,7 +133,18 @@ func (this *JfrUploader) runOnce() error {
 		if err := this.uploadFile(jfrFile); err != nil {
 			continue // retry on next routine check
 		}
-		this.state.InsertUploadedFileRecord(jfrFile)
+		if this.options.DeleteUploaded {
+			if err := os.Remove(filepath.Join(this.options.LocalRepository, jfrFile)); err != nil {
+				sugar.Warnw("failed to remove a jfr recording after successful upload", "file", jfrFile)
+				this.state.InsertUploadedFileRecord(jfrFile)
+				// Removal is retried in the next round.
+			} else {
+				sugar.Debugw("deleted a jfr recording after success upload", "file", jfrFile)
+				// If the removal is successful, we don't need to insert a record to the DB.
+			}
+		} else {
+			this.state.InsertUploadedFileRecord(jfrFile)
+		}
 	}
 
 	// file already gone, but stale entry exists
