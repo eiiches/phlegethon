@@ -23,9 +23,13 @@ server/run:
 server/image:
 	bazel run //server/src/main/java/net/thisptr/phlegethon/server:image-bundle -- --norun
 
+.PHONY: server/create-test-namespace
+server/create-test-namespace:
+	curl -X POST -H 'Content-type: application/json' -d '{"name": "test", "config": {"retention_seconds": 172800}}' "http://localhost:8080/v1/namespaces"
+
 .PHONY: jfr-uploader/run
 jfr-uploader/run:
-	bazel run //jfr-uploader
+	bazel run //jfr-uploader -- --label app_name=test-app --url http://localhost:8080 --namespace test --jfr-repository /tmp/test-app --delete
 
 .PHONY: jfr-uploader/image
 jfr-uploader/image:
