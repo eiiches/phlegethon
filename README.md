@@ -60,8 +60,10 @@ Running a jfr-uploader
 2. Start your application with FlightRecorder enabled. Avoid using default repository=/tmp directory.
 
    ```sh
-   java -XX:StartFlightRecording=settings=default,maxsize=128m -XX:FlightRecorderOptions=repository=/tmp/jfr-uploader-test,maxchunksize=12m ...
+   java -XX:StartFlightRecording=settings=default,maxsize=128m,dumponexit=true,filename=/tmp/jfr-uploader-test/ -XX:FlightRecorderOptions=repository=/tmp/jfr-uploader-test,maxchunksize=12m ...
    ```
+
+   See [Advanced Runtime Options for Java](https://docs.oracle.com/en/java/javase/13/docs/specs/man/java.html#advanced-runtime-options-for-java) for details.
 
 3. Start a jfr-uploader.
 
