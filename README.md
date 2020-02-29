@@ -3,6 +3,15 @@ Phlegethon - Remote JFR Storage &amp; Viewer
 
 *Status: The development has just started. Far from feature complete. Not ready for use.*
 
+Features
+--------
+
+* HTTP API to upload and manage JFR recordings
+* Organize JFR recordings by labels
+* A jfr-uploader agent (written in Go), which watches a local directory and uploads jfr recordings.
+  * Docker image to deploy as a sidecar container in k8s.
+* **[TODO]** WEB UI to inspect CPU profiles, etc.
+
 Requirements
 ------------
 
@@ -48,6 +57,12 @@ Running a server
    docker run --rm --name phlegethon-server -v `pwd`/application.yaml:/etc/phlegethon/application.yaml:ro -p 8080:8080 bazel/server/src/main/java/net/thisptr/phlegethon/server:docker-image --spring.config.additional-location=file::///etc/phlegethon/
    ```
 
+4. Create a `test` namespace
+
+   ```sh
+   curl -X POST -H 'Content-type: application/json' -d '{"name": "test", "config": {"retention_seconds": 172800}}' "http://<SERVER_IP>:8080/v1/namespaces"
+   ```
+
 Running a jfr-uploader
 ----------------------
 
@@ -57,7 +72,7 @@ Running a jfr-uploader
    make jfr-uploader/docker-image
    ```
 
-2. Start your application with FlightRecorder enabled. Avoid using default repository=/tmp directory.
+2. Start your application with FlightRecorder enabled. We recommend against using /tmp (the default) as `repository`.
 
    ```sh
    java -XX:StartFlightRecording=settings=default,maxsize=128m,dumponexit=true,filename=/tmp/jfr-uploader-test/ -XX:FlightRecorderOptions=repository=/tmp/jfr-uploader-test,maxchunksize=12m ...
@@ -65,10 +80,10 @@ Running a jfr-uploader
 
    See [Advanced Runtime Options for Java](https://docs.oracle.com/en/java/javase/13/docs/specs/man/java.html#advanced-runtime-options-for-java) for details.
 
-3. Start a jfr-uploader.
+3. Start a jfr-uploader. See `--help` for details.
 
    ```sh
-   docker run --rm --name phlegethon-jfr-uploader -v /tmp/jfr-uploader-test:/tmp/jfr-uploader-test bazel/jfr-uploader:image --label container_name=test --url http://<SERVER_IP>:8080 --namespace test --jfr-repository /tmp/jfr-uploader-test
+   docker run --rm --name jfr-uploader -v /tmp/jfr-uploader-test:/data bazel/jfr-uploader:image --label container_name=test --url http://<SERVER_IP>:8080 --namespace test --jfr-repository /data --delete
    ```
 
 API
@@ -94,7 +109,7 @@ API
 
 * DELETE /v1/namespaces/{namespace}/streams/{stream_id}
 
-  Deleting a stream will not delete the actual recordings in the object storage. They are still subject to retention policy set on the namespace.
+  Deleting a stream will not actually delete the corresponding recordings in the object storage. They are still subject to retention policy set on the namespace.
 
 * GET /v1/namespaces/{namespace}/streams/{stream_id}/recordings?start={start_unix_epoch_millis}&amp;end={end_unix_epoch_millis} *[NOT IMPLEMENTED]*
 
