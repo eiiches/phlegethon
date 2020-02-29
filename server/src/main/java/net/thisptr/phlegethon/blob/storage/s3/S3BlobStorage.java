@@ -96,7 +96,7 @@ public class S3BlobStorage implements BlobStorage {
                     .withPrefix(String.valueOf(namespaceId.toInt()) + "/")
                     .withContinuationToken(nextToken);
 
-            boolean reachedDateAfterThreshold = false;
+            @Var boolean reachedDateAfterThreshold = false;
             List<DeleteObjectsRequest.KeyVersion> keysToDelete = new ArrayList<>();
 
             ListObjectsV2Result result = client.listObjectsV2(request);
