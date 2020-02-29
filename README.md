@@ -24,7 +24,7 @@ Running a server
 1. Build a Docker image.
 
    ```sh
-   make server/docker-image
+   make server/image
    ```
 
 2. Start MySQL and Minio.
@@ -54,7 +54,7 @@ Running a server
            properties:
                cachePrepStmts: true
    EOF
-   docker run --rm --name phlegethon-server -v `pwd`/application.yaml:/etc/phlegethon/application.yaml:ro -p 8080:8080 bazel/server/src/main/java/net/thisptr/phlegethon/server:docker-image --spring.config.additional-location=file::///etc/phlegethon/
+   docker run --network host --rm --name phlegethon-server -v `pwd`/application.yaml:/etc/phlegethon/application.yaml:ro phlegethon/server --spring.config.additional-location=file:///etc/phlegethon/
    ```
 
 4. Create a `test` namespace
@@ -69,7 +69,7 @@ Running a jfr-uploader
 1. Build a Docker image.
 
    ```sh
-   make jfr-uploader/docker-image
+   make jfr-uploader/image
    ```
 
 2. Start your application with FlightRecorder enabled. We recommend against using /tmp (the default) as `repository`.
@@ -83,7 +83,7 @@ Running a jfr-uploader
 3. Start a jfr-uploader. See `--help` for details.
 
    ```sh
-   docker run --rm --name jfr-uploader -v /tmp/jfr-uploader-test:/data bazel/jfr-uploader:image --label container_name=test --url http://<SERVER_IP>:8080 --namespace test --jfr-repository /data --delete
+   docker run --network host --rm --name jfr-uploader -v /tmp/jfr-uploader-test:/data phlegethon/jfr-uploader --label container_name=test --url http://localhost:8080 --namespace test --jfr-repository /data --delete
    ```
 
 API

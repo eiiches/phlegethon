@@ -19,14 +19,14 @@ pin-maven:
 server/run:
 	bazel run //server/src/main/java/net/thisptr/phlegethon/server:server-main -- --spring.config.additional-location=file://`pwd`/
 
-.PHONY: server/docker-image
-server/docker-image:
-	bazel run //server/src/main/java/net/thisptr/phlegethon/server:docker-image -- --norun
+.PHONY: server/image
+server/image:
+	bazel run //server/src/main/java/net/thisptr/phlegethon/server:image-bundle -- --norun
 
 .PHONY: jfr-uploader/run
 jfr-uploader/run:
 	bazel run //jfr-uploader
 
-.PHONY: jfr-uploader/docker-image
-jfr-uploader/docker-image:
-	bazel run //jfr-uploader:image -- --norun
+.PHONY: jfr-uploader/image
+jfr-uploader/image:
+	bazel run //jfr-uploader:image-bundle -- --norun

@@ -102,6 +102,24 @@ load("@maven//:defs.bzl", "pinned_maven_install")
 
 pinned_maven_install()
 
+load("@io_bazel_rules_docker//container:container.bzl", "container_pull")
+
+container_pull(
+    name = "openjdk-image",
+    digest = "sha256:2ff78838e2d5261bbc03c75324fea5e009d2d8c64139646f6cb9d6c1274ef087",
+    registry = "registry.hub.docker.com/library",
+    repository = "openjdk",
+    # tag = "11-slim",
+)
+
+container_pull(
+    name = "debian-image",
+    digest = "sha256:0878f36a20ded5038e60896e983c326d229fa1a4bc5ec637ef56eb199e42a365",
+    registry = "registry.hub.docker.com/library",
+    repository = "debian",
+    # tag = "bullseye-slim"
+)
+
 go_repository(
     name = "com_github_urfave_cli_v2",
     importpath = "github.com/urfave/cli/v2",
