@@ -49,6 +49,9 @@ func (this *JfrUploader) uploadFile(path string) error {
 	}
 	req.URL.RawQuery = params.Encode()
 	req.Header.Set("Content-type", "application/octet-stream")
+	for name, value := range this.options.Headers {
+		req.Header.Set(name, value)
+	}
 
 	resp, err := this.client.Do(req)
 	if err != nil {

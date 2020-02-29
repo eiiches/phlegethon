@@ -16,6 +16,7 @@ type Options struct {
 	LocalRepository string            `json:"local_repository"`
 	Namespace       string            `json:"namespace"`
 	DeleteUploaded  bool              `json:"delete_uploaded"`
+	Headers         map[string]string `json:"headers"`
 }
 
 var (
@@ -31,6 +32,26 @@ func validateLabel(name string, value string) {
 	if !regexp.MustCompile(labelNamePattern).MatchString(name) {
 		sugar.Fatalw("invalid --label argument; label name must match "+labelNamePattern, "name", "--label", "value", fmt.Sprintf("%s=%s", name, value))
 	}
+}
+
+var (
+	sensitiveHeaders = map[string]bool{
+		"authorization": true,
+	}
+)
+
+func logFinalFlags(options *Options) {
+	optionsCopy := *options
+	headersCopy := map[string]string{}
+	for name, value := range options.Headers {
+		if sensitiveHeaders[strings.ToLower(name)] {
+			headersCopy[name] = "********"
+		} else {
+			headersCopy[name] = value
+		}
+	}
+	optionsCopy.Headers = headersCopy
+	sugar.Infow("options", "options", optionsCopy)
 }
 
 func main() {
@@ -74,10 +95,23 @@ func main() {
 				}
 			}
 
+			options.Headers = map[string]string{}
+			headerArgs := c.StringSlice("http-header")
+			for _, headerArg := range headerArgs {
+				nvpair := strings.SplitN(headerArg, ":", 2)
+				if len(nvpair) != 2 {
+					sugar.Fatalw("invalid --http-header argument; header must be in 'Header: Value' format", "name", "--http-header", "value", headerArg)
+				}
+				nvpair[0] = strings.TrimSpace(nvpair[0])
+				nvpair[1] = strings.TrimSpace(nvpair[1]) // may be empty
+				sugar.Infow("argument", "name", "--http-header", "value", fmt.Sprintf("%s: %s", nvpair[0], nvpair[1]))
+				options.Headers[nvpair[0]] = nvpair[1]
+			}
+
 			options.DeleteUploaded = c.Bool("delete")
 			sugar.Infow("argument", "name", "--delete", "value", options.DeleteUploaded)
 
-			sugar.Infow("options", "options", options)
+			logFinalFlags(options)
 			uploader, err := NewJfrUploader(options)
 			if err != nil {
 				return err
@@ -110,6 +144,11 @@ func main() {
 				Name:     "delete",
 				Usage:    "If enabled, a jfr recording file will be deleted when the file is uploaded successfully. Note that JVM emits harmless error logs that indicate it failed to delete the recordings.",
 				Required: false,
+			},
+			&cli.StringSliceFlag{
+				Name:    "http-header",
+				Aliases: []string{"H"},
+				Usage:   "HTTP headers to add to upload requests. (e.g. -H 'Authorization: Basic dGVzdDp0ZXN0')",
 			},
 		},
 	}
