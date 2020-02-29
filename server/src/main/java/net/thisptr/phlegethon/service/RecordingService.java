@@ -147,9 +147,7 @@ public class RecordingService {
                 }
 
                 // Upload to the storage.
-                try (InputStream storageData = new FileInputStream(encodedBufferFile)) {
-                    blobStorage.upload(namespace.id, streamId, recording.name, storageData);
-                }
+                blobStorage.upload(namespace.id, streamId, recording.name, encodedBufferFile);
             } finally {
                 encodedBufferFile.delete();
             }

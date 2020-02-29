@@ -18,6 +18,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.Duration;
@@ -79,6 +80,12 @@ public class S3BlobStorage implements BlobStorage {
     public void upload(NamespaceId namespaceId, StreamId streamId, RecordingFileName recordingName, InputStream is) throws IOException {
         String key = toKey(namespaceId, streamId, recordingName);
         client.putObject(bucketName, key, is, null);
+    }
+
+    @Override
+    public void upload(NamespaceId namespaceId, StreamId streamId, RecordingFileName recordingName, File file) throws IOException {
+        String key = toKey(namespaceId, streamId, recordingName);
+        client.putObject(bucketName, key, file);
     }
 
     private static final Pattern KEY_PATTERN = Pattern.compile("(?<namespace>[0-9]+)/(?<date>[0-9]{4}/[0-9]{2}/[0-9]{2})/(?<stream>[a-f0-9]{40})/(?<hour>[0-9]{2})/(?<minute>[0-9]{2})/(?<name>[a-f0-9]{32})");
