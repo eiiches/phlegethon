@@ -2,6 +2,8 @@ CREATE TABLE IF NOT EXISTS Namespaces (
     namespace_id INT UNSIGNED NOT NULL AUTO_INCREMENT, -- (4 bytes)
     name VARCHAR(256) NOT NULL, -- (256 bytes max)
 
+    config JSON NOT NULL,
+
     CONSTRAINT namespace_pk PRIMARY KEY (namespace_id),
     CONSTRAINT namespace_unique_name UNIQUE (name)
 );

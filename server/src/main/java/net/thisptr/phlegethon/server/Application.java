@@ -17,6 +17,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.datetime.joda.DateTimeFormatterFactory;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
@@ -25,6 +26,7 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
+@EnableScheduling
 @SpringBootApplication(scanBasePackages = "net.thisptr.phlegethon")
 public class Application {
     static {

@@ -22,6 +22,7 @@ import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
@@ -32,12 +33,12 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -45,7 +46,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
@@ -91,7 +91,7 @@ public class RecordingService {
         return new StreamId(hasher.hash().asBytes());
     }
 
-    public Recording upload(String namespaceName, String type, Map<String, String> labels, InputStream is) throws SQLException, ExecutionException, IOException {
+    public Recording upload(String namespaceName, String type, Map<String, String> labels, InputStream is) throws Exception {
         BlobTypeRegistration registration = typeRegistry.getRegistration(type); // If the type is not registered, UnsupportedBlobTypeException will be thrown.
 
         validateLabelNames(labels);
@@ -281,5 +281,29 @@ public class RecordingService {
         recording.labels = namespaceAndStream._2.labels;
         recording.name = recordingName;
         return recording;
+    }
+
+    @Scheduled(fixedDelay = 60 * 60 * 1000L)
+    public void purgeOldRecordings() {
+        // NOTE: do not throw an exception in this method, it will cause a scheduler to stop
+
+        List<Namespace> namespaces;
+        try {
+            namespaces = Transaction.doInTransaction(dataSource, true, (conn) -> {
+                return namespaceDao.selectNamespaces(conn);
+            });
+        } catch (Throwable th) {
+            LOG.warn("Failed to retrieve namespaces from database. Skipped purging of old recordings.", th);
+            return;
+        }
+
+        for (Namespace namespace : namespaces) {
+            try {
+                blobStorage.purge(namespace.id, Duration.ofSeconds(namespace.config.retentionSeconds));
+            } catch (Throwable th) {
+                LOG.warn("Failed to purge old recordings (namespace = {}).", namespace.name, th);
+                return;
+            }
+        }
     }
 }

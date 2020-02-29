@@ -46,7 +46,7 @@ public class StreamController {
     @RequestMapping(method = RequestMethod.GET, path = "/" + STREAM_ID_PATTERN)
     public Stream get(@PathVariable(value = "namespace") String namespace,
                       @PathVariable(value = "streamId") StreamId streamId) throws Exception {
-        return recordingService.getStream(namespace, streamId);
+        return recordingService.getStream(namespace, streamId)._2;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/" + STREAM_ID_PATTERN + "/recordings")

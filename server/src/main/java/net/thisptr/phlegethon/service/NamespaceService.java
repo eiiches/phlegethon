@@ -34,14 +34,14 @@ public class NamespaceService {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
-    public Namespace createNamespace(Namespace namespace) throws SQLException {
+    public Namespace createNamespace(Namespace namespace) throws Exception {
         return Transaction.doInTransaction(dataSource, false, (conn) -> {
             dao.insertNamespace(conn, namespace);
             return namespace;
         });
     }
 
-    public Namespace deleteNamespace(String name) throws SQLException {
+    public Namespace deleteNamespace(String name) throws Exception {
         return Transaction.doInTransaction(dataSource, false, (conn) -> {
             Namespace namespace = dao.selectNamespace(conn, name, true);
             if (namespace == null)
@@ -58,7 +58,7 @@ public class NamespaceService {
      * @throws SQLException
      * @throws NamespaceNotFoundException if namespace is not found
      */
-    public Namespace getNamespace(String name) throws SQLException {
+    public Namespace getNamespace(String name) throws Exception {
         return Transaction.doInTransaction(dataSource, true, (conn) -> {
             Namespace namespace = dao.selectNamespace(conn, name, false);
             if (namespace == null)
@@ -67,13 +67,13 @@ public class NamespaceService {
         });
     }
 
-    public List<Namespace> listNamespaces() throws SQLException {
+    public List<Namespace> listNamespaces() throws Exception {
         return Transaction.doInTransaction(dataSource, true, (conn) -> {
             return dao.selectNamespaces(conn);
         });
     }
 
-    public Namespace updateNamespace(String name, Namespace namespace) throws SQLException {
+    public Namespace updateNamespace(String name, Namespace namespace) throws Exception {
         return Transaction.doInTransaction(dataSource, false, (conn) -> {
             Namespace oldNamespace = dao.selectNamespace(conn, name, true);
             if (namespace == null)

@@ -25,27 +25,27 @@ public class NamespaceController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "")
-    public Namespace createNamespace(@RequestBody Namespace namespace) throws SQLException {
+    public Namespace createNamespace(@RequestBody Namespace namespace) throws Exception {
         return namespaceService.createNamespace(namespace);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, path = "/" + NAMESPACE_PATTERN)
-    public Namespace deleteNamespace(@PathVariable("namespace") String name) throws SQLException {
+    public Namespace deleteNamespace(@PathVariable("namespace") String name) throws Exception {
         return namespaceService.deleteNamespace(name);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/" + NAMESPACE_PATTERN)
-    public Namespace getNamespace(@PathVariable("namespace") String name) throws SQLException {
+    public Namespace getNamespace(@PathVariable("namespace") String name) throws Exception {
         return namespaceService.getNamespace(name);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "")
-    public List<Namespace> listNamespaces() throws SQLException {
+    public List<Namespace> listNamespaces() throws Exception {
         return namespaceService.listNamespaces();
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/" + NAMESPACE_PATTERN)
-    public Namespace updateNamespace(@PathVariable("namespace") String name, @RequestBody Namespace namespace) throws SQLException {
+    public Namespace updateNamespace(@PathVariable("namespace") String name, @RequestBody Namespace namespace) throws Exception {
         return namespaceService.updateNamespace(name, namespace);
     }
 }

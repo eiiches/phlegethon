@@ -11,4 +11,7 @@ public class Namespace {
 
     @JsonProperty("name")
     public String name;
+
+    @JsonProperty("config")
+    public NamespaceConfig config;
 }

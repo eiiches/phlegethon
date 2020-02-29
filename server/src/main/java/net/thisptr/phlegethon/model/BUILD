@@ -3,6 +3,7 @@ java_library(
     srcs = glob(["*.java"]),
     visibility = [
         "//server/src/main/java/net/thisptr/phlegethon:__subpackages__",
+        "//server/src/test/java/net/thisptr/phlegethon:__subpackages__",
     ],
     deps = [
         "//server/src/main/java/net/thisptr/phlegethon/misc",
