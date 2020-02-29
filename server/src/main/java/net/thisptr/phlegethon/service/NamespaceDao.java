@@ -25,6 +25,7 @@ public class NamespaceDao {
         namespace.id = new NamespaceId(rs.getInt("namespace_id"));
         namespace.name = rs.getString("name");
         namespace.config = MAPPER.readValue(rs.getString("config"), NamespaceConfig.class);
+        namespace.isDeleted = rs.getBoolean("is_deleted");
         return namespace;
     }
 
@@ -50,7 +51,7 @@ public class NamespaceDao {
     }
 
     public Namespace selectNamespace(Connection conn, String name, boolean forUpdate) throws SQLException, JsonProcessingException {
-        return FluentStatement.prepare(conn, "SELECT namespace_id, name, config FROM Namespaces WHERE name = $name #suffix")
+        return FluentStatement.prepare(conn, "SELECT namespace_id, name, config, is_deleted FROM Namespaces WHERE name = $name AND is_deleted = false #suffix")
                 .bind("name", name)
                 .bind("suffix", forUpdate ? "FOR UPDATE" : "")
                 .executeQuery((rs) -> {
@@ -60,8 +61,9 @@ public class NamespaceDao {
                 });
     }
 
-    public List<Namespace> selectNamespaces(Connection conn) throws SQLException, JsonProcessingException {
-        return FluentStatement.prepare(conn, "SELECT namespace_id, name, config FROM Namespaces")
+    public List<Namespace> selectNamespaces(Connection conn, boolean includeDeleteMarked) throws SQLException, JsonProcessingException {
+        return FluentStatement.prepare(conn, "SELECT namespace_id, name, config, is_deleted FROM Namespaces #suffix")
+                .bind("suffix", includeDeleteMarked ? "" : "WHERE is_deleted = false")
                 .executeQuery((rs) -> {
                     List<Namespace> namespaces = new ArrayList<>();
                     while (rs.next())
@@ -70,21 +72,28 @@ public class NamespaceDao {
                 });
     }
 
-    public boolean deleteNamespace(Connection conn, String name) throws SQLException {
-        return FluentStatement.prepare(conn, "DELETE FROM Namespaces WHERE name = ?")
+    public boolean markDeleteNamespace(Connection conn, String name, String newName) throws SQLException {
+        return FluentStatement.prepare(conn, "UPDATE Namespaces SET is_deleted = true, name = $new_name WHERE name = $name AND is_deleted = false")
                 .bind("name", name)
+                .bind("new_name", newName)
+                .executeUpdate() > 0;
+    }
+
+    public boolean actualDeleteNamespace(Connection conn, NamespaceId id) throws SQLException {
+        return FluentStatement.prepare(conn, "DELETE FROM Namespaces WHERE namespace_id = $id")
+                .bind("id", id.toInt())
                 .executeUpdate() > 0;
     }
 
     public void insertNamespace(Connection conn, Namespace namespace) throws SQLException, JsonProcessingException {
-        FluentStatement.prepare(conn, "INSERT INTO Namespaces (name, config) VALUES ($name, $config)")
+        FluentStatement.prepare(conn, "INSERT INTO Namespaces (name, config, is_deleted) VALUES ($name, $config, false)")
                 .bind("name", namespace.name)
                 .bind("config", MAPPER.writeValueAsString(namespace.config))
                 .executeUpdate();
     }
 
     public boolean updateNamespace(Connection conn, String oldName, Namespace namespace) throws SQLException, JsonProcessingException {
-        return FluentStatement.prepare(conn, "UPDATE Namespaces SET name = $new_name, config = $config WHERE name = $old_name")
+        return FluentStatement.prepare(conn, "UPDATE Namespaces SET name = $new_name, config = $config WHERE name = $old_name AND is_deleted = false")
                 .bind("new_name", namespace.name)
                 .bind("old_name", oldName)
                 .bind("config", MAPPER.writeValueAsString(namespace.config))

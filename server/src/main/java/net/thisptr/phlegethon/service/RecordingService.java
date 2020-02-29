@@ -322,7 +322,7 @@ public class RecordingService {
         List<Namespace> namespaces;
         try {
             namespaces = Transaction.doInTransaction(dataSource, true, (conn) -> {
-                return namespaceDao.selectNamespaces(conn);
+                return namespaceDao.selectNamespaces(conn, true);
             });
         } catch (Throwable th) {
             LOG.warn("Failed to retrieve namespaces from database. Skipped purging of old recordings.", th);
@@ -330,18 +330,34 @@ public class RecordingService {
         }
 
         for (Namespace namespace : namespaces) {
-            DateTime threshold = new DateTime(DateTimeUtils.currentTimeMillis() - namespace.config.retentionSeconds * 1000L);
+            DateTime threshold = !namespace.isDeleted
+                    ? new DateTime(DateTimeUtils.currentTimeMillis() - namespace.config.retentionSeconds * 1000L)
+                    : new DateTime(Long.MAX_VALUE);
             try {
                 blobStorage.purge(namespace.id, threshold);
             } catch (Throwable th) {
                 LOG.warn("Failed to purge old recordings (namespace = {}).", namespace.name, th);
             }
-            Transaction.doInTransaction(dataSource, false, (conn) -> {
-                int deletedStreams = streamDao.deleteStreamsOlderThan(conn, namespace.id, threshold);
-                LOG.info("Purged {} streams from database (namespace = {}).", deletedStreams, namespace.name);
-                int deletedLabels = labelDao.deleteLabelsOlderThan(conn, namespace.id, threshold);
-                LOG.info("Purged {} labels from database (namespace = {}).", deletedLabels, namespace.name);
-            });
+            try {
+                Transaction.doInTransaction(dataSource, false, (conn) -> {
+                    int deletedStreams = streamDao.deleteStreamsOlderThan(conn, namespace.id, threshold);
+                    LOG.info("Purged {} streams from database (namespace = {}).", deletedStreams, namespace.name);
+                    int deletedLabels = labelDao.deleteLabelsOlderThan(conn, namespace.id, threshold);
+                    LOG.info("Purged {} labels from database (namespace = {}).", deletedLabels, namespace.name);
+                });
+
+            } catch (Throwable th) {
+                LOG.warn("Failed to purge old labels and streams from database (namespace = {}).", namespace.name);
+            }
+            try {
+                if (namespace.isDeleted) {
+                    Transaction.doInTransaction(dataSource, false, (conn) -> {
+                        namespaceDao.actualDeleteNamespace(conn, namespace.id);
+                    });
+                }
+            } catch (Throwable th) {
+                LOG.warn("Failed to purge a namespace from database (namespace = {}).", namespace.name);
+            }
         }
     }
 }

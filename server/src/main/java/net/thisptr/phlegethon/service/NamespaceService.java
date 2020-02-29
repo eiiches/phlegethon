@@ -5,6 +5,7 @@ import com.google.common.io.CharStreams;
 import net.thisptr.phlegethon.misc.sql.FluentStatement;
 import net.thisptr.phlegethon.misc.sql.Transaction;
 import net.thisptr.phlegethon.model.Namespace;
+import org.joda.time.DateTimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +47,9 @@ public class NamespaceService {
             Namespace namespace = dao.selectNamespace(conn, name, true);
             if (namespace == null)
                 throw new NamespaceNotFoundException(name);
-            if (!dao.deleteNamespace(conn, name))
+            // We don't want to block creation of a new namespace with the same name.
+            String newName = namespace.name + "_deleted_" + DateTimeUtils.currentTimeMillis();
+            if (!dao.markDeleteNamespace(conn, name, newName))
                 throw new IllegalStateException("The row has disappeared in the middle of a transaction! This can't be happening!");
             return namespace;
         });
@@ -69,7 +72,7 @@ public class NamespaceService {
 
     public List<Namespace> listNamespaces() throws Exception {
         return Transaction.doInTransaction(dataSource, true, (conn) -> {
-            return dao.selectNamespaces(conn);
+            return dao.selectNamespaces(conn, false);
         });
     }
 

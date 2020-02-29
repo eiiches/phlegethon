@@ -14,4 +14,7 @@ public class Namespace {
 
     @JsonProperty("config")
     public NamespaceConfig config;
+
+    @JsonIgnore
+    public boolean isDeleted;
 }

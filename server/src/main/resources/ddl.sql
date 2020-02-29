@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS Namespaces (
     name VARCHAR(256) NOT NULL, -- (256 bytes max)
 
     config JSON NOT NULL,
+    is_deleted BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT namespace_pk PRIMARY KEY (namespace_id),
     CONSTRAINT namespace_unique_name UNIQUE (name)
@@ -19,7 +20,7 @@ CREATE TABLE IF NOT EXISTS Labels (
 
     CONSTRAINT label_pk PRIMARY KEY (label_id),
     CONSTRAINT label_unique UNIQUE (namespace_id, name, value),
-    CONSTRAINT label_namespace_id_fk FOREIGN KEY (namespace_id) REFERENCES Namespaces (namespace_id),
+    CONSTRAINT label_namespace_id_fk FOREIGN KEY (namespace_id) REFERENCES Namespaces (namespace_id) ON DELETE RESTRICT ON UPDATE RESTRICT,
     INDEX label_last_event_at_idx (namespace_id, last_event_at)
 );
 
@@ -35,7 +36,7 @@ CREATE TABLE IF NOT EXISTS Streams (
     last_event_at BIGINT UNSIGNED NOT NULL, -- (8 bytes)
 
     CONSTRAINT stream_pk PRIMARY KEY (namespace_id, stream_id),
-    CONSTRAINT stream_namespace_id_fk FOREIGN KEY (namespace_id) REFERENCES Namespaces (namespace_id),
+    CONSTRAINT stream_namespace_id_fk FOREIGN KEY (namespace_id) REFERENCES Namespaces (namespace_id) ON DELETE RESTRICT ON UPDATE RESTRICT,
     INDEX stream_label_idx (namespace_id, (CAST(label_ids AS UNSIGNED ARRAY))),
     INDEX stream_last_event_at_idx (namespace_id, last_event_at)
 );

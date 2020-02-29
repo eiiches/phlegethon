@@ -80,7 +80,7 @@ API
 
 * GET /v1/namespaces/{namespace}
 
-* DELETE /v1/namespaces/{namespace} *[NOT IMPLEMENTED]*
+* DELETE /v1/namespaces/{namespace}
 
   Deleting a namespace will lazily delete all the related data from the object storage and database.
 
