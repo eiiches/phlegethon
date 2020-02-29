@@ -89,6 +89,7 @@ maven_install(
         "com.fasterxml.jackson.datatype:jackson-datatype-joda:2.10.2",
         "javax.servlet:javax.servlet-api:4.0.1",
         "com.github.luben:zstd-jni:1.4.4-7",
+        "javax.xml.bind:jaxb-api:2.3.1",
     ],
     fetch_sources = True,
     maven_install_json = "//:maven_install.json",

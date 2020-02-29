@@ -9,6 +9,7 @@ java_library(
     runtime_deps = [
         "//server/src/main/java/net/thisptr/phlegethon/server/controller",
         "//server/src/main/java/net/thisptr/phlegethon/service",
+        "@maven//:javax_xml_bind_jaxb_api",
         "@maven//:org_springframework_boot_spring_boot_starter_web",
     ],
     deps = [
