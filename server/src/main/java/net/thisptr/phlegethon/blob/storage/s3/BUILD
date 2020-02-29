@@ -12,7 +12,6 @@ java_library(
         "@maven//:com_google_guava_guava",
         "@maven//:javax_validation_validation_api",
         "@maven//:joda_time_joda_time",
-        "@maven//:org_hibernate_validator_hibernate_validator",
         "@maven//:org_springframework_boot_spring_boot",
         "@maven//:org_springframework_boot_spring_boot_autoconfigure",
         "@maven//:org_springframework_spring_beans",

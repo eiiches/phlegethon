@@ -4,7 +4,4 @@ java_library(
     visibility = [
         "//server/src/main/java/net/thisptr/phlegethon:__subpackages__",
     ],
-    deps = [
-        "@maven//:com_google_guava_guava",
-    ],
 )

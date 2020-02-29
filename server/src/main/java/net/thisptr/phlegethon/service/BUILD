@@ -17,7 +17,6 @@ java_library(
         "@maven//:com_fasterxml_jackson_core_jackson_databind",
         "@maven//:com_google_errorprone_error_prone_annotations",
         "@maven//:com_google_guava_guava",
-        "@maven//:com_zaxxer_HikariCP",
         "@maven//:javax_validation_validation_api",
         "@maven//:joda_time_joda_time",
         "@maven//:org_slf4j_slf4j_api",
