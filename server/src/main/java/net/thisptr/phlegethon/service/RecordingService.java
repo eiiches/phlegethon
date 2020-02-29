@@ -242,7 +242,25 @@ public class RecordingService {
             if (namespace == null)
                 throw new NamespaceNotFoundException(namespaceName);
 
-            StreamDao.StreamRecord streamRecord = streamDao.select(conn, namespace.id, streamId);
+            StreamDao.StreamRecord streamRecord = streamDao.select(conn, namespace.id, streamId, false);
+            if (streamRecord == null)
+                throw new StreamNotFoundException(namespaceName, streamId);
+            return Pair.of(namespace, toStream(conn, namespace.id, streamRecord));
+        });
+    }
+
+    public Pair<Namespace, Stream> deleteStream(String namespaceName, StreamId streamId) throws Exception {
+        return Transaction.doInTransaction(dataSource, false, (conn) -> {
+            Namespace namespace = namespaceDao.selectNamespace(conn, namespaceName, false);
+            if (namespace == null)
+                throw new NamespaceNotFoundException(namespaceName);
+
+            StreamDao.StreamRecord streamRecord = streamDao.select(conn, namespace.id, streamId, true);
+            if (streamRecord == null)
+                throw new StreamNotFoundException(namespaceName, streamId);
+
+            if (!streamDao.delete(conn, namespace.id, streamId))
+                throw new IllegalStateException("The database row has disappeared in the middle of a transaction! This can't be happening!");
             return Pair.of(namespace, toStream(conn, namespace.id, streamRecord));
         });
     }

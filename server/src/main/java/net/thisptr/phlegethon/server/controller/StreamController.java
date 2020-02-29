@@ -49,6 +49,12 @@ public class StreamController {
         return recordingService.getStream(namespace, streamId)._2;
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, path = "/" + STREAM_ID_PATTERN)
+    public Stream deleteStream(@PathVariable(value = "namespace") String namespace,
+                      @PathVariable(value = "streamId") StreamId streamId) throws Exception {
+        return recordingService.deleteStream(namespace, streamId)._2;
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/" + STREAM_ID_PATTERN + "/recordings")
     public RecordingList get(@PathVariable(value = "namespace") String namespace,
                              @PathVariable(value = "streamId") StreamId streamId,

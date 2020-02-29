@@ -80,7 +80,9 @@ API
 
 * GET /v1/namespaces/{namespace}
 
-* DELETE /v1/namespaces/{namespace}
+* DELETE /v1/namespaces/{namespace} *[NOT IMPLEMENTED]*
+
+  Deleting a namespace will lazily delete all the related data from the object storage and database.
 
 * PUT /v1/namespaces/{namespace}
 
@@ -90,7 +92,11 @@ API
 
 * GET /v1/namespaces/{namespace}/streams/{stream_id}
 
-* GET /v1/namespaces/{namespace}/streams/{stream_id}/recordings?start={start_unix_epoch_millis}&amp;end={end_unix_epoch_millis}
+* DELETE /v1/namespaces/{namespace}/streams/{stream_id}
+
+  Deleting a stream will not delete the actual recordings in the object storage. They are still subject to retention policy set on the namespace.
+
+* GET /v1/namespaces/{namespace}/streams/{stream_id}/recordings?start={start_unix_epoch_millis}&amp;end={end_unix_epoch_millis} *[NOT IMPLEMENTED]*
 
 * GET /v1/namespaces/{namespace}/streams/{stream_id}/recordings/{recording_name}
 

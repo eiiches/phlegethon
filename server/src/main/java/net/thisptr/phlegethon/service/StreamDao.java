@@ -49,6 +49,13 @@ public class StreamDao {
                 .executeUpdate();
     }
 
+    public boolean delete(Connection conn, NamespaceId namespaceId, StreamId streamId) throws SQLException {
+        return FluentStatement.prepare(conn, "DELETE FROM Streams WHERE namespace_id = $namespace_id AND stream_id = $stream_id")
+                .bind("namespace_id", namespaceId.toInt())
+                .bind("stream_id", streamId.toBytes())
+                .executeUpdate() > 0;
+    }
+
     public static class StreamRecord {
         public byte[] streamId;
         public List<Long> labelIds;
@@ -97,11 +104,12 @@ public class StreamDao {
                 });
     }
 
-    public StreamRecord select(Connection conn, NamespaceId namespaceId, StreamId streamId) throws JsonProcessingException, SQLException {
+    public StreamRecord select(Connection conn, NamespaceId namespaceId, StreamId streamId, boolean forUpdate) throws JsonProcessingException, SQLException {
         return FluentStatement.prepare(conn, "SELECT stream_id, label_ids, data_type, first_event_at, last_event_at FROM Streams"
-                + " WHERE namespace_id = $namespace_id AND stream_id = $stream_id")
+                + " WHERE namespace_id = $namespace_id AND stream_id = $stream_id #suffix")
                 .bind("namespace_id", namespaceId.toInt())
                 .bind("stream_id", streamId.toBytes())
+                .bind("suffix", forUpdate ? "FOR UPDATE" : "")
                 .executeQuery((rs) -> {
                     if (!rs.next())
                         return null;
