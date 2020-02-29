@@ -30,3 +30,7 @@ jfr-uploader/run:
 .PHONY: jfr-uploader/image
 jfr-uploader/image:
 	bazel run //jfr-uploader:image-bundle -- --norun
+
+.PHONY: test-app/run
+test-app/run:
+	bazel run //tools/test-app --jvmopt="-XX:StartFlightRecording=settings=profile,maxsize=128m,dumponexit=true,filename=/tmp/test-app/" --jvmopt="-XX:FlightRecorderOptions=repository=/tmp/test-app,maxchunksize=1m"
