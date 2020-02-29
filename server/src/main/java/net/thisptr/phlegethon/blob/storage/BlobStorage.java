@@ -14,9 +14,9 @@ import java.nio.file.Path;
 public interface BlobStorage {
     void delete(String path) throws IOException;
 
-    void upload(NamespaceId namespaceId, StreamId streamId, RecordingFileName recordingName, File file) throws IOException;
+    void upload(NamespaceId namespaceId, StreamId streamId, RecordingFileName recordingName, InputStream is) throws IOException;
 
     boolean exists(NamespaceId id, StreamId streamId, RecordingFileName recordingName) throws IOException;
 
-    void download(NamespaceId id, StreamId streamId, RecordingFileName recordingName, OutputStream os) throws IOException;
+    InputStream download(NamespaceId id, StreamId streamId, RecordingFileName recordingName) throws IOException;
 }

@@ -1,5 +1,6 @@
 package net.thisptr.phlegethon.server.controller;
 
+import com.google.common.io.ByteStreams;
 import net.thisptr.phlegethon.misc.Pair;
 import net.thisptr.phlegethon.model.Recording;
 import net.thisptr.phlegethon.model.RecordingFileName;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -82,6 +84,8 @@ public class StreamController {
         // The filename never contains quotes, etc. It'safe.
         servletResponse.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
         servletResponse.setHeader("Content-type", "application/octet-stream");
-        recordingService.download(namespace, streamId, recordingName, servletResponse.getOutputStream());
+        try (InputStream is = recordingService.download(namespace, streamId, recordingName)) {
+            ByteStreams.copy(is, servletResponse.getOutputStream());
+        }
     }
 }

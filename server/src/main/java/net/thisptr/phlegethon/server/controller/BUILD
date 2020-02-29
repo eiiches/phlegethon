@@ -11,6 +11,7 @@ java_library(
         "//server/src/main/java/net/thisptr/phlegethon/service",
         "@maven//:com_fasterxml_jackson_core_jackson_annotations",
         "@maven//:com_google_errorprone_error_prone_annotations",
+        "@maven//:com_google_guava_guava",
         "@maven//:javax_servlet_javax_servlet_api",
         "@maven//:joda_time_joda_time",
         "@maven//:org_springframework_spring_beans",

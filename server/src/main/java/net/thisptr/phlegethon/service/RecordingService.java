@@ -27,8 +27,10 @@ import org.springframework.stereotype.Service;
 import javax.sql.DataSource;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -137,8 +139,22 @@ public class RecordingService {
                 return ns;
             });
 
-            // Upload to the storage.
-            blobStorage.upload(namespace.id, streamId, recording.name, temporaryBufferFile);
+            File encodedBufferFile = File.createTempFile(streamId.toHex() + "-", "." + type + ".encoded");
+            try {
+                // Encode to a temporary file
+                try (InputStream aa = new BufferedInputStream(new FileInputStream(temporaryBufferFile))) {
+                    try (OutputStream os = registration.handler.encode(new BufferedOutputStream(new FileOutputStream(encodedBufferFile)))) {
+                        ByteStreams.copy(aa, os);
+                    }
+                }
+
+                // Upload to the storage.
+                try (InputStream storageData = new FileInputStream(encodedBufferFile)) {
+                    blobStorage.upload(namespace.id, streamId, recording.name, storageData);
+                }
+            } finally {
+                encodedBufferFile.delete();
+            }
             return recording;
         } finally {
             temporaryBufferFile.delete();
@@ -237,11 +253,13 @@ public class RecordingService {
 
     private static final Logger LOG = LoggerFactory.getLogger(RecordingService.class);
 
-    public void download(String namespaceName, StreamId streamId, RecordingFileName recordingName, OutputStream os) throws Exception {
+    public InputStream download(String namespaceName, StreamId streamId, RecordingFileName recordingName) throws Exception {
         Namespace namespace = namespaceService.getNamespace(namespaceName);
         Stream stream = getStream(namespaceName, streamId);
 
-        blobStorage.download(namespace.id, streamId, recordingName, os);
+        BlobTypeRegistration typeRegistration = typeRegistry.getRegistration(stream.type); // If the type is not registered, UnsupportedBlobTypeException will be thrown.
+
+        return typeRegistration.handler.decode(blobStorage.download(namespace.id, streamId, recordingName));
     }
 
     public RecordingList listRecordings(String namespaceName, StreamId streamId, String cursor, Long start, Long end) throws SQLException {

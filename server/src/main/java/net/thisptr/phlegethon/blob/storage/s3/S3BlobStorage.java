@@ -33,11 +33,9 @@ public class S3BlobStorage implements BlobStorage {
     }
 
     @Override
-    public void download(NamespaceId namespaceId, StreamId streamId, RecordingFileName recordingName, OutputStream os) throws IOException {
+    public InputStream download(NamespaceId namespaceId, StreamId streamId, RecordingFileName recordingName) throws IOException {
         String key = toKey(namespaceId, streamId, recordingName);
-        try (InputStream is = client.getObject(bucketName, key).getObjectContent()) {
-            ByteStreams.copy(is, os);
-        }
+        return client.getObject(bucketName, key).getObjectContent();
     }
 
     private static String toKey(NamespaceId namespaceId, StreamId streamId, RecordingFileName recordingName) {
@@ -63,8 +61,8 @@ public class S3BlobStorage implements BlobStorage {
     }
 
     @Override
-    public void upload(NamespaceId namespaceId, StreamId streamId, RecordingFileName recordingName, File file) throws IOException {
+    public void upload(NamespaceId namespaceId, StreamId streamId, RecordingFileName recordingName, InputStream is) throws IOException {
         String key = toKey(namespaceId, streamId, recordingName);
-        client.putObject(bucketName, key, file);
+        client.putObject(bucketName, key, is, null);
     }
 }
