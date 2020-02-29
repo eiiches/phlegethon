@@ -39,8 +39,12 @@ public class S3BlobStorage implements BlobStorage {
     }
 
     @Override
-    public void delete(String path) throws IOException {
-
+    public boolean delete(NamespaceId namespaceId, StreamId streamId, RecordingFileName recordingName) throws IOException {
+        // NOTE: this method is not atomic.
+        String key = toKey(namespaceId, streamId, recordingName);
+        boolean exists = client.doesObjectExist(bucketName, key);
+        client.deleteObject(bucketName, key); // succeeds even when the object does not exist.
+        return exists;
     }
 
     @Override

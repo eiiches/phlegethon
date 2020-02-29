@@ -65,6 +65,13 @@ public class StreamController {
         return recordingService.getRecording(namespace, streamId, recordingName);
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, path = "/" + STREAM_ID_PATTERN + "/recordings/{recordingName}")
+    public Recording deleteRecording(@PathVariable(value = "namespace") String namespace,
+                                  @PathVariable(value = "streamId") StreamId streamId,
+                                  @PathVariable(value = "recordingName") RecordingFileName recordingName) throws Exception {
+        return recordingService.deleteRecording(namespace, streamId, recordingName);
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/" + STREAM_ID_PATTERN + "/recordings/{recordingName}/download")
     public void download(@PathVariable(value = "namespace", required = true) String namespace,
                          @PathVariable(value = "streamId") StreamId streamId,

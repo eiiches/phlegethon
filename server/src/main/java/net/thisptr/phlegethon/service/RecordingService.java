@@ -283,6 +283,22 @@ public class RecordingService {
         return recording;
     }
 
+    public Recording deleteRecording(String namespaceName, StreamId streamId, RecordingFileName recordingName) throws Exception {
+        Pair<Namespace, Stream> namespaceAndStream = getStream(namespaceName, streamId);
+
+        if (!blobStorage.delete(namespaceAndStream._1.id, streamId, recordingName))
+            throw new RecordingNotFoundException(namespaceName, streamId, recordingName);
+
+        Recording recording = new Recording();
+        recording.type = namespaceAndStream._2.type;
+        recording.streamId = streamId;
+        recording.firstEventAt = new DateTime(recordingName.firstEventAt);
+        recording.lastEventAt = new DateTime(recordingName.lastEventAt);
+        recording.labels = namespaceAndStream._2.labels;
+        recording.name = recordingName;
+        return recording;
+    }
+
     @Scheduled(fixedDelay = 60 * 60 * 1000L)
     public void purgeOldRecordings() {
         // NOTE: do not throw an exception in this method, it will cause a scheduler to stop
