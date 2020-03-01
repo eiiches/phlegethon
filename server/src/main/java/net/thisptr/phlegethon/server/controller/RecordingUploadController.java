@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/v1/namespaces/" + NamespaceController.NAMESPACE_PATTERN + "/recordings")

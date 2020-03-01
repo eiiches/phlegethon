@@ -1,7 +1,6 @@
 package net.thisptr.phlegethon.server;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
 import com.fasterxml.jackson.datatype.joda.cfg.JacksonJodaDateFormat;
 import com.fasterxml.jackson.datatype.joda.ser.DateTimeSerializer;
 import com.zaxxer.hikari.HikariConfig;
@@ -20,7 +19,6 @@ import org.springframework.format.datetime.joda.DateTimeFormatterFactory;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
-import com.fasterxml.jackson.datatype.joda.JodaModule;
 
 import javax.sql.DataSource;
 import java.util.HashMap;

@@ -1,5 +1,6 @@
 package net.thisptr.phlegethon.blob.types.jfr;
 
+import com.github.luben.zstd.ZstdInputStream;
 import com.github.luben.zstd.ZstdOutputStream;
 import com.google.errorprone.annotations.Var;
 import jdk.jfr.consumer.RecordedEvent;
@@ -13,9 +14,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Path;
-import java.util.IllegalFormatException;
-
-import com.github.luben.zstd.ZstdInputStream;
 
 public class JfrBlobHandler implements BlobHandler {
 

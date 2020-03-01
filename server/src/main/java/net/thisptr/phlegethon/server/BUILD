@@ -19,7 +19,6 @@ java_library(
         "//server/src/main/java/net/thisptr/phlegethon/blob",
         "//server/src/main/java/net/thisptr/phlegethon/blob/storage",
         "//server/src/main/java/net/thisptr/phlegethon/blob/types/jfr",
-        "@maven//:com_fasterxml_jackson_core_jackson_databind",
         "@maven//:com_fasterxml_jackson_datatype_jackson_datatype_joda",
         "@maven//:com_zaxxer_HikariCP",
         "@maven//:joda_time_joda_time",
